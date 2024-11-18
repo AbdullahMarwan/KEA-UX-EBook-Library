@@ -3,8 +3,6 @@ import {baseUrl, fetchData} from "./apiFetchRequest.js";
 const bookUrl = "/books?n=";
 const amountOfBooks = 15;
 
-console.log("hello");
-
 // Fetch random books and display them
 async function getRandomBooks() {
     try {

@@ -14,5 +14,3 @@ export async function fetchData(url) {
         throw error; // Re-throw the error for the caller to handle
     }
 }
-
-// fetchData();
