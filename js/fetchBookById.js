@@ -1,4 +1,5 @@
-import {baseUrl, fetchData} from "./apiFetchRequest.js";
+import { baseUrl, fetchData } from "./apiFetchRequest.js";
+
 
 const bookId = 1251;
 
