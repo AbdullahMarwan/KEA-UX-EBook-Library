@@ -1,0 +1,21 @@
+:root{
+    --colorBackground1: #FFF9F0;
+    --colorBackground2: #FAF0E2;
+    --colorAccent1: #743014;
+    --colorAccent2: #821100;
+    --colorText: #2D2D2D;
+    --colorPlaceholderText: #636363;
+    --colorInputFieldGrayedOut: #e1e1e1;
+
+    --fontDesktopH1: 700 3em 'Playfair Display', serif; /* Bold */
+    --fontDesktopH2: 400 2.25em 'Playfair Display', serif; /* Normal */
+    --fontDesktopH3: 600 1.75em 'Roboto', sans-serif; /* Semibold */
+    --fontDesktopH4: 500 1.375em 'Roboto', sans-serif; /* Medium */
+    --fontDesktopP: 400 1em 'Roboto', sans-serif; /* Normal */
+    
+    --fontMobileH1: 700 2.25em 'Playfair Display', serif; /* Bold */
+    --fontMobileH2: 600 1.875em 'Playfair Display', serif; /* Semibold */
+    --fontMobileH3: 600 1.5em 'Roboto', sans-serif; /* Semibold */
+    --fontMobileH4: 500 1.125em 'Roboto', sans-serif; /* Medium */
+    --fontMobileP: 400 0.875em 'Roboto', sans-serif; /* Regular */    
+}
