@@ -57,9 +57,26 @@ function displayRandomBooks(books) {
 
     // Add books to the list
     books.forEach((book) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = book.title || "Untitled Book";
-        bookList.appendChild(listItem);
+        const article = document.createElement("article");
+        const bookTitle = document.createElement("h5");
+        const bookAuthor = document.createElement("p");
+        const bookYear = document.createElement("p");
+        const image = document.createElement("img");
+        const imageCtn = document.createElement("div");
+        const authorYearCtn = document.createElement("div");
+
+
+        bookAuthor.innerHTML = book.author;
+        bookTitle.innerHTML = book.title;
+        bookYear.innerHTML = book.publishing_year;
+
+        bookList.appendChild(article);
+        imageCtn.appendChild(image);
+        article.appendChild(bookTitle);
+        authorYearCtn.appendChild(bookYear);
+        authorYearCtn.appendChild(bookAuthor);
+
+        article.appendChild(authorYearCtn);
     });
 }
 
