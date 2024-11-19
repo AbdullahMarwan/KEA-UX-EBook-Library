@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    overflow-x: hidden;
+}
+
 :root{
     --colorBackground1: #FFF9F0;
     --colorBackground2: #FAF0E2;
@@ -7,16 +15,17 @@
     --colorPlaceholderText: #636363;
     --colorInputFieldGrayedOut: #e1e1e1;
 
-    --fontDesktopH1: 700 4.5 'Playfair Display', serif; /* Bold */
-    --fontDesktopH2: 700 3em 'Playfair Display', serif; /* Bold */
-    --fontDesktopH3: 400 2.25em 'Playfair Display', serif; /* Normal */
-    --fontDesktopH4: 600 1.75em 'Roboto', sans-serif; /* Semibold */
-    --fontDesktopH5: 500 1.375em 'Roboto', sans-serif; /* Medium */
-    --fontDesktopP: 400 1em 'Roboto', sans-serif; /* Normal */
+    --fontDesktopH1: 'Playfair Display', serif; /* Bold */
+    --fontDesktopH2: 'Playfair Display', serif; /* Bold */
+    --fontDesktopH3: 'Playfair Display', serif; /* Normal */
+    --fontDesktopH4: 'Roboto', sans-serif; /* Semibold */
+    --fontDesktopH5: 'Roboto', sans-serif; /* Medium */
+    --fontDesktopP: 'Roboto', sans-serif; /* Normal */
     
-    --fontMobileH2: 700 2.25em 'Playfair Display', serif; /* Bold */
-    --fontMobileH3: 600 1.875em 'Playfair Display', serif; /* Semibold */
-    --fontMobileH4: 600 1.5em 'Roboto', sans-serif; /* Semibold */
-    --fontMobileH5: 500 1.125em 'Roboto', sans-serif; /* Medium */
-    --fontMobileP: 400 0.875em 'Roboto', sans-serif; /* Regular */    
+    --fontMobileH1: 'Playfair Display', serif; /* Bold */
+    --fontMobileH2: 'Playfair Display', serif; /* Bold */
+    --fontMobileH3: 'Playfair Display', serif; /* Semibold */
+    --fontMobileH4: 'Roboto', sans-serif; /* Semibold */
+    --fontMobileH5: 'Roboto', sans-serif; /* Medium */
+    --fontMobileP: 'Roboto', sans-serif; /* Regular */    
 }
