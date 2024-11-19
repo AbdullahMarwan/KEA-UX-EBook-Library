@@ -7,15 +7,16 @@
     --colorPlaceholderText: #636363;
     --colorInputFieldGrayedOut: #e1e1e1;
 
-    --fontDesktopH1: 700 3em 'Playfair Display', serif; /* Bold */
-    --fontDesktopH2: 400 2.25em 'Playfair Display', serif; /* Normal */
-    --fontDesktopH3: 600 1.75em 'Roboto', sans-serif; /* Semibold */
-    --fontDesktopH4: 500 1.375em 'Roboto', sans-serif; /* Medium */
+    --fontDesktopH1: 700 4.5 'Playfair Display', serif; /* Bold */
+    --fontDesktopH2: 700 3em 'Playfair Display', serif; /* Bold */
+    --fontDesktopH3: 400 2.25em 'Playfair Display', serif; /* Normal */
+    --fontDesktopH4: 600 1.75em 'Roboto', sans-serif; /* Semibold */
+    --fontDesktopH5: 500 1.375em 'Roboto', sans-serif; /* Medium */
     --fontDesktopP: 400 1em 'Roboto', sans-serif; /* Normal */
     
-    --fontMobileH1: 700 2.25em 'Playfair Display', serif; /* Bold */
-    --fontMobileH2: 600 1.875em 'Playfair Display', serif; /* Semibold */
-    --fontMobileH3: 600 1.5em 'Roboto', sans-serif; /* Semibold */
-    --fontMobileH4: 500 1.125em 'Roboto', sans-serif; /* Medium */
+    --fontMobileH2: 700 2.25em 'Playfair Display', serif; /* Bold */
+    --fontMobileH3: 600 1.875em 'Playfair Display', serif; /* Semibold */
+    --fontMobileH4: 600 1.5em 'Roboto', sans-serif; /* Semibold */
+    --fontMobileH5: 500 1.125em 'Roboto', sans-serif; /* Medium */
     --fontMobileP: 400 0.875em 'Roboto', sans-serif; /* Regular */    
 }
