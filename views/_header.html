@@ -1,4 +1,4 @@
-<img src="../assets/logo.svg" class="header-logo" alt="Booked Out">
+<div class="header-logo"><img src="../assets/logo.svg" class="header-logo" alt="Booked Out"></div>
 <div id="user-status">
     <!-- Default: Not logged in -->
     <h5><a href="login.html" id="login-button">Login</a></h5>
@@ -9,7 +9,6 @@
         <img src="../assets/arrow.svg" alt="arrow" class="image-right">
     </div>
 </div>
-<form id="search-form" action="/views/displayBooks.html" method="GET">
-    <input type="text" id="search" name="search" placeholder="Search..." class="search-input" />
-    <button type="submit">Search</button>
+<form id="search-form" action="/views/displayBooks.html" method="GET" class="search-input">
+    <input type="text" id="search" name="search" placeholder="Search..." />
 </form>
