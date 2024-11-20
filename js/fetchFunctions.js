@@ -148,7 +148,7 @@ function displayedSearchedBooks(books) {
 
         article.innerHTML = `
             <div class="book-cover-ctn">
-                <img src="${coverImage || '../assets/placeholderImg.png'}" alt="${title} cover">
+                <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
             </div>
             <h5>${title}</h5>
             <div class="authorYearCtn">
@@ -175,6 +175,8 @@ function initializeSearchDisplay() {
             const heading = document.querySelector("h3");
             heading.textContent = `Search result for "${searchWord}"`;
             getSearchedBooks(searchWord);
+        } else {
+            getRandomBooks(15)
         }
     });
 }
@@ -186,7 +188,7 @@ function runAllFunctions(){
     getSpecificBook(1251);
 
     //const amountOfBooks = 15;
-    getRandomBooks(15)
+    // getRandomBooks(15)
 
     //const authorId = 32;
     getBooksByAuthor(32);
