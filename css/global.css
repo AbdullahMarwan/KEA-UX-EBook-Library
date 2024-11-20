@@ -4,13 +4,6 @@
     padding:0;
     box-sizing: border-box;
 }
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
-
 /* -----------------------------
 FONTS
 ------------------------------*/
@@ -118,7 +111,7 @@ HEADER MOBIL
     display:grid;
     grid-template-columns: 60% 25%;
     grid-template-rows: 0.5fr 1fr;
-    align-items: baseline;
+    align-items: center;
     justify-items: center;
     column-gap:1em;
 
@@ -164,6 +157,11 @@ HEADER MOBIL
     display:block;
     margin:1rem auto;
     grid-column: 1 / span 2;
+
+    input{
+        background-color: transparent;
+        border:none;
+    }
 }
 
 
