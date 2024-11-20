@@ -1,0 +1,243 @@
+@import url(./css/_variables.css);
+
+
+/* -----------------------------
+FONTS
+------------------------------*/
+
+h1 {
+    font-family: var(--fontMobileH1);
+    font-size: 3em;
+    font-weight: 700;
+}
+h2{
+    font-family: var(--fontMobileH2);
+    font-size: 2.25em;
+    font-weight: 700;
+}
+h3{
+    font-family: var(--fontMobileH3);
+    font-size: 1.875;
+    font-weight: 600;
+}
+h4{
+    font-family: var(--fontMobileH4);
+    font-size: 1.5em;
+    font-weight: 600;
+}
+h5 {
+    font-family: var(--fontMobileH5);
+    font-size: 1.125em;
+    font-weight: 500;
+}
+p{
+    font-family: var(--fontMobileP);
+    font-size: 0.875em;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 800px) {
+    h1{
+        font-family: var(--fontDesktopH1);
+        font-size: 4.5em;
+        font-weight: 700;
+    }
+    h2{
+        font-family: var(--fontDesktopH2);
+        font-size: 3em;
+        font-weight: 700;
+    }
+    h3{
+        font-family: var(--fontDesktopH3);
+        font-size: 2.25em;
+        font-weight: 400;
+    }
+    h4{
+        font-family: var(--fontDesktopH4);
+        font-size: 1.75em;
+        font-weight: 600;
+    }
+    h5{
+        font-family: var(--fontDesktopH5);
+        font-size: 1.375em;
+        font-weight: 500;
+    }
+    p{
+        font-family: var(--fontDesktopP);
+        font-size: 1em;
+        font-weight: 400;
+    }
+}
+
+
+/* ----------------------------
+MAIN MOBIL
+------------------------------*/
+body{
+    background-color: var(--colorBackground2);
+}
+
+main{
+    background-color: var(--colorBackground1);
+}
+
+a, button{
+    cursor:pointer;
+}
+
+a:hover{
+    color:var(--colorAccent2);
+}
+
+/* -----------------------------
+HEADER MOBIL
+------------------------------*/
+
+.header-container{
+    margin:1.2500em 1.2500em 3.125em 1.2500em;
+}
+
+/*--------- LOGGED IN ------ */
+/* If user is logged in, it should be displayed - if user is logged out, it should be hidden*/
+
+.logged-in {
+    overflow: hidden; /* Clear floats to ensure the container adjusts its height */
+}
+
+.logged-in img {
+    float: left; /* Float the images to the left */
+    margin-right: 1em; /* Add space between the images */
+    vertical-align: middle; /* Align images vertically in the middle */
+
+}
+
+.logged-in img:last-child {
+    margin-right: 0; /* Remove the space for the last image */
+}
+
+
+.header-logo{
+    max-width: 50%;
+}
+
+/* Putting an image into the search field*/
+.search-input {
+    background: url('../assets/search.svg') no-repeat right 10px center; /* Icon on the right */
+    background-size: 20px 20px; /* Adjust icon size */
+    border-radius: 0.3125em;
+    background-color: var(--colorBackground1);
+    border:none;
+    padding:1rem;
+    display:block;
+    margin:1rem auto;
+}
+
+
+/* -----------------------------
+FOOTER  MOBIL
+------------------------------*/
+.footer-container{
+    margin:3.125em 1.2500em 1.2500em 1.2500em;
+    color:var(--colorText);
+
+    nav{
+        margin-top: 1.2500em;
+        li{
+            list-style: none;
+            margin-top:0.5em;
+            font-family: var(--fontDesktopP);
+            font-size: 1em;
+            font-weight: 400;
+            text-decoration: underline;
+        }
+    }
+
+    .subscribe{
+        margin-top: 1.2500em;
+        display:flex;
+        flex-direction: column;
+
+        label{
+            font-family: var(--fontMobileP);
+            margin:1em 0;
+        }
+        input{
+            background-color: var(--colorBackground1);
+            border-radius: 0.3125em;
+            border:none;
+            padding:1rem;
+        }
+        input::placeholder {
+            color:var(--colorPlaceholderText);
+        }
+    }
+
+    button{
+        background-color: var(--colorAccent2);
+        color:var(--colorBackground1);
+        border-radius: 	0.3125em;
+        border:2px solid var(--colorAccent2);
+        padding:0.5rem 2rem;
+        margin:1em 0;
+    }
+
+    button:hover{
+        background-color: var(--colorBackground1);
+        color: var(--colorAccent2);
+    }
+
+    .contact{
+        margin: 1.2500em 0;
+
+        address{
+            font-family: var(--fontDesktopP);
+            font-size: 1em;
+            font-weight: 400;
+            margin:1em 0;
+        }
+    }
+
+    .bold{
+        font-weight: 600;
+    }
+
+    #copyright{
+        text-align: center;
+    }
+
+    a{
+        color:var(--colorText);
+    }
+}
+
+
+/* -----------------------------
+DESKTOP
+------------------------------*/
+@media only screen and (min-width: 768px) {
+    /*--- FOOTER ----*/
+    .footer-container{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        .footer-logo{
+            grid-column-start: 1;
+            grid-row-start: 2;
+            img{
+                max-width: 90%;
+            }
+        }
+        .acc-serv{
+            grid-column-start: 1;
+            grid-row-start: 1;
+        }
+        #copyright{
+            grid-column-start: 2;
+            grid-row-start: 2;
+        }
+        h5{
+            font-weight: 900;
+        }
+    }
+}
