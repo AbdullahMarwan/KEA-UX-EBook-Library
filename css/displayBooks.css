@@ -1,15 +1,11 @@
 @import url(./_variables.css);
-@import url(./globals.css);
 
 
-.random-book-list {
+.book-list {
     background-color: var(--colorBackground1);
     padding: 1.2em 1.2em 1.2em 1.2em;
 }
 
-.book-cover-ctn {
-    max-width: 100px;
-}
 
 .book-article {
     width: 100%;
@@ -26,12 +22,12 @@
 }
 .book-cover-ctn {
     margin-bottom: 1em;
-    max-height: 100px;
-
+    width: clamp(30%, 50%, 200px);
 }
 
 .authorYearCtn {
     display: flex;
+    margin-bottom: var(--bigMargin);
 }
 
 .author-name {

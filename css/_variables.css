@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto:wght@400;500;700&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    overflow-x: hidden;
-    box-sizing: border-box;
-}
 
 :root{
     --colorBackground1: #FFF9F0;
@@ -29,4 +23,11 @@
     --fontMobileH4: 'Roboto', sans-serif; /* Semibold */
     --fontMobileH5: 'Roboto', sans-serif; /* Medium */
     --fontMobileP: 'Roboto', sans-serif; /* Regular */    
+
+    --smallMargin: 1.25em;
+    --bigMargin: 2.5em;
+    
+    --smallPadding: 1.25em;
+    --bigPadding: 2.5em;
+
 }
