@@ -117,16 +117,66 @@ function displayBooksByAuthor(books){
     });
 }
 
+///////////////////////////////////////////////////////////////////
+/////////////////////Fetch books by search/////////////////////////
+///////////////////////////////////////////////////////////////////
+
+// Fetch books by search and display them
+async function getSearchedBooks(searchWord) {
+    const url = `${baseUrl}/books?s=${searchWord}`;
+    try {
+        const books = await fetchData(url);
+        displayedSearchedBooks(books);
+    } catch (error) {
+        console.error("Failed to fetch searched books:", error.message);
+    }
+}
+
+function displayedSearchedBooks(books) {
+    const bookList = document.querySelector(".book-list");
+
+    // Clear existing content
+    bookList.innerHTML = "";
+
+    // Use a document fragment for better performance
+    const fragment = document.createDocumentFragment();
+
+    books.forEach(({ title, author, publishing_year, coverImage }) => {
+        // Create a template for the book
+        const article = document.createElement("article");
+        article.className = "book-article";
+
+        article.innerHTML = `
+            <div class="book-cover-ctn">
+                <img src="${coverImage || '../assets/placeholderImg.png'}" alt="${title} cover">
+            </div>
+            <h5>${title}</h5>
+            <div class="authorYearCtn">
+                <p><em class="author-name">${author}</em> (${publishing_year})</p>
+            </div>
+            <div class="book-divider"> </div>
+        `;
+
+        fragment.appendChild(article);
+    });
+
+    // Append the fragment to the book list
+    bookList.appendChild(fragment);
+}
+
 // Test function to run all functions in main
 function runAllFunctions(){   
     //const bookId = 1251;
     getSpecificBook(1251);
 
     //const amountOfBooks = 15;
-    getRandomBooks(15)
+    // getRandomBooks(15)
 
     //const authorId = 32;
     getBooksByAuthor(32);
+
+    //const searchword = "winter";
+    getSearchedBooks("winter"); 
 }
 
 runAllFunctions();
