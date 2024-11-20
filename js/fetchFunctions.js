@@ -164,19 +164,37 @@ function displayedSearchedBooks(books) {
     bookList.appendChild(fragment);
 }
 
+// Function to handle search query and display books (ChatGPT Generated)
+function initializeSearchDisplay() {
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const searchWord = params.get("search");
+
+        // If a search term exists, update the page and fetch books
+        if (searchWord) {
+            const heading = document.querySelector("h3");
+            heading.textContent = `Search result for "${searchWord}"`;
+            getSearchedBooks(searchWord);
+        }
+    });
+}
+
+
 // Test function to run all functions in main
 function runAllFunctions(){   
     //const bookId = 1251;
     getSpecificBook(1251);
 
     //const amountOfBooks = 15;
-    // getRandomBooks(15)
+    getRandomBooks(15)
 
     //const authorId = 32;
     getBooksByAuthor(32);
 
     //const searchword = "winter";
-    getSearchedBooks("winter"); 
+    // getSearchedBooks("winter"); 
+    //Checks if a searchWord is in the URL and loads the displaypage
+    initializeSearchDisplay();
 }
 
 runAllFunctions();
