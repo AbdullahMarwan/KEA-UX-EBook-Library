@@ -148,8 +148,6 @@ HEADER MOBIL
 /*--------- SEARCH FIELD ------ */
 /* Putting an image into the search field*/
 .search-input {
-    background: url('../assets/search.svg') no-repeat right 10px center; /* Icon on the right */
-    background-size: 20px 20px; /* Adjust icon size */
     border-radius: 0.3125em;
     background-color: var(--colorBackground1);
     border:none;
@@ -157,13 +155,20 @@ HEADER MOBIL
     margin:1rem auto;
     grid-column: 1 / span 2;
     height:3em;
+    display: flex;
 
     input{
         background-color: transparent;
         border:none;
         height:100%;
         padding:1rem;
+
     }
+    .search-icon {
+        background-color: transparent;
+        border: none;
+    }
+
 }
 
 
