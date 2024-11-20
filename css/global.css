@@ -20,7 +20,7 @@ h2{
 }
 h3{
     font-family: var(--fontMobileH3);
-    font-size: 1.875;
+    font-size: 1.88;
     font-weight: 600;
 }
 h4{
@@ -39,7 +39,7 @@ p{
     font-weight: 400;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (min-width: 768px) {
     h1{
         font-family: var(--fontDesktopH1);
         font-size: 4.5em;
@@ -74,7 +74,7 @@ p{
 
 
 /* ----------------------------
-MAIN
+MAIN MOBILE
 ------------------------------*/
 body{
     background-color: var(--colorBackground2);
@@ -82,7 +82,7 @@ body{
 
 main{
     background-color: var(--colorBackground1);
-    padding: var(--bigPadding);
+    padding: var(--smallPadding);
 }
 
 img{
@@ -100,6 +100,18 @@ a{
 
 a:hover{
     color:var(--colorAccent2);
+}
+
+
+/* ----------------------------
+MAIN TABLET / DESKTOP
+------------------------------*/
+@media only screen and (min-width: 768px) {
+    main{
+        padding: var(--bigPadding);
+        margin:0 6.25em;
+        border-radius:0.63em;
+    }
 }
 
 /* -----------------------------
@@ -151,7 +163,6 @@ HEADER MOBIL
     border-radius: 0.3125em;
     background-color: var(--colorBackground1);
     border:none;
-    display:block;
     margin:1rem auto;
     grid-column: 1 / span 2;
     height:3em;
@@ -173,7 +184,7 @@ HEADER MOBIL
 
 
 /* -----------------------------
-HEADER DESKTOP
+HEADER TABLET /  DESKTOP
 ------------------------------*/
 @media only screen and (min-width: 768px) {
     .header-container{
@@ -200,6 +211,10 @@ FOOTER  MOBIL
     margin:3.125em 1.2500em 1.2500em 1.2500em;
     color:var(--colorText);
 
+    .footer-img {
+        max-width: 50%;
+    }
+
     nav{
         margin-top: 1.2500em;
         li{
@@ -221,18 +236,12 @@ FOOTER  MOBIL
             display:flex;
             flex-direction: column;
         }
-
-        label{
-            font-family: var(--fontMobileH5);
-            font-size: 1.125em;
-            font-weight: 500;
-            margin-bottom:1em;
-        }
         input{
             background-color: var(--colorBackground1);
             border-radius: 0.3125em;
             border:none;
             padding:1rem;
+            margin-top:1em;
         }
         input::placeholder {
             color:var(--colorPlaceholderText);
@@ -270,12 +279,14 @@ FOOTER  MOBIL
 
     #copyright{
         text-align: center;
+        align-self: end;
+
     }
 }
 
 
 /* -----------------------------
-FOOTER DESKTOP
+FOOTER TABLET /  DESKTOP
 ------------------------------*/
 @media only screen and (min-width: 768px) {
     /*--- FOOTER ----*/
@@ -287,8 +298,9 @@ FOOTER DESKTOP
         .footer-logo{
             grid-column-start: 1;
             grid-row-start: 2;
-            img{
-                max-width: 90%;
+            margin:1.2500em 0;
+            .footer-img {
+                max-width: 100%;
             }
         }
         .acc-serv{
