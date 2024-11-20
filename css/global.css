@@ -81,18 +81,63 @@ main{
     background-color: var(--colorBackground1);
 }
 
+a, button{
+    cursor:pointer;
+}
 
+a:hover{
+    color:var(--colorAccent2);
+}
 
 /* -----------------------------
 HEADER MOBIL
 ------------------------------*/
+
+.header-container{
+    margin:1.2500em 1.2500em 3.125em 1.2500em;
+}
+
+/*--------- LOGGED IN ------ */
+/* If user is logged in, it should be displayed - if user is logged out, it should be hidden*/
+
+.logged-in {
+    overflow: hidden; /* Clear floats to ensure the container adjusts its height */
+}
+
+.logged-in img {
+    float: left; /* Float the images to the left */
+    margin-right: 1em; /* Add space between the images */
+    vertical-align: middle; /* Align images vertically in the middle */
+
+}
+
+.logged-in img:last-child {
+    margin-right: 0; /* Remove the space for the last image */
+}
+
+
+.header-logo{
+    max-width: 50%;
+}
+
+/* Putting an image into the search field*/
+.search-input {
+    background: url('../assets/search.svg') no-repeat right 10px center; /* Icon on the right */
+    background-size: 20px 20px; /* Adjust icon size */
+    border-radius: 0.3125em;
+    background-color: var(--colorBackground1);
+    border:none;
+    padding:1rem;
+    display:block;
+    margin:1rem auto;
+}
 
 
 /* -----------------------------
 FOOTER  MOBIL
 ------------------------------*/
 .footer-container{
-    margin:3.125em 1.2500em;
+    margin:3.125em 1.2500em 1.2500em 1.2500em;
     color:var(--colorText);
 
     nav{
@@ -118,7 +163,7 @@ FOOTER  MOBIL
         }
         input{
             background-color: var(--colorBackground1);
-            border-radius: 5px;
+            border-radius: 0.3125em;
             border:none;
             padding:1rem;
         }
@@ -129,11 +174,16 @@ FOOTER  MOBIL
 
     button{
         background-color: var(--colorAccent2);
-        color: var(--colorBackground1);
-        border-radius: 5px;
-        border:none;
+        color:var(--colorBackground1);
+        border-radius: 	0.3125em;
+        border:2px solid var(--colorAccent2);
         padding:0.5rem 2rem;
         margin:1em 0;
+    }
+
+    button:hover{
+        background-color: var(--colorBackground1);
+        color: var(--colorAccent2);
     }
 
     .contact{
@@ -185,6 +235,9 @@ DESKTOP
         #copyright{
             grid-column-start: 2;
             grid-row-start: 2;
+        }
+        h5{
+            font-weight: 900;
         }
     }
 }
