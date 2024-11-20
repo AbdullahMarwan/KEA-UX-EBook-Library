@@ -1,0 +1,39 @@
+@import url(./css/_variables.css);
+
+/*----------------------------------------------
+----------------- LOGIN SECTION ----------------
+----------------------------------------------*/
+
+.login-form{
+    display:flex;
+    flex-direction: column;
+    margin:1em 0;
+     input{
+        background-color: var(--colorBackground1);
+        border-radius: 0.3125em;
+        border:1px solid var(--colorText);
+        padding:1rem;
+        margin:0.5em 0;
+     }
+
+     label{
+        font-family: var(--fontMobileH5);
+        font-size: 1.125em;
+        font-weight: 500;
+     }
+
+     button{
+        background-color: var(--colorAccent2);
+        color:var(--colorBackground1);
+        border-radius: 	0.3125em;
+        border:2px solid var(--colorAccent2);
+        padding:0.5rem 2rem;
+        margin:1em 0;
+    }
+    
+    button:hover{
+        background-color: var(--colorBackground1);
+        color: var(--colorAccent2);
+    }
+}
+
