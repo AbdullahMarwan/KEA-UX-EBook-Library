@@ -52,7 +52,7 @@ async function getRandomBooks(amountOfBooks) {
 
 
 function displayRandomBooks(books) {
-    const bookList = document.querySelector(".random-book-list");
+    const bookList = document.querySelector(".book-list");
 
     // Clear existing content
     bookList.innerHTML = "";
