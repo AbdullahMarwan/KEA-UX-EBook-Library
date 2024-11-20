@@ -1,8 +1,13 @@
 <img src="../assets/logo.svg" class="header-logo" alt="Booked Out">
-<h4>Login</h4>
-<div class="logged-in">
-    <img src="../assets/profile.svg" alt="profile" class="image-left">
-    <img src="../assets/arrow.svg" alt="arrow" class="image-right">
+<div id="user-status">
+    <!-- Default: Not logged in -->
+    <h5><a href="login.html" id="login-button">Login</a></h5>
+    
+    <!-- Logged-in: Two images inside a div -->
+    <div class="logged-in" id="logged-in">
+        <img src="../assets/profile.svg" alt="profile" class="image-left">
+        <img src="../assets/arrow.svg" alt="arrow" class="image-right">
+    </div>
 </div>
 <form id="search-form" action="/views/displayBooks.html" method="GET">
     <input type="text" id="search" name="search" placeholder="Search..." class="search-input" />
