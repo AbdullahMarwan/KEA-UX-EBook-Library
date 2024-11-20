@@ -73,7 +73,7 @@ function displayRandomBooks(books) {
             <div class="authorYearCtn">
                 <p><em class="author-name">${author}</em> (${publishing_year})</p>
             </div>
-            <div class="book-divider"> </div>
+            <button class=borrow-button>Borrow</button>
         `;
 
         fragment.appendChild(article);
