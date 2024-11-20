@@ -1,0 +1,46 @@
+@import url(./_variables.css);
+@import url(./globals.css);
+
+
+.random-book-list {
+    background-color: var(--colorBackground1);
+    padding: 1.2em 1.2em 1.2em 1.2em;
+}
+
+.book-cover-ctn {
+    max-width: 100px;
+}
+
+.book-article {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4.7em;
+}
+
+.book-article > * {
+    margin-top: 1em;
+
+}
+.book-cover-ctn {
+    margin-bottom: 1em;
+    max-height: 100px;
+
+}
+
+.authorYearCtn {
+    display: flex;
+}
+
+.author-name {
+    text-decoration: underline;
+}
+
+.book-divider {
+    width: 100%;
+    height: 0.6em;
+    border-radius: 2em;
+    background: var(--colorBackground2);
+}

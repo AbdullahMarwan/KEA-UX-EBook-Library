@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const headerContainer = document.querySelector('.header-container');
 
-    fetch('../views/_header.html')
+    fetch('./views/_header.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch header');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const footerContainer = document.querySelector('.footer-container');
 
-    fetch('../views/_footer.html')
+    fetch('./views/_footer.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch footer');

@@ -49,19 +49,40 @@ async function getRandomBooks(amountOfBooks) {
     }
 }
 
+
+
 function displayRandomBooks(books) {
-    const bookList = document.getElementById("random-book-list");
+    const bookList = document.querySelector(".random-book-list");
 
     // Clear existing content
     bookList.innerHTML = "";
 
-    // Add books to the list
-    books.forEach((book) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = book.title || "Untitled Book";
-        bookList.appendChild(listItem);
+    // Use a document fragment for better performance
+    const fragment = document.createDocumentFragment();
+
+    books.forEach(({ title, author, publishing_year, coverImage }) => {
+        // Create a template for the book
+        const article = document.createElement("article");
+        article.className = "book-article";
+
+        article.innerHTML = `
+            <div class="book-cover-ctn">
+                <img src="${coverImage || '../assets/placeholderImg.png'}" alt="${title} cover">
+            </div>
+            <h5>${title}</h5>
+            <div class="authorYearCtn">
+                <p><em class="author-name">${author}</em> (${publishing_year})</p>
+            </div>
+            <div class="book-divider"> </div>
+        `;
+
+        fragment.appendChild(article);
     });
+
+    // Append the fragment to the book list
+    bookList.appendChild(fragment);
 }
+
 
 
 
