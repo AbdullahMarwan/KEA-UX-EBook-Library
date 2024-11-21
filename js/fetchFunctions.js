@@ -17,25 +17,6 @@ async function getSpecificBook(bookId) {
     }
 }
 
-// Displaying book using template literal
-// function displaySpecificBook(book) {
-//     const bookItem = document.getElementById("specific-book");
-
-//     // Clear existing content
-//     bookItem.innerHTML = "";
-
-//     // Check if book is an object
-//     if (book) {
-//         const listItem = document.createElement("li");
-//         listItem.textContent = book.title || "Untitled Book"; // Display book title (or fallback to "Untitled Book")
-//         bookItem.appendChild(listItem);
-//     } else {
-//         const listItem = document.createElement("li");
-//         listItem.textContent = "No book found.";
-//         bookItem.appendChild(listItem);
-//     }
-// }
-
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -51,38 +32,6 @@ async function getRandomBooks(amountOfBooks) {
         console.error("Failed to fetch random books:", error.message);
     }
 }
-
-// function displayRandomBooks(books) {
-//     const bookList = document.querySelector(".book-list");
-
-//     // Clear existing content
-//     bookList.innerHTML = "";
-
-//     // Use a document fragment for better performance
-//     const fragment = document.createDocumentFragment();
-
-//     books.forEach(({ title, author, publishing_year, coverImage }) => {
-//         // Create a template for the book
-//         const article = document.createElement("article");
-//         article.className = "book-article";
-
-//         article.innerHTML = `
-//             <div class="book-cover-ctn">
-//                 <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
-//             </div>
-//             <h5>${title}</h5>
-//             <div class="authorYearCtn">
-//                 <p><em class="author-name">${author}</em> (${publishing_year})</p>
-//             </div>
-//             <button class=borrow-button>Borrow</button>
-//         `;
-
-//         fragment.appendChild(article);
-//     });
-
-//     // Append the fragment to the book list
-//     bookList.appendChild(fragment);
-// }
 
 ////////////////////////////////////////////////////////////////////
 ///////////////////Fetch All Books By Author///////////////////////
@@ -102,18 +51,6 @@ async function getBooksByAuthor(authorId) {
     }
 }
 
-// function displayBooksByAuthor(books){
-//     const bookList = document.getElementById("book-list");
-
-//     bookList.innerHTML = "";
-
-//     books.forEach((book) => {
-//         const listItem = document.createElement("li");
-//         listItem.textContent = book.title || "Untitled Book";
-//         bookList.appendChild(listItem);
-//     });
-// }
-
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch books by search/////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -129,38 +66,6 @@ async function getSearchedBooks(searchWord) {
         console.error("Failed to fetch searched books:", error.message);
     }
 }
-
-// function displayedSearchedBooks(books) {
-//     const bookList = document.querySelector(".book-list");
-
-//     // Clear existing content
-//     bookList.innerHTML = "";
-
-//     // Use a document fragment for better performance
-//     const fragment = document.createDocumentFragment();
-
-//     books.forEach(({ title, author, publishing_year, coverImage }) => {
-//         // Create a template for the book
-//         const article = document.createElement("article");
-//         article.className = "book-article";
-
-//         article.innerHTML = `
-//             <div class="book-cover-ctn">
-//                 <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
-//             </div>
-//             <h5>${title}</h5>
-//             <div class="authorYearCtn">
-//                 <p><em class="author-name">${author}</em> (${publishing_year})</p>
-//             </div>
-//             <div class="book-divider"> </div>
-//         `;
-
-//         fragment.appendChild(article);
-//     });
-
-//     // Append the fragment to the book list
-//     bookList.appendChild(fragment);
-// }
 
 // Reuseable function for ALL fetches
 function displayBookList(books) {
@@ -212,7 +117,6 @@ function initializeSearchDisplay() {
     });
 }
 
-
 // Test function to run all functions in main
 function runAllFunctions(){   
     //const bookId = 1251;
@@ -226,6 +130,7 @@ function runAllFunctions(){
 
     //const searchword = "winter";
     // getSearchedBooks("winter"); 
+
     //Checks if a searchWord is in the URL and loads the displaypage
     initializeSearchDisplay();
 }
