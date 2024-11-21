@@ -10,30 +10,32 @@ async function getSpecificBook(bookId) {
     try {
         const book = await fetchData(url);
         console.log("Fetched book:", book);
-        displaySpecificBook(book);
+        // displaySpecificBook(book);
+        displayBookList(book);
     } catch (error) {
         console.error("Failed to fetch specific book:", error.message);
     }
 }
 
 // Displaying book using template literal
-function displaySpecificBook(book) {
-    const bookItem = document.getElementById("specific-book");
+// function displaySpecificBook(book) {
+//     const bookItem = document.getElementById("specific-book");
 
-    // Clear existing content
-    bookItem.innerHTML = "";
+//     // Clear existing content
+//     bookItem.innerHTML = "";
 
-    // Check if book is an object
-    if (book) {
-        const listItem = document.createElement("li");
-        listItem.textContent = book.title || "Untitled Book"; // Display book title (or fallback to "Untitled Book")
-        bookItem.appendChild(listItem);
-    } else {
-        const listItem = document.createElement("li");
-        listItem.textContent = "No book found.";
-        bookItem.appendChild(listItem);
-    }
-}
+//     // Check if book is an object
+//     if (book) {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = book.title || "Untitled Book"; // Display book title (or fallback to "Untitled Book")
+//         bookItem.appendChild(listItem);
+//     } else {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = "No book found.";
+//         bookItem.appendChild(listItem);
+//     }
+// }
+
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -43,50 +45,44 @@ async function getRandomBooks(amountOfBooks) {
     const url = `${baseUrl}/books?n=${amountOfBooks}`;
     try {
         const books = await fetchData(url);
-        displayRandomBooks(books);
+        // displayRandomBooks(books);
+        displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch random books:", error.message);
     }
 }
 
+// function displayRandomBooks(books) {
+//     const bookList = document.querySelector(".book-list");
 
+//     // Clear existing content
+//     bookList.innerHTML = "";
 
-function displayRandomBooks(books) {
-    const bookList = document.querySelector(".book-list");
+//     // Use a document fragment for better performance
+//     const fragment = document.createDocumentFragment();
 
-    // Clear existing content
-    bookList.innerHTML = "";
+//     books.forEach(({ title, author, publishing_year, coverImage }) => {
+//         // Create a template for the book
+//         const article = document.createElement("article");
+//         article.className = "book-article";
 
-    // Use a document fragment for better performance
-    const fragment = document.createDocumentFragment();
+//         article.innerHTML = `
+//             <div class="book-cover-ctn">
+//                 <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
+//             </div>
+//             <h5>${title}</h5>
+//             <div class="authorYearCtn">
+//                 <p><em class="author-name">${author}</em> (${publishing_year})</p>
+//             </div>
+//             <button class=borrow-button>Borrow</button>
+//         `;
 
-    books.forEach(({ title, author, publishing_year, coverImage }) => {
-        // Create a template for the book
-        const article = document.createElement("article");
-        article.className = "book-article";
+//         fragment.appendChild(article);
+//     });
 
-        article.innerHTML = `
-            <div class="book-cover-ctn">
-                <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
-            </div>
-            <h5>${title}</h5>
-            <div class="authorYearCtn">
-                <p><em class="author-name">${author}</em> (${publishing_year})</p>
-            </div>
-            <button class=borrow-button>Borrow</button>
-        `;
-
-        fragment.appendChild(article);
-    });
-
-    // Append the fragment to the book list
-    bookList.appendChild(fragment);
-}
-
-
-
-
-
+//     // Append the fragment to the book list
+//     bookList.appendChild(fragment);
+// }
 
 ////////////////////////////////////////////////////////////////////
 ///////////////////Fetch All Books By Author///////////////////////
@@ -98,24 +94,25 @@ async function getBooksByAuthor(authorId) {
     try{
         const books = await fetchData(url);
         console.log(books);
-        displayBooksByAuthor(books);
+        // displayBooksByAuthor(books);
+        displayBookList(books);
     }
     catch (error) {
         console.error("Failed to fetch specific book:", error.message);
     }
 }
 
-function displayBooksByAuthor(books){
-    const bookList = document.getElementById("books-by-author-list");
+// function displayBooksByAuthor(books){
+//     const bookList = document.getElementById("book-list");
 
-    bookList.innerHTML = "";
+//     bookList.innerHTML = "";
 
-    books.forEach((book) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = book.title || "Untitled Book";
-        bookList.appendChild(listItem);
-    });
-}
+//     books.forEach((book) => {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = book.title || "Untitled Book";
+//         bookList.appendChild(listItem);
+//     });
+// }
 
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch books by search/////////////////////////
@@ -126,13 +123,47 @@ async function getSearchedBooks(searchWord) {
     const url = `${baseUrl}/books?s=${searchWord}`;
     try {
         const books = await fetchData(url);
-        displayedSearchedBooks(books);
+        // displayedSearchedBooks(books);
+        displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch searched books:", error.message);
     }
 }
 
-function displayedSearchedBooks(books) {
+// function displayedSearchedBooks(books) {
+//     const bookList = document.querySelector(".book-list");
+
+//     // Clear existing content
+//     bookList.innerHTML = "";
+
+//     // Use a document fragment for better performance
+//     const fragment = document.createDocumentFragment();
+
+//     books.forEach(({ title, author, publishing_year, coverImage }) => {
+//         // Create a template for the book
+//         const article = document.createElement("article");
+//         article.className = "book-article";
+
+//         article.innerHTML = `
+//             <div class="book-cover-ctn">
+//                 <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
+//             </div>
+//             <h5>${title}</h5>
+//             <div class="authorYearCtn">
+//                 <p><em class="author-name">${author}</em> (${publishing_year})</p>
+//             </div>
+//             <div class="book-divider"> </div>
+//         `;
+
+//         fragment.appendChild(article);
+//     });
+
+//     // Append the fragment to the book list
+//     bookList.appendChild(fragment);
+// }
+
+// Reuseable function for ALL fetches
+function displayBookList(books) {
     const bookList = document.querySelector(".book-list");
 
     // Clear existing content
@@ -185,13 +216,13 @@ function initializeSearchDisplay() {
 // Test function to run all functions in main
 function runAllFunctions(){   
     //const bookId = 1251;
-    getSpecificBook(1251);
+    // getSpecificBook(1251);
 
     //const amountOfBooks = 15;
     // getRandomBooks(15)
 
     //const authorId = 32;
-    getBooksByAuthor(32);
+    // getBooksByAuthor(32);
 
     //const searchword = "winter";
     // getSearchedBooks("winter"); 
