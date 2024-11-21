@@ -9,7 +9,6 @@ async function getSpecificBook(bookId) {
     const url = `${baseUrl}/books/${bookId}`;
     try {
         const book = await fetchData(url);
-        console.log("Fetched book:", book);
         displayBookList(book);
     } catch (error) {
         console.error("Failed to fetch specific book:", error.message);
@@ -25,7 +24,6 @@ async function getRandomBooks(amountOfBooks) {
     const url = `${baseUrl}/books?n=${amountOfBooks}`;
     try {
         const books = await fetchData(url);
-        displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch random books:", error.message);
     }
@@ -100,36 +98,80 @@ function displayBookList(books) {
     attachAuthorClickEvents();
 }
 
+// OLD attachAuthorClickEvents
+// function attachAuthorClickEvents() {
+//     const authorElements = document.querySelectorAll(".author-name");
+//     authorElements.forEach((authorElement) => {
+//         authorElement.addEventListener("click", () => {
+//             const author = authorElement.getAttribute("data-id");
+//             const authorId = findAuthor(author);
+//             console.log("authorId: " + authorId)
+            
+//             getBooksByAuthor(authorId);
+//         });
+//     });
+// }
+
 function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
+
     authorElements.forEach((authorElement) => {
-        authorElement.addEventListener("click", () => {
-            const author = authorElement.getAttribute("data-id");
-            console.log("Author: " + author);
-            findAuthor(author);
-            
-            getBooksByAuthor(author);
+        authorElement.addEventListener("click", async () => {
+            const authorName = authorElement.textContent; // Get the author's name from the element
+            try {
+                const authorId = await findAuthor(authorName); // Wait for the author ID
+                if (authorId) {
+                    getBooksByAuthor(authorId); // Pass the ID to fetch books
+                } else {
+                    console.log(`No books found for author: ${authorName}`);
+                }
+            } catch (error) {
+                console.error("Error finding author:", error.message);
+            }
         });
     });
 }
 
 async function findAuthor(authorName) {
     const url = `${baseUrl}/authors`;
-    try{
-        const authors = await fetchData(url);
-        console.log(authors);
 
-        authors.forEach((author) => {
-            // Iterate through the list of authors
-            if (author.author_name === authorName) {
-                const authorId = author.author_id;
-            }
-        });
-    }
-    catch (error) {
-        console.error("Failed to fetch specific book:", error.message);
+    try {
+        const authors = await fetchData(url); // Fetch authors list
+
+        // Find the author with a matching name
+        const author = authors.find((author) => author.author_name === authorName);
+
+        if (author) {
+            console.log("Author ID:", author.author_id);
+            return author.author_id; // Return the author's ID
+        } else {
+            console.log(`Author '${authorName}' not found.`);
+            return null; // Return null if not found
+        }
+    } catch (error) {
+        console.error("Failed to fetch specific author:", error.message);
+        throw error; // Re-throw the error for further handling if needed
     }
 }
+
+// OLD FINDAUTHOR
+// async function findAuthor(authorName) {
+//     const url = `${baseUrl}/authors`;
+//     try{
+//         const authors = await fetchData(url);
+
+//         authors.forEach((author) => {
+//             // Iterate through the list of authors
+//             if (author.author_name === authorName) {
+//                 console.log("Author ID: " + author.author_id)
+//                 return author.author_id;
+//             }
+//         });
+//     }
+//     catch (error) {
+//         console.error("Failed to fetch specific book:", error.message);
+//     }
+// }
 
 // Function to handle search query and display books (ChatGPT Generated)
 function initializeSearchDisplay() {
