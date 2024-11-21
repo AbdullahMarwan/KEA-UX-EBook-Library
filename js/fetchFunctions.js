@@ -10,7 +10,6 @@ async function getSpecificBook(bookId) {
     try {
         const book = await fetchData(url);
         console.log("Fetched book:", book);
-        // displaySpecificBook(book);
         displayBookList(book);
     } catch (error) {
         console.error("Failed to fetch specific book:", error.message);
@@ -26,7 +25,6 @@ async function getRandomBooks(amountOfBooks) {
     const url = `${baseUrl}/books?n=${amountOfBooks}`;
     try {
         const books = await fetchData(url);
-        // displayRandomBooks(books);
         displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch random books:", error.message);
@@ -43,7 +41,6 @@ async function getBooksByAuthor(authorId) {
     try{
         const books = await fetchData(url);
         console.log(books);
-        // displayBooksByAuthor(books);
         displayBookList(books);
     }
     catch (error) {
@@ -60,7 +57,6 @@ async function getSearchedBooks(searchWord) {
     const url = `${baseUrl}/books?s=${searchWord}`;
     try {
         const books = await fetchData(url);
-        // displayedSearchedBooks(books);
         displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch searched books:", error.message);
@@ -117,22 +113,24 @@ function initializeSearchDisplay() {
     });
 }
 
-// Test function to run all functions in main
-function runAllFunctions(){   
-    //const bookId = 1251;
-    // getSpecificBook(1251);
+// // Test function to run all functions (TODO, Delete later after everything is finished)
+// function runAllFunctions(){   
+//     //const bookId = 1251;
+//     // getSpecificBook(1251);
 
-    //const amountOfBooks = 15;
-    // getRandomBooks(15)
+//     //const amountOfBooks = 15;
+//     // getRandomBooks(15)
 
-    //const authorId = 32;
-    // getBooksByAuthor(32);
+//     //const authorId = 32;
+//     // getBooksByAuthor(32);
 
-    //const searchword = "winter";
-    // getSearchedBooks("winter"); 
+//     //const searchword = "winter";
+//     // getSearchedBooks("winter"); 
 
-    //Checks if a searchWord is in the URL and loads the displaypage
-    initializeSearchDisplay();
-}
+//     //Checks if a searchWord is in the URL and loads the displaypage
+//     initializeSearchDisplay();
+// }
 
-runAllFunctions();
+// runAllFunctions();
+
+initializeSearchDisplay();
