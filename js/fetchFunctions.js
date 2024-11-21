@@ -63,7 +63,7 @@ async function getSearchedBooks(searchWord) {
     }
 }
 
-// Reuseable function for ALL fetches
+// Reuseable function for displaying data from ALL fetches
 function displayBookList(books) {
     const bookList = document.querySelector(".book-list");
 
@@ -73,7 +73,7 @@ function displayBookList(books) {
     // Use a document fragment for better performance
     const fragment = document.createDocumentFragment();
 
-    books.forEach(({ title, author, publishing_year, coverImage }) => {
+    books.forEach(({ title, author, author_id, publishing_year, coverImage }) => {
         // Create a template for the book
         const article = document.createElement("article");
         article.className = "book-article";
@@ -84,7 +84,9 @@ function displayBookList(books) {
             </div>
             <h5>${title}</h5>
             <div class="authorYearCtn">
-                <p><em class="author-name">${author}</em> (${publishing_year})</p>
+                <p>
+                    <em class="author-name" data-id="${author_id}" style="cursor: pointer; color: blue; text-decoration: underline;">${author}</em> (${publishing_year})
+                </p>
             </div>
             <div class="book-divider"> </div>
         `;
@@ -94,6 +96,19 @@ function displayBookList(books) {
 
     // Append the fragment to the book list
     bookList.appendChild(fragment);
+
+    // Attach event listeners to author names
+    attachAuthorClickEvents();
+}
+
+function attachAuthorClickEvents() {
+    const authorElements = document.querySelectorAll(".author-name");
+    authorElements.forEach((authorElement) => {
+        authorElement.addEventListener("click", () => {
+            const author_id = authorElement.getAttribute("data-id");
+            getBooksByAuthor(author_id);
+        });
+    });
 }
 
 // Function to handle search query and display books (ChatGPT Generated)
@@ -101,13 +116,14 @@ function initializeSearchDisplay() {
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const searchWord = params.get("search");
+        const heading = document.querySelector("h3");
 
         // If a search term exists, update the page and fetch books
         if (searchWord) {
-            const heading = document.querySelector("h3");
             heading.textContent = `Search result for "${searchWord}"`;
             getSearchedBooks(searchWord);
         } else {
+            heading.textContent = `Random books`;
             getRandomBooks(15)
         }
     });
@@ -121,7 +137,7 @@ function initializeSearchDisplay() {
 //     //const amountOfBooks = 15;
 //     // getRandomBooks(15)
 
-//     //const authorId = 32;
+//     //const author_id = 32;
 //     // getBooksByAuthor(32);
 
 //     //const searchword = "winter";
