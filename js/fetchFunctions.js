@@ -85,12 +85,11 @@ function displayBookList(books) {
             <h5>${title}</h5>
             <div class="authorYearCtn">
                 <p>
-                    <em class="author-name" data-id="${author_id}" style="cursor: pointer; color: blue; text-decoration: underline;">${author}</em> (${publishing_year})
+                    <em class="author-name" data-id="${author}" style="cursor: pointer; color: blue; text-decoration: underline;">${author}</em> (${publishing_year})
                 </p>
             </div>
             <div class="book-divider"> </div>
         `;
-
         fragment.appendChild(article);
     });
 
@@ -105,10 +104,31 @@ function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
     authorElements.forEach((authorElement) => {
         authorElement.addEventListener("click", () => {
-            const author_id = authorElement.getAttribute("data-id");
-            getBooksByAuthor(author_id);
+            const author = authorElement.getAttribute("data-id");
+            console.log("Author: " + author);
+            findAuthor(author);
+            
+            getBooksByAuthor(author);
         });
     });
+}
+
+async function findAuthor(authorName) {
+    const url = `${baseUrl}/authors`;
+    try{
+        const authors = await fetchData(url);
+        console.log(authors);
+
+        authors.forEach((author) => {
+            // Iterate through the list of authors
+            if (author.author_name === authorName) {
+                const authorId = author.author_id;
+            }
+        });
+    }
+    catch (error) {
+        console.error("Failed to fetch specific book:", error.message);
+    }
 }
 
 // Function to handle search query and display books (ChatGPT Generated)
