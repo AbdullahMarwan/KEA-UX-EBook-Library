@@ -178,6 +178,7 @@ HEADER MOBIL
     .search-icon {
         background-color: transparent;
         border: none;
+        max-width: 50%;
     }
 
 }

@@ -60,3 +60,27 @@ function toggleLogin() {
     // Toggle the login state
     loggedIn = !loggedIn;
 }
+
+
+// ------------------------------------------------------------------ 
+//---------- MAKE THE HEADER CHANGE IF LOGGED IN / OUT
+// ------------------------------------------------------------------ 
+document.addEventListener("DOMContentLoaded", () => {
+    // Get elements
+    const loginButton = document.getElementById("login-button");
+    const loggedInDiv = document.getElementById("logged-in");
+
+    // Check if user is logged in by checking sessionStorage
+    const userEmail = sessionStorage.getItem("userEmail");
+
+    if (userEmail) {
+        // If the user is logged in, hide the login button and show the logged-in profile div
+        loginButton.style.display = "none";  // Hide login button
+        loggedInDiv.style.display = "block";  // Show logged-in profile div
+    } else {
+        // If the user is not logged in, show the login button and hide the profile div
+        loginButton.style.display = "block";  // Show login button
+        loggedInDiv.style.display = "none";  // Hide logged-in profile div
+    }
+});
+
