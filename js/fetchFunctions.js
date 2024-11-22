@@ -16,23 +16,50 @@ async function getSpecificBook(bookId) {
     }
 }
 
-// Displaying book using template literal
+//////////////////////////////////////////////////////////////////
+///////////////////Display Specific Book With Template Literal////
+//////////////////////////////////////////////////////////////////
+
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
 
     // Clear existing content
     bookItem.innerHTML = "";
 
-    // Check if book is an object
-    if (book) {
-        const listItem = document.createElement("li");
-        listItem.textContent = book.title || "Untitled Book"; // Display book title (or fallback to "Untitled Book")
-        bookItem.appendChild(listItem);
-    } else {
-        const listItem = document.createElement("li");
-        listItem.textContent = "No book found.";
-        bookItem.appendChild(listItem);
-    }
+    bookItem.innerHTML = `
+
+        <div class="book-short-details">
+            <h1>${book.title || "Name of Book"}</h1>
+            <p><strong>Author:</strong> ${book.author || "Can't find Author"}</p>
+            <p><strong>Publishing Year:</strong> ${book.publishing_year || "Can't find publishing year"}</p>
+        </div>
+
+
+        <div class="single-book-cover-ctn">
+            <img src="${book.coverImage || '../assets/placeholderImg-9-16.png'}" alt="${book.title || "Book"} cover">
+        </div>
+
+        <div class="book-information-ctn">
+            <h2>Description</h2>
+            <p>${book.description || "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}</p>
+    
+            <h2>Book Info</h2>
+    
+            <h3>Author</h3>
+            <p>${book.author || "Can't find Author"}</p>
+    
+            <h3>Publisher</h3>
+            <p>${book.publisher || "Can't find Publisher"}</p>
+    
+            <h3>Publishing Year</h3>
+            <p>${book.publishing_year || "Can't find publishing year"}</p>
+        </div>
+
+
+
+
+`;
+
 }
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
@@ -131,6 +158,9 @@ async function getSearchedBooks(searchWord) {
         console.error("Failed to fetch searched books:", error.message);
     }
 }
+
+
+
 
 function displayedSearchedBooks(books) {
     const bookList = document.querySelector(".book-list");
