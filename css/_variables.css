@@ -24,6 +24,8 @@
     --fontMobileH5: 'Roboto', sans-serif; /* Medium */
     --fontMobileP: 'Roboto', sans-serif; /* Regular */    
 
+
+    --extraSmallMargin: .75em;
     --smallMargin: 1.25em;
     --bigMargin: 2.5em;
     --extraBigMargin: 5em;

@@ -9,7 +9,7 @@ FONTS
 ------------------------------*/
 
 h1 {
-    font-family: var(--fontMobileH1);
+    font-family: var(--fontMobileH1); /* ----------------------------- er størrelsesforhold rigtige?  ------------------------------*/
     font-size: 2.5em;
     font-weight: 700;
 }
@@ -109,7 +109,7 @@ MAIN TABLET / DESKTOP
 @media only screen and (min-width: 768px) {
     main{
         padding: var(--bigPadding);
-        margin:0 6.25em;
+        margin:0 var(--bigMargin);
         border-radius:0.63em;
     }
 }
