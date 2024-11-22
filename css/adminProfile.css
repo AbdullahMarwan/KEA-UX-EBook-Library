@@ -1,0 +1,152 @@
+@import url(./_variables.css);
+
+
+
+.admin-main{
+    
+    > *{
+        margin-bottom: var(--smallMargin);
+    }
+
+
+    input{
+        background-color: var(--colorBackground1);
+        border: 1px solid black;
+        width: 100%;
+        padding: var(--extraSmallPadding);
+        margin-bottom: var(--extraSmallPadding);
+        border-radius: 0.5em;
+    }
+
+
+    form{
+        margin-top: var(--extraBigMargin);
+    }
+}
+
+
+
+
+#submit-book-btn{
+        background-color: var(--colorAccent2);
+        color:var(--colorBackground1);
+        border-radius: 	0.3125em;
+        border:2px solid var(--colorAccent2);
+        padding:0.5rem 2rem;
+        margin:1em 0;
+        width: 100%;
+        border-radius: 2em;
+
+}
+
+
+input {
+    background-color: var(--colorBackground1);
+    border: 1px solid black;
+    width: 100%;
+    padding: var(--extraSmallPadding);
+    margin-bottom: var(--extraSmallPadding);
+    border-radius: 0.5em;
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+
+    #admin-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+        gap: 2rem; /* Space between columns */
+        max-width: 90%; /* Adjust the max width as needed */
+        margin: 0 auto; /* Center the form */
+    }
+
+
+    #admin-content{
+        max-width: 66%;
+        margin: auto;
+    }
+
+    #admin-title{
+        margin-bottom: var(--bigMargin);
+    }
+    
+    .input-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .column-right {
+        margin-top: 2rem; /* Ensure some spacing for the right column */
+    }
+    
+
+    
+    #submit-book-btn {
+        background-color: var(--colorAccent2);
+        color: var(--colorBackground1);
+        border-radius: 2em;
+        border: 2px solid var(--colorAccent2);
+        padding: 0.5rem 2rem;
+        margin-top: 1rem;
+        width: 100%;
+        border-radius: 2em;
+        width: 25%;
+        grid-column: span 2; /* Makes the button span both columns */
+        justify-self: right; /* Centers the button horizontally */
+        
+    }
+
+}
+
+
+
+#admin-title{
+    margin-bottom: var(--bigMargin);
+}
+
+
+/* Desktop styles*/
+@media screen and (min-width: 1200px) {
+
+        #admin-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+            gap: 2rem; /* Space between columns */
+            max-width: 90%; /* Adjust the max width as needed */
+            margin: 0 auto; /* Center the form */
+        }
+
+
+        #admin-content{
+            max-width: 50%;
+            margin: auto;
+        }
+
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .column-right {
+            margin-top: 2rem; /* Ensure some spacing for the right column */
+        }
+        
+
+        
+        #submit-book-btn {
+            background-color: var(--colorAccent2);
+            color: var(--colorBackground1);
+            border-radius: 2em;
+            border: 2px solid var(--colorAccent2);
+            padding: 0.5rem 2rem;
+            margin-top: 1rem;
+            width: 100%;
+            border-radius: 2em;
+            width: 25%;
+            grid-column: span 2; /* Makes the button span both columns */
+            justify-self: right; /* Centers the button horizontally */
+            
+        }
+
+    }

@@ -66,9 +66,9 @@
 
     }
 
-}
-/* Desktop styles*/
-@media screen and (min-width: 1200px) {
+  }
+  /* Desktop styles*/
+  @media screen and (min-width: 1200px) {
     .book-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -79,4 +79,4 @@
             align-items: flex-start;
 
         }
-}
+      }
