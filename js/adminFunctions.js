@@ -40,8 +40,11 @@ document.querySelector('#submit-book-btn').addEventListener('click', function(ev
     formData.append('publisher_id', publisherId);
     formData.append('publishing_year', publishingYear);
 
+
+
+
     // Send data to backend
-    fetch('/books', {
+    fetch('/admin/books', {
         method: 'POST',
         body: formData // Send FormData directly
     })
