@@ -9,7 +9,7 @@ async function getSpecificBook(bookId) {
     const url = `${baseUrl}/books/${bookId}`;
     try {
         const book = await fetchData(url);
-        displayBookList(book);
+        displaySpecificBook(book);
     } catch (error) {
         console.error("Failed to fetch specific book:", error.message);
     }
@@ -256,4 +256,6 @@ function initializeSearchDisplay() {
 
 // runAllFunctions();
 
-initializeSearchDisplay();
+getSpecificBook(1251);
+
+// initializeSearchDisplay();
