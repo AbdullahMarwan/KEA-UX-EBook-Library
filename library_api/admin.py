@@ -69,25 +69,40 @@ def post_book():
                 if publisher['Total'] == 0:
                     return error_message('The publishing company does not exist'), 404
                 else:
-                    cursor = db.cursor()
-                    cursor.execute(
+                    book = db.execute(
                         '''
-                        INSERT INTO tbook
-                            (cTitle, nAuthorID, nPublishingYear, nPublishingCompanyID)
-                        VALUES
-                            (?, ?, ?, ?)
+                        SELECT COUNT(*) AS Total
+                        FROM tbook
+                        WHERE cTitle = ?
+                        AND nAuthorID = ?
+                        AND nPublishingYear = ?
+                        AND nPublishingCompanyID = ?
                         ''',
                         (title, author_id, publishing_year, publisher_id)
-                    )
-                    book_id = cursor.lastrowid
-                    inserted_rows = cursor.rowcount
-                    db.commit()
-                    cursor.close()
+                    ).fetchone()
 
-                    if inserted_rows == 0:
-                        return error_message('There was an error when trying to insert the book'), 500
+                    if book['Total'] > 0:
+                        return error_message('The book already exists'), 400
                     else:
-                        return jsonify({'book_id': book_id}), 201
+                        cursor = db.cursor()
+                        cursor.execute(
+                            '''
+                            INSERT INTO tbook
+                                (cTitle, nAuthorID, nPublishingYear, nPublishingCompanyID)
+                            VALUES
+                                (?, ?, ?, ?)
+                            ''',
+                            (title, author_id, publishing_year, publisher_id)
+                        )
+                        book_id = cursor.lastrowid
+                        inserted_rows = cursor.rowcount
+                        db.commit()
+                        cursor.close()
+
+                        if inserted_rows == 0:
+                            return error_message('There was an error when trying to insert the book'), 500
+                        else:
+                            return jsonify({'book_id': book_id}), 201
 
 # Add new author
 @bp_admin.route('/authors', methods=['POST'])
