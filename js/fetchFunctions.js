@@ -15,14 +15,9 @@ async function getSpecificBook(bookId) {
     }
 }
 
-
-
 //////////////////////////////////////////////////////////////////
 ///////////////////Display Specific Book With Template Literal////
 //////////////////////////////////////////////////////////////////
-
-
-
 
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
@@ -108,9 +103,6 @@ async function getSearchedBooks(searchWord) {
     }
 }
 
-
-
-
 // Reuseable function for displaying data from ALL fetches
 function displayBookList(books) {
     const bookList = document.querySelector(".book-list");
@@ -121,27 +113,27 @@ function displayBookList(books) {
     // Use a document fragment for better performance
     const fragment = document.createDocumentFragment();
 
-// Assuming books have a unique `book_id`
-books.forEach(({ title, author, author_id, publishing_year, coverImage, book_id }) => {
-    const article = document.createElement("article");
-    article.className = "book-article";
+    // Assuming books have a unique `book_id`
+    books.forEach(({ title, author, author_id, publishing_year, coverImage, book_id }) => {
+        const article = document.createElement("article");
+        article.className = "book-article";
 
-    article.innerHTML = `
-        <div class="book-cover-ctn">
-            <a href="displaySpecificBook.html" class="bookLink">
-                <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
-            </a>
-        </div>
-        <h5><a href="displaySpecificBook.html?book_id=${book_id}">${title}</a></h5>
-        <div class="authorYearCtn">
-            <p>
-                <a href="/authors/${author_id}" target="_blank" class="author-name">${author}</a> (${publishing_year})
-            </p>
-        </div>
-        <div class="book-divider"> </div>
-    `;
-    fragment.appendChild(article);
-});
+        article.innerHTML = `
+            <div class="book-cover-ctn">
+                <a href="displaySpecificBook.html" class="bookLink">
+                    <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
+                </a>
+            </div>
+            <h5><a href="displaySpecificBook.html?book_id=${book_id}">${title}</a></h5>
+            <div class="authorYearCtn">
+                <p>
+                    <a href="/authors/${author_id}" target="_blank" class="author-name">${author}</a> (${publishing_year})
+                </p>
+            </div>
+            <div class="book-divider"> </div>
+        `;
+        fragment.appendChild(article);
+    });
 
     // Append the fragment to the book list
     bookList.appendChild(fragment);
@@ -159,23 +151,6 @@ books.forEach(({ title, author, author_id, publishing_year, coverImage, book_id 
     // Attach event listeners to author names
     attachAuthorClickEvents();
 }
-
-
-getRandomBooks(15);
-
-// OLD attachAuthorClickEvents
-// function attachAuthorClickEvents() {
-//     const authorElements = document.querySelectorAll(".author-name");
-//     authorElements.forEach((authorElement) => {
-//         authorElement.addEventListener("click", () => {
-//             const author = authorElement.getAttribute("data-id");
-//             const authorId = findAuthor(author);
-//             console.log("authorId: " + authorId)
-            
-//             getBooksByAuthor(authorId);
-//         });
-//     });
-// }
 
 function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
@@ -219,31 +194,12 @@ async function findAuthor(authorName) {
     }
 }
 
-// OLD FINDAUTHOR
-// async function findAuthor(authorName) {
-//     const url = `${baseUrl}/authors`;
-//     try{
-//         const authors = await fetchData(url);
-
-//         authors.forEach((author) => {
-//             // Iterate through the list of authors
-//             if (author.author_name === authorName) {
-//                 console.log("Author ID: " + author.author_id)
-//                 return author.author_id;
-//             }
-//         });
-//     }
-//     catch (error) {
-//         console.error("Failed to fetch specific book:", error.message);
-//     }
-// }
-
 // Function to handle search query and display books (ChatGPT Generated)
 function initializeSearchDisplay() {
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const searchWord = params.get("search");
-        const heading = document.querySelector("h3");
+        const heading = document.querySelector("h1");
 
         // If a search term exists, update the page and fetch books
         if (searchWord) {
@@ -256,27 +212,4 @@ function initializeSearchDisplay() {
     });
 }
 
-// // Test function to run all functions (TODO, Delete later after everything is finished)
-// function runAllFunctions(){   
-//     //const bookId = 1251;
-//     // getSpecificBook(1251);
-
-//     //const amountOfBooks = 15;
-//     // getRandomBooks(15)
-
-//     //const author_id = 32;
-//     // getBooksByAuthor(32);
-
-//     //const searchword = "winter";
-//     // getSearchedBooks("winter"); 
-
-//     //Checks if a searchWord is in the URL and loads the displaypage
-//     initializeSearchDisplay();
-// }
-
-// runAllFunctions();
-
-
-getSpecificBook(1251);
-
-// initializeSearchDisplay();
+initializeSearchDisplay();
