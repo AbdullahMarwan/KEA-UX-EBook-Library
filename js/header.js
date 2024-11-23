@@ -29,12 +29,11 @@ function updateUserStatus() {
 
     // Fetch user email from sessionStorage (only store email)
     const userEmail = sessionStorage.getItem("userEmail");
+    const role = sessionStorage.getItem("role");
 
-    // Admin credentials (hardcoded) - email only
-    const adminEmail = "admin.library@mail.com";
 
     // Update the header based on login status
-    if (userEmail === adminEmail) {
+    if (role === "admin") {
         userStatus.innerHTML = `
             <div class="logged-in" id="logged-in">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
@@ -45,7 +44,7 @@ function updateUserStatus() {
             ["<a href='../views/adminProfile.html'>Add New Book</a>", "<a href='../views/displayBooks.html'>Browse Books</a>", "<a href='#' id='logout'>Logout</a>"],
             []
         );
-    } else if (userEmail) {
+    } else if (role === "user") {
         userStatus.innerHTML = `
             <div class="logged-in" id="logged-in">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
