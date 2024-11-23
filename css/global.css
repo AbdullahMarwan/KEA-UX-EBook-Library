@@ -4,35 +4,37 @@
     padding:0;
     box-sizing: border-box;
 }
-/* -----------------------------
-FONTS
-------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------
+--------------------------------------- FONTS ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
+
+.herosectionH1{
+    font-family: var(--fontMobileH1); 
+    font-size: 2.5em;
+    font-weight: 700;
+}
 
 h1 {
-    font-family: var(--fontMobileH1); /* ----------------------------- er størrelsesforhold rigtige?  ------------------------------*/
-    font-size: 2.5em;
+    font-family: var(--fontMobileH1);
+    font-size: 2.25em;
     font-weight: 700;
 }
 h2{
     font-family: var(--fontMobileH2);
-    font-size: 2.25em;
-    font-weight: 700;
+    font-size: 1.88;
+    font-weight: 600;
 }
 h3{
     font-family: var(--fontMobileH3);
-    font-size: 1.88;
+    font-size: 1.5em;
     font-weight: 600;
 }
 h4{
     font-family: var(--fontMobileH4);
-    font-size: 1.5em;
-    font-weight: 600;
-}
-h5 {
-    font-family: var(--fontMobileH5);
     font-size: 1.125em;
     font-weight: 500;
 }
+
 p{
     font-family: var(--fontMobileP);
     font-size: 0.875em;
@@ -40,31 +42,33 @@ p{
 }
 
 @media only screen and (min-width: 768px) {
-    h1{
+    .herosectionH1{
         font-family: var(--fontDesktopH1);
         font-size: 4.5em;
         font-weight: 700;
     }
-    h2{
-        font-family: var(--fontDesktopH2);
+
+    h1{
+        font-family: var(--fontDesktopH1);
         font-size: 3em;
         font-weight: 700;
     }
-    h3{
-        font-family: var(--fontDesktopH3);
+    h2{
+        font-family: var(--fontDesktopH2);
         font-size: 2.25em;
         font-weight: 400;
     }
-    h4{
-        font-family: var(--fontDesktopH4);
+    h3{
+        font-family: var(--fontDesktopH3);
         font-size: 1.75em;
         font-weight: 600;
     }
-    h5{
-        font-family: var(--fontDesktopH5);
+    h4{
+        font-family: var(--fontDesktopH4);
         font-size: 1.375em;
         font-weight: 500;
     }
+
     p{
         font-family: var(--fontDesktopP);
         font-size: 1em;
@@ -73,9 +77,9 @@ p{
 }
 
 
-/* ----------------------------
-MAIN MOBILE
-------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------
+--------------------------------------- MAIN MOBILE ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
 body{
     background-color: var(--colorBackground2);
 }
@@ -103,9 +107,9 @@ a:hover{
 }
 
 
-/* ----------------------------
-MAIN TABLET / DESKTOP
-------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------
+--------------------------------------- MAIN TABLET / DESKTOP ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
 @media only screen and (min-width: 768px) {
     main{
         padding: var(--bigPadding);
@@ -114,9 +118,9 @@ MAIN TABLET / DESKTOP
     }
 }
 
-/* -----------------------------
-HEADER MOBIL
-------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------
+--------------------------------------- HEADER MOBIL ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
 
 .header-container{
     margin:1.2500em 1.2500em 3.125em 1.2500em;
@@ -138,30 +142,21 @@ HEADER MOBIL
 
 }
 
-/*--------- LOGGED IN ------ */
-/* Hide #logged-in by default */
-#logged-in {
-    display: none;
-}
-
-/* Show the login button by default */
-#login-button {
-    display: block;
-}
-
+/*----------------------------------------- LOGGED IN -------------------------------------------------------- */
 .logged-in {
     display: inline-flex;
     align-items: center;
-    gap: 0.5em; /* Adjust spacing between images */
+    gap: 0.5em;
 } 
 
 .image-left, .image-right {
-    /* width: 30px; */
     width: clamp(1.875em, 5vw, 3.125em); /* Gives the icons a least with of 30px and max width of 50px, but in em*/
     height: auto;
 }
 
-/*--------- SEARCH FIELD ------ */
+/*-------------------------------------- DROP DOWN / BURGERMENU -------------------------------------------------*/
+
+/*--------------------------------------- SEARCH FIELD ---------------------------------------------------------- */
 /* Putting an image into the search field*/
 .search-input {
     border-radius: 0.3125em;
@@ -189,9 +184,9 @@ HEADER MOBIL
 }
 
 
-/* -----------------------------
-HEADER TABLET /  DESKTOP
-------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------
+--------------------------------------- HEADER TABLET /  DESKTOP ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
 @media only screen and (min-width: 768px) {
     .header-container{
         grid-template-columns: 1fr 0.5fr 0.5fr;
@@ -210,9 +205,9 @@ HEADER TABLET /  DESKTOP
     
     }
 }
-/* -----------------------------
-FOOTER  MOBIL
-------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------
+--------------------------------------- FOOTER  MOBIL ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
 .footer-container{
     margin:3.125em 1.2500em 1.2500em 1.2500em;
     color:var(--colorText);
@@ -291,11 +286,10 @@ FOOTER  MOBIL
 }
 
 
-/* -----------------------------
-FOOTER TABLET /  DESKTOP
-------------------------------*/
+/* -----------------------------------------------------------------------------------------------------------
+--------------------------------------- FOOTER TABLET /  DESKTOP ---------------------------------------
+------------------------------------------------------------------------------------------------------------*/
 @media only screen and (min-width: 768px) {
-    /*--- FOOTER ----*/
     .footer-container{
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
