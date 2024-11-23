@@ -26,13 +26,11 @@ function displaySpecificBook(book) {
     bookItem.innerHTML = "";
 
     bookItem.innerHTML = `
-
         <div class="book-short-details">
             <h1>${book.title || "Name of Book"}</h1>
             <p><strong>Author:</strong> ${book.author || "Can't find Author"}</p>
             <p><strong>Publishing Year:</strong> ${book.publishing_year || "Can't find publishing year"}</p>
         </div>
-
 
         <div class="single-book-cover-ctn">
             <img src="${book.coverImage || '../assets/placeholderImg-9-16.png'}" alt="${book.title || "Book"} cover">
@@ -40,10 +38,9 @@ function displaySpecificBook(book) {
 
         <div class="book-information-ctn">
             <h2>Description</h2>
-            <p>${book.description || "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}</p>
+            <p>${book.description || "Description not available."}</p>
     
             <h2>Book Info</h2>
-    
             <h3>Author</h3>
             <p>${book.author || "Can't find Author"}</p>
     
@@ -53,9 +50,9 @@ function displaySpecificBook(book) {
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
         </div>
-`;
-
+    `;
 }
+
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -70,6 +67,7 @@ async function getRandomBooks(amountOfBooks) {
         console.error("Failed to fetch random books:", error.message);
     }
 }
+
 
 ////////////////////////////////////////////////////////////////////
 ///////////////////Fetch All Books By Author///////////////////////
@@ -120,11 +118,11 @@ function displayBookList(books) {
 
         article.innerHTML = `
             <div class="book-cover-ctn">
-                <a href="displaySpecificBook.html" class="bookLink">
+                <a class="bookLink" data-id="${book_id}">
                     <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
                 </a>
             </div>
-            <h5><a href="displaySpecificBook.html?book_id=${book_id}">${title}</a></h5>
+            <h5><a" class="bookLink" data-id="${book_id}">${title}</a></h5>
             <div class="authorYearCtn">
                 <p>
                     <a target="_blank" class="author-name">${author}</a> (${publishing_year})
@@ -138,19 +136,45 @@ function displayBookList(books) {
     // Append the fragment to the book list
     bookList.appendChild(fragment);
 
-    // TODO: make the link redirect to page and show correct book
-    // Add event listener to all links with the 'myLink' class
     const links = document.querySelectorAll(".bookLink");
     links.forEach(link => {
-        link.addEventListener("click", function() {
-            console.log(books);
-            // You can add additional actions here when the link is clicked
+        link.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            const bookId = this.getAttribute("data-id"); // Get the `book_id` from the data-id attribute
+            console.log("Clicked Book ID:", bookId);
+            // Navigate to the new page with the book_id as a query parameter
+            window.location.href = `displaySpecificBook.html?book_id=${bookId}`;
+            
         });
     });
-
-    // Attach event listeners to author names
     attachAuthorClickEvents();
 }
+
+
+// Utility function to extract query parameters
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Fetch and display the specific book
+(async function () {
+    const bookId = getQueryParam("book_id"); // Extract `book_id` from the query string
+    if (!bookId) {
+        console.error("No book_id found in the URL.");
+        return;
+    }
+
+    try {
+        // Fetch the book using `bookId`
+        await getSpecificBook(bookId);
+    } catch (error) {
+        console.error("Failed to load the specific book:", error.message);
+    }
+})();
+
+
+
 
 function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
@@ -213,3 +237,5 @@ function initializeSearchDisplay() {
 }
 
 initializeSearchDisplay();
+
+
