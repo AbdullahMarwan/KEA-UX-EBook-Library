@@ -97,3 +97,43 @@ function setupMenu(menuItems, links) {
         }
     });
 }
+
+// Function to create the dropdown menu for logged-in users
+function setupMenu(menuItems, links) {
+    const loggedInMenu = document.getElementById("logged-in");
+
+    // Track whether the menu is open or closed
+    let menuOpen = false;
+    let menu;
+
+    loggedInMenu.addEventListener("click", () => {
+        if (menuOpen) {
+            // If the menu is already open, remove it
+            menu.remove();
+            menuOpen = false;
+        } else {
+            // If the menu is closed, create a new menu and display it
+            menu = document.createElement("ul");
+            menu.classList.add("dropdown-menu");
+
+            menuItems.forEach((item) => {
+                menu.innerHTML += `<li>${item}</li>`;
+            });
+
+            loggedInMenu.appendChild(menu);
+            menuOpen = true;
+
+            // Add logout functionality
+            const logout = document.getElementById("logout");
+            if (logout) {
+                logout.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    sessionStorage.clear();  // Clear sessionStorage upon logout
+                    updateUserStatus();  // Update the UI to show the Login link
+                    window.location.href = "../index.html";  // Redirect to homepage or login page
+                });
+            }
+        }
+    });
+}
+
