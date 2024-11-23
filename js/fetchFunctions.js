@@ -69,6 +69,7 @@ async function getRandomBooks(amountOfBooks) {
     const url = `${baseUrl}/books?n=${amountOfBooks}`;
     try {
         const books = await fetchData(url);
+        displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch random books:", error.message);
     }
