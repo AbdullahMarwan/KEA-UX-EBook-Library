@@ -49,6 +49,8 @@
 
 .profile-pic{
     border-radius: 5em;
+    max-width: 15em;
+    margin-left: 25%;
 }
 
 
@@ -67,13 +69,11 @@
 /* Tablet styles */
 @media screen and (min-width: 768px) {
 
-
-
-    .user-main{
-
+    .profile-pic{
+        max-width: 20em;
+        height: auto;
+        margin-left: 33%;
     }
-
-
 
 
   }
@@ -84,6 +84,7 @@
     .profile-pic{
         max-width: 20em;
         height: auto;
+        margin-left: 10%;
     }
 
         #profile-titles{
@@ -94,8 +95,7 @@
 
 
         #your-name{
-            margin-top: 10rem;
-            padding: var(--bigPadding);
+            padding-left: var(--bigPadding);
         }
 
 
