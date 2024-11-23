@@ -27,20 +27,14 @@ function updateUserStatus() {
         return;
     }
 
-    // Fetch user info from sessionStorage
+    // Fetch user email from sessionStorage (only store email)
     const userEmail = sessionStorage.getItem("userEmail");
-    const userPassword = sessionStorage.getItem("userPassword");
 
-    // Log user email and password for debugging
-    console.log("User email:", userEmail);
-    console.log("User password:", userPassword);
-
-    // Admin credentials (hardcoded)
+    // Admin credentials (hardcoded) - email only
     const adminEmail = "admin.library@mail.com";
-    const adminPassword = "WebUdvikling24!";
 
     // Update the header based on login status
-    if (userEmail === adminEmail && userPassword === adminPassword) {
+    if (userEmail === adminEmail) {
         userStatus.innerHTML = `
             <div class="logged-in" id="logged-in">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
@@ -69,33 +63,6 @@ function updateUserStatus() {
             </h4>
         `;
     }
-}
-
-// Function to create the dropdown menu for logged-in users
-function setupMenu(menuItems, links) {
-    const loggedInMenu = document.getElementById("logged-in");
-
-    loggedInMenu.addEventListener("click", () => {
-        const menu = document.createElement("ul");
-        menu.classList.add("dropdown-menu");
-
-        menuItems.forEach((item) => {
-            menu.innerHTML += `<li>${item}</li>`;
-        });
-
-        loggedInMenu.appendChild(menu);
-
-        // Add logout functionality
-        const logout = document.getElementById("logout");
-        if (logout) {
-            logout.addEventListener("click", (e) => {
-                e.preventDefault();
-                sessionStorage.clear();  // Clear sessionStorage upon logout
-                updateUserStatus();  // Update the UI to show the Login link
-                window.location.href = "../index.html";  // Redirect to homepage or login page
-            });
-        }
-    });
 }
 
 // Function to create the dropdown menu for logged-in users
@@ -136,4 +103,3 @@ function setupMenu(menuItems, links) {
         }
     });
 }
-
