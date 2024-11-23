@@ -1,0 +1,41 @@
+@import url(./css/_variables.css);
+
+.homepage-main{
+    .hero-img{
+        max-width:100%;
+        padding:1em;
+    }
+
+    h1, h5{
+        margin:0.5em;
+    }
+
+    .cta{
+            max-width: 50%;
+            margin:2em 0.5em;
+        a{
+            font-family:var(--fontMobileP);
+        font-size: 0.875em;
+        font-weight: 400;
+        color:var(--colorBackground1);
+        text-decoration: none;
+        text-align: center;
+        padding:0.5rem 2rem;
+        background-color: var(--colorAccent2);
+        border-radius: 	0.3125em;
+        border:2px solid var(--colorAccent2);
+        }
+    }
+
+    .cta:hover{
+        background-color: var(--colorBackground1);
+        color: var(--colorAccent2);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .homepage-main{
+        padding:1rem;
+        display:flex;
+    }
+}
