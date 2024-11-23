@@ -60,3 +60,11 @@ function toggleLogin() {
     // Toggle the login state
     loggedIn = !loggedIn;
 }
+
+
+// ------------------------------------------------------------------ 
+//---------- MAKE THE HEADER CHANGE IF LOGGED IN / OUT
+// ------------------------------------------------------------------ 
+
+
+
