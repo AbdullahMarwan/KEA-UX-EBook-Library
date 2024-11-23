@@ -1,0 +1,75 @@
+@import url(./_variables.css);
+
+
+.individual-book-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--colorBackground1);
+    padding: 1.2em 1.2em var(--bigPadding) 1.2em;
+
+    .book-short-details {
+
+        p {
+            margin-top: var(--smallMargin);
+        }
+    }
+
+
+
+    .book-information-ctn {
+        h2 {
+            margin-top: var(--smallMargin);
+        }
+
+        h3 {
+            margin-top: var(--extraSmallMargin);
+        }
+
+        p {
+            margin-top: var(--extraSmallMargin);
+        }
+    }
+}
+
+
+.single-book-cover-ctn {
+    margin-top: var(--bigMargin);
+    width: clamp(30%, 50%, 300px);
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .individual-book-main {
+        display: grid;
+        align-items: start;
+        grid-template-columns: 1fr 2fr; 
+        column-gap: var(--mediumMargin);
+
+
+        .single-book-cover-ctn {
+            width: 100%;
+            grid-column: 1; 
+            grid-row: 1 / span 2; 
+            justify-self: center; 
+        }
+    
+        .book-short-details {
+            grid-column: 2;
+            grid-row: 1; 
+            margin-left: var(--bigMargin);
+        }
+    
+        .book-information-ctn {
+            grid-column: 2; 
+            grid-row: 2;
+            margin-left: var(--bigMargin);
+    
+            h2 {
+                margin-top: var(--extraSmallMargin); /* Remove margin-top for h2 on desktop screens */
+            }
+        }
+    }
+
+}
