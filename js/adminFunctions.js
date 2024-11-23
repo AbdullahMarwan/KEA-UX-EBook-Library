@@ -3,7 +3,6 @@
 const adminEmail = "admin.library@mail.com"
 const adminPassword = "WebUdvikling24!"
 
-
 document.querySelector("#admin-login-btn").addEventListener('click', function(e) {
     e.preventDefault(); // Prevent the default form submission behavior
     const adminEmailInput = document.querySelector("#admin-email").value;
@@ -12,14 +11,12 @@ document.querySelector("#admin-login-btn").addEventListener('click', function(e)
     if (adminEmail === adminEmailInput && adminPassword === adminPasswordInput) {
         window.location.href = "http://www.w3schools.com";
     } else {
-        alert("forkerte oplysninger")
+        alert("forkerte oplysninger");
     }
-    
-    
-    
-    console.log(adminEmailInput, adminPasswordInput)
+    console.log(adminEmailInput, adminPasswordInput);
+});
 
-})
+
 
 
 /* add new book */
