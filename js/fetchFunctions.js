@@ -15,9 +15,14 @@ async function getSpecificBook(bookId) {
     }
 }
 
+
+
 //////////////////////////////////////////////////////////////////
 ///////////////////Display Specific Book With Template Literal////
 //////////////////////////////////////////////////////////////////
+
+
+
 
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
@@ -53,10 +58,6 @@ function displaySpecificBook(book) {
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
         </div>
-
-
-
-
 `;
 
 }
@@ -69,6 +70,7 @@ async function getRandomBooks(amountOfBooks) {
     const url = `${baseUrl}/books?n=${amountOfBooks}`;
     try {
         const books = await fetchData(url);
+        displayBookList(books);
     } catch (error) {
         console.error("Failed to fetch random books:", error.message);
     }
@@ -106,6 +108,9 @@ async function getSearchedBooks(searchWord) {
     }
 }
 
+
+
+
 // Reuseable function for displaying data from ALL fetches
 function displayBookList(books) {
     const bookList = document.querySelector(".book-list");
@@ -116,32 +121,47 @@ function displayBookList(books) {
     // Use a document fragment for better performance
     const fragment = document.createDocumentFragment();
 
-    books.forEach(({ title, author, author_id, publishing_year, coverImage }) => {
-        // Create a template for the book
-        const article = document.createElement("article");
-        article.className = "book-article";
+// Assuming books have a unique `book_id`
+books.forEach(({ title, author, author_id, publishing_year, coverImage, book_id }) => {
+    const article = document.createElement("article");
+    article.className = "book-article";
 
-        article.innerHTML = `
-            <div class="book-cover-ctn">
+    article.innerHTML = `
+        <div class="book-cover-ctn">
+            <a href="displaySpecificBook.html" class="bookLink">
                 <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
-            </div>
-            <h5>${title}</h5>
-            <div class="authorYearCtn">
-                <p>
-                    <em class="author-name" data-id="${author}" style="cursor: pointer; color: blue; text-decoration: underline;">${author}</em> (${publishing_year})
-                </p>
-            </div>
-            <div class="book-divider"> </div>
-        `;
-        fragment.appendChild(article);
-    });
+            </a>
+        </div>
+        <h5><a href="displaySpecificBook.html?book_id=${book_id}">${title}</a></h5>
+        <div class="authorYearCtn">
+            <p>
+                <a href="/authors/${author_id}" target="_blank" class="author-name">${author}</a> (${publishing_year})
+            </p>
+        </div>
+        <div class="book-divider"> </div>
+    `;
+    fragment.appendChild(article);
+});
 
     // Append the fragment to the book list
     bookList.appendChild(fragment);
 
+    // TODO: make the link redirect to page and show correct book
+    // Add event listener to all links with the 'myLink' class
+    const links = document.querySelectorAll(".bookLink");
+    links.forEach(link => {
+        link.addEventListener("click", function() {
+            console.log(books);
+            // You can add additional actions here when the link is clicked
+        });
+    });
+
     // Attach event listeners to author names
     attachAuthorClickEvents();
 }
+
+
+getRandomBooks(15);
 
 // OLD attachAuthorClickEvents
 // function attachAuthorClickEvents() {
@@ -255,6 +275,7 @@ function initializeSearchDisplay() {
 // }
 
 // runAllFunctions();
+
 
 getSpecificBook(1251);
 

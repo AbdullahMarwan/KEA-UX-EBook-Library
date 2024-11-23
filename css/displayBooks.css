@@ -3,7 +3,12 @@
 
 .book-list {
     background-color: var(--colorBackground1);
-    padding: 1.2em 1.2em 1.2em 1.2em;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 5em));
+    gap: 3em;
+    margin-top: var(--bigMargin);
+    justify-content: center;
 }
 
 
@@ -13,23 +18,18 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4.7em;
 
     h5{
         white-space: nowrap;        /* Prevent text from wrapping to the next line */
         overflow: hidden;           /* Hide the overflowing text */
         text-overflow: ellipsis;    /* Add "..." to indicate truncated text */
-        max-width: 50%;
+        max-width: 100%;
     }
-}
-
-.book-article > * {
-    margin-top: 1em;
 }
 
 .book-cover-ctn {
     margin-bottom: 1em;
-    max-width: 14em;
+    max-width: 250px;
 }
 
 .authorYearCtn {
@@ -55,28 +55,13 @@
 
 /* Tablet styles */
 @media screen and (min-width: 768px) {
+
     .book-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0em;
+        justify-content: space-evenly
     }
 
     .book-article{
         align-items: flex-start;
-
     }
 
   }
-  /* Desktop styles*/
-  @media screen and (min-width: 1200px) {
-    .book-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 0em;
-        }
-
-        .book-article{
-            align-items: flex-start;
-
-        }
-      }
