@@ -139,17 +139,21 @@ HEADER MOBIL
 }
 
 /*--------- LOGGED IN ------ */
-/* If user is logged in, it should be displayed - if user is logged out, it should be hidden*/
-/* Initially hide the logged-in div */
+/* Hide #logged-in by default */
 #logged-in {
     display: none;
+}
+
+/* Show the login button by default */
+#login-button {
+    display: block;
 }
 
 .logged-in {
     display: inline-flex;
     align-items: center;
     gap: 0.5em; /* Adjust spacing between images */
-}
+} 
 
 .image-left, .image-right {
     /* width: 30px; */
@@ -173,6 +177,7 @@ HEADER MOBIL
         border:none;
         height:100%;
         padding:1rem;
+        width:80%;
 
     }
     .search-icon {

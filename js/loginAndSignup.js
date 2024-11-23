@@ -21,7 +21,7 @@ loginForm.addEventListener("submit", (event) => {
         alert("Logged in successfully!");
         
         // Redirect to the index page after login
-        window.location.href = '../index.html';
+        window.location.href = '../../index.html';
     } else {
         alert("Please enter valid credentials.");
     }
@@ -57,7 +57,7 @@ signupForm.addEventListener("submit", (event) => {
         alert("Signed up successfully!");
         
         // Redirect to the index page after signup
-        window.location.href = '../index.html';
+        window.location.href = '../../index.html';
     } else {
         alert("Please enter valid credentials.");
     }
