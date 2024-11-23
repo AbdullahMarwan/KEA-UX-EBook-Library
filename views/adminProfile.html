@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse all books | Booked out</title>
+    <script type="module" src="../js/apiFetchRequest.js" defer></script>
+    <script type="module" src="../js/fetchFunctions.js" defer></script>
+    <script src="../js/globalTemplate.js" defer></script>
+    <script src="../js/adminFunctions.js" defer></script>
+    <link rel="stylesheet" href="../css/adminProfile.css">
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+
+<header class="header-container"></header>
+
+<body>
+    
+    
+
+
+    <form >
+        <label for="mail"></label>
+        <input id="admin-email" type="text">        
+        <label for="password"></label>
+        <input id="admin-password" type="text">
+
+        <button id="admin-login-btn">Log in</button>
+    </form>
+
+
+
+
+
+
+
+
+    <main id="admin-main">
+
+
+        <div id="admin-content">
+        <div id="admin-title">
+            <h1>Administrate Books</h1>
+            
+                    <div>
+                        <h2>Add New Book</h2>
+                    </div>
+        </div>
+
+            
+
+
+
+        <form id="admin-form">
+            <div class="input-group">
+                <label for="book-title">Title</label>
+                <input type="text" id="book-title" name="title" placeholder="Enter book title">
+            </div>
+        
+            <div class="input-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author_id" placeholder="Enter author's name">
+            </div>
+        
+            <div class="input-group column-right">
+                <label for="publisher">Publisher</label>
+                <input type="text" id="publisher" name="publisher_id" placeholder="Enter publisher's name">
+            </div>
+        
+            <div class="input-group column-right">
+                <label for="publishing-year">Publishing Year</label>
+                <input type="text" id="publishing-year" name="publishing_year" placeholder="Enter publishing year">
+            </div>
+        
+            <button id="submit-book-btn" type="submit">Add</button>
+        </form>
+        
+
+
+    </div>
+
+        
+    </main>
+
+
+        <footer class="footer-container"></footer>
+
+</body>

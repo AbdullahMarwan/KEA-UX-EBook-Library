@@ -4,36 +4,60 @@
 ----------------- LOGIN SECTION ----------------
 ----------------------------------------------*/
 
-.login-form{
-    display:flex;
-    flex-direction: column;
-    margin:1em 0;
-     input{
-        background-color: var(--colorBackground1);
-        border-radius: 0.3125em;
-        border:1px solid var(--colorText);
-        padding:1rem;
-        margin:0.5em 0;
-     }
-
-     label{
-        font-family: var(--fontMobileH5);
-        font-size: 1.125em;
-        font-weight: 500;
-     }
-
-     button{
+.login-main{
+    .login-and-signup-btn{
         background-color: var(--colorAccent2);
         color:var(--colorBackground1);
         border-radius: 	0.3125em;
         border:2px solid var(--colorAccent2);
         padding:0.5rem 2rem;
         margin:1em 0;
+        max-width: 50%;
+        align-self: flex-end;
+    }
+}
+
+.login-form, .signup-form{
+    display:flex;
+    flex-direction: column;
+    margin:1em 0;
+    input{
+        background-color: var(--colorBackground1);
+        border-radius: 0.3125em;
+        border:1px solid var(--colorText);
+        padding:1rem;
+        margin:0.5em 0;
+    }
+
+    label{
+        font-family: var(--fontMobileH5);
+        font-size: 1.125em;
+        font-weight: 500;
     }
     
     button:hover{
         background-color: var(--colorBackground1);
         color: var(--colorAccent2);
     }
+
+    #grey{
+        color:var(--colorPlaceholderText);
+        font-size:1em!important;
+    }
+    
 }
 
+/*-----------------------------------------
+-------------- DEKSTOP --------------------
+------------------------------------------*/
+@media only screen and (min-width: 1024px) {
+    .login-main{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:7em;
+    }
+
+    .login-and-signup-btn{
+        max-width:25%;
+    }
+}

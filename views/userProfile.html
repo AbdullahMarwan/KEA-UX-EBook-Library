@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse all books | Booked out</title>
+    <script type="module" src="../js/apiFetchRequest.js" defer></script>
+    <script type="module" src="../js/fetchFunctions.js" defer></script>
+    <script src="../js/globalTemplate.js" defer></script>
+    <script src="../js/userFunctions.js" defer></script>
+    <link rel="stylesheet" href="../css/userProfile.css">
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+
+<header class="header-container"></header>
+
+<body>
+
+
+
+    <form >
+        <label for="mail"></label>
+        <input id="user-email" type="text">        
+        <label for="password"></label>
+        <input id="user-password" type="text">
+
+        <button id="admin-login-btn">Log in</button>
+    </form>
+    
+    
+    <main class="user-main">
+        
+        <div id="profile-titles">
+        
+            <div class="">
+            <h1>Your Profile</h1>
+
+                <img class="profile-pic" src="../assets\placeholderImg-1-1.png" alt="Your profile picture">
+            </div>
+            
+            <div id="your-name">
+                <h2>Your Name</h2>
+                
+                <div class="black-line"></div>
+
+
+                <div>
+                    <div class="member-since">
+                        <h4>Member since: </h4>
+                        <h4>Your Date</h4>
+                    </div>
+                    </div>
+
+            </div>
+            </div>
+
+            <a id="edit-info" href="#edit-info">Edit your info</a>
+
+
+
+
+
+
+            <form id="user-form">
+                <div class="input-group">
+                    <label for="first-name">First name</label>
+                    <input type="text" id="first-name" name="first-name">
+                </div>
+            
+                <div class="input-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name">
+                </div>
+            
+                <div class="input-group column-right">
+                    <label for="Birthday">Birthday</label>
+                    <input type="text" id="birthday" name="birthday">
+                </div>
+            
+                <div class="input-group column-right">
+                    <label for="adress">Adress</label>
+                    <input type="text" id="adress" name="adress">
+                </div>
+
+
+                <div class="input-group column-right">
+                    <label for="phone-number">Phone number</label>
+                    <input type="text" id="phone-number" name="phone-number">
+                </div>
+
+                <button class="add-to-profile-btn column-right" type="submit">Add</button>
+            </form>
+
+            
+            <a id=dlt-profile href="#delete-profile">
+                <span class="trash-icon">🗑️</span>
+                <p>Remove your user profile</p>
+            </a>
+
+
+    </main>
+
+
+        <footer class="footer-container"></footer>
+
+</body>
