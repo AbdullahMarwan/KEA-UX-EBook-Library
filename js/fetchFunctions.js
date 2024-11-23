@@ -114,7 +114,7 @@ function displayBookList(books) {
     const fragment = document.createDocumentFragment();
 
     // Assuming books have a unique `book_id`
-    books.forEach(({ title, author, author_id, publishing_year, coverImage, book_id }) => {
+    books.forEach(({ title, author, publishing_year, coverImage, book_id }) => {
         const article = document.createElement("article");
         article.className = "book-article";
 
@@ -127,7 +127,7 @@ function displayBookList(books) {
             <h5><a href="displaySpecificBook.html?book_id=${book_id}">${title}</a></h5>
             <div class="authorYearCtn">
                 <p>
-                    <a href="/authors/${author_id}" target="_blank" class="author-name">${author}</a> (${publishing_year})
+                    <a target="_blank" class="author-name">${author}</a> (${publishing_year})
                 </p>
             </div>
             <div class="book-divider"> </div>
@@ -207,7 +207,7 @@ function initializeSearchDisplay() {
             getSearchedBooks(searchWord);
         } else {
             heading.textContent = `Random books`;
-            getRandomBooks(15)
+            getRandomBooks(15);
         }
     });
 }
