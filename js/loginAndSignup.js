@@ -2,7 +2,6 @@
 //----------- STORE A USER IN SESSIONSTORAGE UPON LOGIN
 //-------------------------------------------------------
 
-
 const loginForm = document.getElementById("loginForm");
 
 // Handle login form submission
@@ -14,8 +13,9 @@ loginForm.addEventListener("submit", (event) => {
 
     // For simplicity, assume the email and password are correct if provided
     if (email && password) {
-        // Store the email in sessionStorage
+        // Store the email and password in sessionStorage
         sessionStorage.setItem("userEmail", email);
+        sessionStorage.setItem("userPassword", password);  // Store the password as well
 
         // Optionally, show a success message or redirect after login
         alert("Logged in successfully!");
