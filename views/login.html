@@ -57,7 +57,8 @@
                 id="emailSignup" 
                 name="email" 
                 placeholder="johndoe@example.com" 
-                title="Email must end with @.com" 
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                title="Please enter a valid email address (e.g., johndoe@example.com)." 
                 required>
     
             <label for="password">Password <span class="grey">(Password must be at least 8 characters, include lowercase, uppercase, numbers, and special characters.)</span></label>
