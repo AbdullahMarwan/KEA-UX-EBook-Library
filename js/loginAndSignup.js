@@ -27,6 +27,7 @@ loginForm.addEventListener("submit", (event) => {
         console.error("Login failed:", error); // Log any errors
     }
 
+
     const formData = new FormData();
     formData.append('email', email);
     formData.append('password', password);
@@ -45,11 +46,22 @@ loginForm.addEventListener("submit", (event) => {
 .then(data => {
     console.log('Logged in:', data);
     alert('Logged in successfully!');
+
+    const role = "user"; // Use let instead of const to allow reassignment
+    sessionStorage.setItem("role", role); // Store the email in sessionStorage
+    sessionStorage.setItem("userId", data.user_id);
+    console.log(role)
+    window.location.href = "../../index.html";
+    
+
 })
 .catch(error => {
     console.error('Error:', error);
     alert('Failed to login. Please check the console for details.');
 });
+
+
+
 });
 
 
