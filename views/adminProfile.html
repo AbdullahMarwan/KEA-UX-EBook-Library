@@ -24,18 +24,25 @@
                 <h2>Add new book</h2>
             </header>
             <form class="admin-form">
-                    <label for="book-title">Title</label>
-                    <input type="text" id="title" name="title">
+                <div class="input-group">
+                        <label for="book-title">Title</label>
+                        <input type="text" id="title" name="title">
+                </div>
 
-                    <label for="author">Author full name</label>
-                    <input type="text" id="author_id" name="author_id">
+                <div class="input-group">
+                        <label for="author">Author full name</label>
+                        <input type="text" id="author_id" name="author_id">
+                </div>
 
-                    <label for="publishing-year">Publishing Year</label>
-                    <input type="text" id="publishing_year" name="publishing_year">
+                <div class="input-group">
+                        <label for="publishing-year">Publishing Year</label>
+                        <input type="text" id="publishing_year" name="publishing_year">
+                </div>
 
-                    <label for="publisher">Publisher</label>
-                    <input type="text" id="publisher_id" name="publisher_id">
-            
+                <div class="input-group">
+                        <label for="publisher">Publisher</label>
+                        <input type="text" id="publisher_id" name="publisher_id">
+                </div>           
                 <button id="submit-book-btn" type="submit">Add book</button>
             </form>
         </section>
@@ -45,14 +52,18 @@
                 <h2>Add new author</h2>
             </header>
         <form class="admin-form">
-                <label for="firstName">First name</label>
-                <input type="text" id="firstName" name="firstName">
-                
-                <label for="lastName">Last name</label>
-                <input type="text" id="lastName" name="lastName">
+                <div class="input-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" id="firstName" name="firstName">
+                    
+                </div>
 
+                <div class="input-group">
+                    <label for="lastName">Last name</label>
+                    <input type="text" id="lastName" name="lastName">
+    
+                </div>
                 <button id="submit-author-btn" type="submit">Add author</button>
-
         </form>
         </section>
 
@@ -60,10 +71,12 @@
             <header>
                 <h2>Add new publisher</h2>
             </header>
-        <form class="admin-form">
-            <label for="publisher">Publisher</label>
-            <input type="text" id="publisher_id" name="publisher_id">
-                
+        <form class="admin-form-publisher">
+            <div class="input-group">
+                <label for="publisher">Publisher</label>
+                <input type="text" id="publisher_id" name="publisher_id">
+                    
+            </div>
             <button id="submit-publisher-btn" type="submit">Add publisher</button>
         </form>
 
