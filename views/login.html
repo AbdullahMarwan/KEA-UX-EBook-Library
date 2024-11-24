@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login or Signup | BookedOut</title>
-    <script type="module" src="./js/apiFetchRequest.js" defer></script>
-    <script type="module" src="./js/fetchFunctions.js" defer></script>
+    <script type="module" src="../js/apiFetchRequest.js" defer></script>
     <script type="module" src="../js/globalTemplate.js" defer></script>
     <script src="../js/loginAndSignup.js" defer></script>
     <script src="../js/header.js" defer></script>
@@ -45,17 +44,23 @@
             <label for="birthday">Birthday</label>
             <input type="date" id="birthday" name="birthday" required>
     
+    
+            <label for="address">Address</label>
+            <input type="address" id="address" name="address" required>
+            
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phoneNo" name="phone" required>
+    
             <label for="email">Email</label>
             <input 
                 type="email" 
                 id="emailSignup" 
                 name="email" 
                 placeholder="johndoe@example.com" 
-                pattern=".+@\mail.com" 
                 title="Email must end with @.com" 
                 required>
     
-            <label for="password">Password</label>
+            <label for="password">Password <span class="grey">(Password must be at least 8 characters, include lowercase, uppercase, numbers, and special characters.)</span></label>
             <input 
                 type="password" 
                 id="passwordSignup" 
@@ -67,7 +72,7 @@
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword" required>
     
-            <button class="login-and-signup-btn" type="submit">Signup</button>
+            <button class="login-and-signup-btn" id="signup-btn" type="submit">Signup</button>
         </form>
         </section>
     </main>

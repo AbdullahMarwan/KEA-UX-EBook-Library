@@ -39,37 +39,68 @@ loginForm.addEventListener("submit", (event) => {
 
 
 // -------------------------------------------------------
-//----------- MAKES SURE THE TWO PASSWORDS IN SIGNUP MATCHES
+//----------- POST USER TO DB AFTER SIGNUP and save the email in sessionStorage after succesdfull signup
 //-------------------------------------------------------
-
-
 const signupForm = document.getElementById("signupForm"); // Get signup form
 
 // Handle signup form submission
 signupForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent default form submission
 
-    const email = document.getElementById("emailSignup").value; // Get email from signup form
-    const password = document.getElementById("passwordSignup").value; // Get password from signup form
-    const confirmPassword = document.getElementById("confirmPassword").value; // Get confirm password from signup form
+    // Collect form data
+    const email = document.getElementById("emailSignup").value.trim();
+    const password = document.getElementById("passwordSignup").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const first_name = document.getElementById("firstname").value.trim();
+    const last_name = document.getElementById("lastname").value.trim();
+    const birth_date = document.getElementById("birthday").value;
+    const address = document.getElementById("address").value.trim();
+    const phone_number = document.getElementById("phoneNo").value.trim();
 
-    // Check if both passwords match (strip leading/trailing spaces just in case)
-    if (password.trim() !== confirmPassword.trim()) {
+    // Validate passwords match
+    if (password !== confirmPassword) {
         alert("Passwords don't match.");
         return;
     }
 
-    // For simplicity, assume the email and password are correct if provided
-    if (email && password) {
-        // Store the email in sessionStorage
-        sessionStorage.setItem("userEmail", email);
-
-        // Optionally, show a success message or redirect after signup
-        alert("Signed up successfully!");
-        
-        // Redirect to the index page after signup
-        window.location.href = '../../index.html';
-    } else {
-        alert("Please enter valid credentials.");
+    // Validate the birthday is in the past
+    if (new Date(birth_date) > new Date()) {
+        alert("Birthday cannot be in the future.");
+        return;
     }
+
+    // Prepare FormData
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("first_name", first_name);
+    formData.append("last_name", last_name);
+    formData.append("address", address);
+    formData.append("phone_number", phone_number);
+    formData.append("birth_date", birth_date);
+
+    // Send data to backend
+    fetch("http://localhost:8080/users", {
+        method: "POST",
+        body: formData, // Send FormData
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to sign up");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("User added:", data);
+
+            // Save email to sessionStorage
+            sessionStorage.setItem("userEmail", email);
+
+            // Redirect to the index page
+            window.location.href = "../../index.html";
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("Failed to sign up user. Please check the console for details.");
+        });
 });
