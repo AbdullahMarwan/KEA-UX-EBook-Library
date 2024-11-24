@@ -21,6 +21,7 @@ loginForm.addEventListener("submit", (event) => {
             sessionStorage.setItem("role", "admin"); // Set admin role
             sessionStorage.setItem("adminEmail", email); // Store the admin email in sessionStorage
             //window.location.href = "../../index.html"; // Redirect to admin page
+            window.location.href = "../../index.html";
             return; // Exit after successful admin login
         }
     } catch (error) {
