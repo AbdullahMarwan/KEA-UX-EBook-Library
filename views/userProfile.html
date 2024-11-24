@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse all books | Booked out</title>
     <script type="module" src="../js/apiFetchRequest.js" defer></script>
-    <script type="module" src="../js/fetchFunctions.js" defer></script>
+    <!-- <script type="module" src="../js/fetchFunctions.js" defer></script> -->
     <script src="../js/globalTemplate.js" defer></script>
     <script src="../js/userFunctions.js" defer></script>
     <script src="../js/header.js" defer></script>
@@ -17,17 +17,6 @@
 
 <body>
 
-
-
-    <form >
-        <label for="mail"></label>
-        <input id="user-email" type="text">        
-        <label for="password"></label>
-        <input id="user-password" type="text">
-
-        <button id="admin-login-btn">Log in</button>
-    </form>
-    
     
     <main class="user-main">
         
@@ -63,19 +52,26 @@
 
 
             <form id="user-form">
+
+
                 <div class="input-group">
-                    <label for="first-name">First name</label>
-                    <input type="text" id="first-name" name="first-name">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email">
+                </div>
+
+                <div class="input-group">
+                    <label for="first_name">First name</label>
+                    <input type="text" id="first_name" name="first_name">
                 </div>
             
                 <div class="input-group">
-                    <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last-name">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name">
                 </div>
             
                 <div class="input-group column-right">
-                    <label for="Birthday">Birthday</label>
-                    <input type="text" id="birthday" name="birthday">
+                    <label for="birth_date">Birth date</label>
+                    <input type="text" id="birth_date" name="birth_date">
                 </div>
             
                 <div class="input-group column-right">
@@ -85,11 +81,11 @@
 
 
                 <div class="input-group column-right">
-                    <label for="phone-number">Phone number</label>
-                    <input type="text" id="phone-number" name="phone-number">
+                    <label for="phone_number">Phone number</label>
+                    <input type="text" id="phone_number" name="phone_number">
                 </div>
 
-                <button class="add-to-profile-btn column-right" type="submit">Add</button>
+                <button class="edit-profile-btn column-right" type="submit">Edit</button>
             </form>
 
             

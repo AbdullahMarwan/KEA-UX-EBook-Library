@@ -15,15 +15,53 @@ async function getSpecificBook(bookId) {
     }
 }
 
+
 //////////////////////////////////////////////////////////////////
 ///////////////////Display Specific Book With Template Literal////
 //////////////////////////////////////////////////////////////////
+
+const role = sessionStorage.getItem("role");
+
+if (role === "admin") {
+    console.log("Admin functionality enabled.");
+} else if (role === "user") {
+    console.log("User functionality enabled.");
+} else {
+    console.log("No user logged in.");
+}
 
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
 
     // Clear existing content
     bookItem.innerHTML = "";
+
+    let loanInfo = "";
+
+    if (role === "admin") {
+        // Determine if loan information is available for the book
+        let loans = [];
+    
+        // Check if book.loans is defined and has data
+        if (book.loans && book.loans.length > 0) {
+            loans = book.loans; // Use the actual loans if available
+        } else {
+            // Use a placeholder if no loans are available
+            loans = [{ user_id: "Freddy", loan_date: "01.12-2023" }];
+        }
+    
+        // Create the loan info HTML
+        loanInfo = `
+            <div class="loan-info-ctn">
+                <h3>Loan Info</h3>
+                <p>
+                    ${loans.map(loan => 
+                        `User ID: ${loan.user_id}, Loan Date: ${loan.loan_date}` //
+                    ).join("<br>")}
+                </p>
+            </div>
+        `;
+    }
 
     bookItem.innerHTML = `
         <div class="book-short-details">
@@ -49,6 +87,8 @@ function displaySpecificBook(book) {
     
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
+
+            ${loanInfo} <!-- Include loan info only if role is admin -->
         </div>
     `;
 }
@@ -122,7 +162,7 @@ function displayBookList(books) {
                     <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
                 </a>
             </div>
-            <h5><a" class="bookLink" data-id="${book_id}">${title}</a></h5>
+            <h4><a" class="bookLink" data-id="${book_id}">${title}</a></h4>
             <div class="authorYearCtn">
                 <p>
                     <a target="_blank" class="author-name">${author}</a> (${publishing_year})
@@ -150,7 +190,6 @@ function displayBookList(books) {
     attachAuthorClickEvents();
 }
 
-
 // Utility function to extract query parameters
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -173,9 +212,6 @@ function getQueryParam(param) {
     }
 })();
 
-
-
-
 function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
 
@@ -186,6 +222,7 @@ function attachAuthorClickEvents() {
                 const authorId = await findAuthor(authorName); // Wait for the author ID
                 if (authorId) {
                     getBooksByAuthor(authorId); // Pass the ID to fetch books
+                    updateDisplayTitle(`Books by "${authorName}"`);
                 } else {
                     console.log(`No books found for author: ${authorName}`);
                 }
@@ -218,22 +255,33 @@ async function findAuthor(authorName) {
     }
 }
 
-// Function to handle search query and display books (ChatGPT Generated)
+// Function to handle search query and display books
 function initializeSearchDisplay() {
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const searchWord = params.get("search");
-        const heading = document.querySelector("h1");
+        // const heading = document.querySelector("h1.displayTitle");
 
         // If a search term exists, update the page and fetch books
         if (searchWord) {
-            heading.textContent = `Search result for "${searchWord}"`;
+            // heading.textContent = `Search result for "${searchWord}"`;
+            updateDisplayTitle(`Search result for "${searchWord}"`);
             getSearchedBooks(searchWord);
         } else {
-            heading.textContent = `Random books`;
+            // heading.textContent = `Random books`;
+            updateDisplayTitle(`Random books`);
             getRandomBooks(15);
         }
     });
+}
+
+function updateDisplayTitle(message) {
+    const heading = document.querySelector("h1.displayTitle");
+    if (heading) {
+        heading.textContent = message;
+    } else {
+        console.error("Heading element with class 'displayTitle' not found!");
+    }
 }
 
 initializeSearchDisplay();

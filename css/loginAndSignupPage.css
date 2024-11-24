@@ -40,12 +40,14 @@
         color: var(--colorAccent2);
     }
 
-    #grey{
+    .grey{
         color:var(--colorPlaceholderText);
-        font-size:1em!important;
+        font-size:0.7em!important;
     }
     
 }
+
+
 
 /*-----------------------------------------
 -------------- DEKSTOP --------------------
