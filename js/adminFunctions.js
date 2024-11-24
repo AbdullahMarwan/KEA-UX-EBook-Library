@@ -83,7 +83,7 @@ document.querySelector('#submit-publisher-btn').addEventListener('click', functi
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Collect form data
-    const publisherName = document.getElementById("name").value;
+    const publisherName = document.getElementById("publisher").value;
 
     // Prepare FormData
     const formData = new FormData();
