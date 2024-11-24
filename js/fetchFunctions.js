@@ -150,7 +150,6 @@ function displayBookList(books) {
     attachAuthorClickEvents();
 }
 
-
 // Utility function to extract query parameters
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -173,9 +172,6 @@ function getQueryParam(param) {
     }
 })();
 
-
-
-
 function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
 
@@ -186,6 +182,7 @@ function attachAuthorClickEvents() {
                 const authorId = await findAuthor(authorName); // Wait for the author ID
                 if (authorId) {
                     getBooksByAuthor(authorId); // Pass the ID to fetch books
+                    updateDisplayTitle(`Books by "${authorName}"`);
                 } else {
                     console.log(`No books found for author: ${authorName}`);
                 }
@@ -223,21 +220,28 @@ function initializeSearchDisplay() {
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const searchWord = params.get("search");
-        const heading = document.querySelector("h1.displayTitle");
+        // const heading = document.querySelector("h1.displayTitle");
 
         // If a search term exists, update the page and fetch books
-        if (heading) { // Ensure heading exists before updating textContent
-            if (searchWord) {
-                heading.textContent = `Search result for "${searchWord}"`;
-                getSearchedBooks(searchWord);
-            } else {
-                heading.textContent = `Random books`;
-                getRandomBooks(15);
-            }
+        if (searchWord) {
+            // heading.textContent = `Search result for "${searchWord}"`;
+            updateDisplayTitle(`Search result for "${searchWord}"`);
+            getSearchedBooks(searchWord);
         } else {
-            console.error("Heading element with class 'displayTitle' not found!");
+            // heading.textContent = `Random books`;
+            updateDisplayTitle(`Random books`);
+            getRandomBooks(15);
         }
     });
+}
+
+function updateDisplayTitle(message) {
+    const heading = document.querySelector("h1.displayTitle");
+    if (heading) {
+        heading.textContent = message;
+    } else {
+        console.error("Heading element with class 'displayTitle' not found!");
+    }
 }
 
 initializeSearchDisplay();
