@@ -2,6 +2,8 @@
 //----------- STORE A USER IN SESSIONSTORAGE UPON LOGIN
 //-------------------------------------------------------
 
+
+// Handle login form submission
 const loginForm = document.getElementById("loginForm");
 
 // Handle login form submission
@@ -11,21 +13,30 @@ loginForm.addEventListener("submit", (event) => {
     const email = document.getElementById("email").value; // Get email from login form
     const password = document.getElementById("password").value; // Get password from login form
 
-    // For simplicity, assume the email and password are correct if provided
-    if (email && password) {
-        // Store the email and password in sessionStorage
-        sessionStorage.setItem("userEmail", email);
-        sessionStorage.setItem("userPassword", password);  // Store the password as well
+    let role = ""; // Use `let` instead of `const` to allow reassignment
 
-        // Optionally, show a success message or redirect after login
-        alert("Logged in successfully!");
-        
-        // Redirect to the index page after login
-        window.location.href = '../../index.html';
+    const userEmail = "user.library@mail.com";
+    const userPassword = "password";
+
+    const adminEmail = "admin.library@mail.com";
+    const adminPassword = "WebUdvikling24!";
+
+    if (email === adminEmail && password === adminPassword) {
+        role = "admin"; // Set role as admin
+        sessionStorage.setItem("adminEmail", email); // Store the email in sessionStorage
+        sessionStorage.setItem("role", role); // Store the email in sessionStorage
+        window.location.href = '../../index.html'; // Redirect to admin page
+    } else if (email === userEmail && password === userPassword) {
+        role = "user"; // Set role as admin
+        sessionStorage.setItem("role", role); // Store the email in sessionStorage
+        sessionStorage.setItem("userEmail", email); // Store the email in sessionStorage
+        alert("Logged in successfully!"); // Optional success message
+        window.location.href = '../../index.html'; // Redirect to user page
     } else {
-        alert("Please enter valid credentials.");
+        alert("Please enter valid credentials."); // Show error if credentials are incorrect
     }
 });
+
 
 // -------------------------------------------------------
 //----------- MAKES SURE THE TWO PASSWORDS IN SIGNUP MATCHES
