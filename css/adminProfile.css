@@ -18,6 +18,12 @@
         border-radius: 0.5em;
     }
 
+    label{
+        font-family: var(--fontMobileH4);
+        font-size: 1.125em;
+        font-weight: 500;
+    }
+
 
     form{
         margin-top: var(--extraBigMargin);
@@ -25,19 +31,21 @@
 }
 
 
-
-
 #submit-book-btn{
-        background-color: var(--colorAccent2);
-        color:var(--colorBackground1);
-        border-radius: 	0.3125em;
-        border:2px solid var(--colorAccent2);
-        padding:0.5rem 2rem;
-        margin:1em 0;
-        width: 100%;
-        border-radius: 2em;
-
+    background-color: var(--colorAccent2);
+    color:var(--colorBackground1);
+    border-radius: 	0.3125em;
+    border:2px solid var(--colorAccent2);
+    padding:0.5rem 2rem;
+    margin:1em 0;
+    max-width: 100%;
 }
+
+#submit-book-btn:hover{
+    background-color: var(--colorBackground1);
+    color: var(--colorAccent2);
+}
+
 
 
 input {
@@ -78,23 +86,6 @@ input {
     .column-right {
         margin-top: 2rem; /* Ensure some spacing for the right column */
     }
-    
-
-    
-    #submit-book-btn {
-        background-color: var(--colorAccent2);
-        color: var(--colorBackground1);
-        border-radius: 2em;
-        border: 2px solid var(--colorAccent2);
-        padding: 0.5rem 2rem;
-        margin-top: 1rem;
-        width: 100%;
-        border-radius: 2em;
-        width: 25%;
-        grid-column: span 2; /* Makes the button span both columns */
-        justify-self: right; /* Centers the button horizontally */
-        
-    }
 
 }
 
@@ -106,7 +97,7 @@ input {
 
 
 /* Desktop styles*/
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
 
         #admin-form {
             display: grid;
@@ -127,6 +118,12 @@ input {
             display: flex;
             flex-direction: column;
         }
+
+        label{
+            font-family: var(--fontDesktopH4);
+            font-size: 1.375em;
+            font-weight: 500;
+    }
         
         .column-right {
             margin-top: 2rem; /* Ensure some spacing for the right column */
@@ -135,18 +132,7 @@ input {
 
         
         #submit-book-btn {
-            background-color: var(--colorAccent2);
-            color: var(--colorBackground1);
-            border-radius: 2em;
-            border: 2px solid var(--colorAccent2);
-            padding: 0.5rem 2rem;
-            margin-top: 1rem;
-            width: 100%;
-            border-radius: 2em;
-            width: 25%;
-            grid-column: span 2; /* Makes the button span both columns */
-            justify-self: right; /* Centers the button horizontally */
-            
+            grid-column-start:2;
         }
 
     }
