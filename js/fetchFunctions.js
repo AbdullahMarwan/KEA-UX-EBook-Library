@@ -15,15 +15,53 @@ async function getSpecificBook(bookId) {
     }
 }
 
+
 //////////////////////////////////////////////////////////////////
 ///////////////////Display Specific Book With Template Literal////
 //////////////////////////////////////////////////////////////////
+
+const role = sessionStorage.getItem("role");
+
+if (role === "admin") {
+    console.log("Admin functionality enabled.");
+} else if (role === "user") {
+    console.log("User functionality enabled.");
+} else {
+    console.log("No user logged in.");
+}
 
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
 
     // Clear existing content
     bookItem.innerHTML = "";
+
+    let loanInfo = "";
+
+    if (role === "admin") {
+        // Determine if loan information is available for the book
+        let loans = [];
+    
+        // Check if book.loans is defined and has data
+        if (book.loans && book.loans.length > 0) {
+            loans = book.loans; // Use the actual loans if available
+        } else {
+            // Use a placeholder if no loans are available
+            loans = [{ user_id: "Freddy", loan_date: "01.12-2023" }];
+        }
+    
+        // Create the loan info HTML
+        loanInfo = `
+            <div class="loan-info-ctn">
+                <h3>Loan Info</h3>
+                <p>
+                    ${loans.map(loan => 
+                        `User ID: ${loan.user_id}, Loan Date: ${loan.loan_date}` //
+                    ).join("<br>")}
+                </p>
+            </div>
+        `;
+    }
 
     bookItem.innerHTML = `
         <div class="book-short-details">
@@ -49,6 +87,8 @@ function displaySpecificBook(book) {
     
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
+
+            ${loanInfo} <!-- Include loan info only if role is admin -->
         </div>
     `;
 }
