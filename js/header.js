@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const headerContainer = document.querySelector(".header-container");
 
     // Load the header HTML
-    fetch("../views/_header.html")  
+    fetch("../views/_header.html")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Failed to fetch header");
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((html) => {
             headerContainer.innerHTML = html;
 
-            // Now update the user status after the header is loaded
+            // Update the user status after the header is loaded
             updateUserStatus();
         })
         .catch((error) => console.error("Error loading header:", error));
@@ -27,34 +27,34 @@ function updateUserStatus() {
         return;
     }
 
-    // Fetch user email from sessionStorage (only store email)
-    const userEmail = sessionStorage.getItem("userEmail");
     const role = sessionStorage.getItem("role");
 
-
-    // Update the header based on login status
     if (role === "admin") {
         userStatus.innerHTML = `
-            <div class="logged-in" id="logged-in">
+            <div class="logged-in" id="logged-in" tabindex="0" role="button" aria-expanded="false" aria-haspopup="true">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
                 <img src="../assets/arrow.svg" alt="arrow" class="image-right">
+                <ul class="dropdown-menu" aria-hidden="true">
+                    <li><a href="../views/adminProfile.html" tabindex="-1">Add New Book</a></li>
+                    <li><a href="../views/displayBooks.html" tabindex="-1">Browse Books</a></li>
+                    <li><a href="#" id="logout" tabindex="-1">Logout</a></li>
+                </ul>
             </div>
         `;
-        setupMenu(
-            ["<a href='../views/adminProfile.html'>Add New Book</a>", "<a href='../views/displayBooks.html'>Browse Books</a>", "<a href='#' id='logout'>Logout</a>"],
-            []
-        );
+        setupMenu();
     } else if (role === "user") {
         userStatus.innerHTML = `
-            <div class="logged-in" id="logged-in">
+            <div class="logged-in" id="logged-in" tabindex="0" role="button" aria-expanded="false" aria-haspopup="true">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
                 <img src="../assets/arrow.svg" alt="arrow" class="image-right">
+                <ul class="dropdown-menu" aria-hidden="true">
+                    <li><a href="../views/userProfile.html" tabindex="-1">User Profile</a></li>
+                    <li><a href="../views/displayBooks.html" tabindex="-1">Browse Books</a></li>
+                    <li><a href="#" id="logout" tabindex="-1">Logout</a></li>
+                </ul>
             </div>
         `;
-        setupMenu(
-            ["<a href='../views/userProfile.html'>User Profile</a>", "<a href='../views/displayBooks.html'>Browse Books</a>", "<a href='#' id='logout'>Logout</a>"],
-            []
-        );
+        setupMenu();
     } else {
         userStatus.innerHTML = `
             <h4>
@@ -64,41 +64,60 @@ function updateUserStatus() {
     }
 }
 
-// Function to create the dropdown menu for logged-in users
-function setupMenu(menuItems, links) {
+// Function to handle dropdown menu behavior
+function setupMenu() {
     const loggedInMenu = document.getElementById("logged-in");
+    const dropdownMenu = loggedInMenu.querySelector(".dropdown-menu");
 
-    // Track whether the menu is open or closed
-    let menuOpen = false;
-    let menu;
-
-    loggedInMenu.addEventListener("click", () => {
-        if (menuOpen) {
-            // If the menu is already open, remove it
-            menu.remove();
-            menuOpen = false;
-        } else {
-            // If the menu is closed, create a new menu and display it
-            menu = document.createElement("ul");
-            menu.classList.add("dropdown-menu");
-
-            menuItems.forEach((item) => {
-                menu.innerHTML += `<li>${item}</li>`;
-            });
-
-            loggedInMenu.appendChild(menu);
-            menuOpen = true;
-
-            // Add logout functionality
-            const logout = document.getElementById("logout");
-            if (logout) {
-                logout.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    sessionStorage.clear();  // Clear sessionStorage upon logout
-                    updateUserStatus();  // Update the UI to show the Login link
-                    window.location.href = "../index.html";  // Redirect to homepage or login page
-                });
-            }
+    // Toggle menu open/close with keyboard and mouse
+    loggedInMenu.addEventListener("click", toggleMenu);
+    loggedInMenu.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleMenu();
+        } else if (event.key === "Escape") {
+            closeMenu();
         }
     });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!loggedInMenu.contains(event.target)) {
+            closeMenu();
+        }
+    });
+
+    // Function to toggle the menu visibility
+    function toggleMenu() {
+        const isExpanded = loggedInMenu.getAttribute("aria-expanded") === "true";
+        loggedInMenu.setAttribute("aria-expanded", !isExpanded);
+        dropdownMenu.setAttribute("aria-hidden", isExpanded);
+        updateTabIndices(!isExpanded);
+    }
+
+    // Function to close the menu
+    function closeMenu() {
+        loggedInMenu.setAttribute("aria-expanded", "false");
+        dropdownMenu.setAttribute("aria-hidden", "true");
+        updateTabIndices(false);
+    }
+
+    // Update tabindex of dropdown items
+    function updateTabIndices(enable) {
+        const links = dropdownMenu.querySelectorAll("a");
+        links.forEach((link) => {
+            link.setAttribute("tabindex", enable ? "0" : "-1");
+        });
+    }
+
+    // Logout functionality
+    const logout = document.getElementById("logout");
+    if (logout) {
+        logout.addEventListener("click", (e) => {
+            e.preventDefault();
+            sessionStorage.clear(); // Clear sessionStorage on logout
+            updateUserStatus(); // Update the UI to show the Login link
+            window.location.href = "../index.html"; // Redirect to homepage
+        });
+    }
 }
