@@ -218,20 +218,24 @@ async function findAuthor(authorName) {
     }
 }
 
-// Function to handle search query and display books (ChatGPT Generated)
+// Function to handle search query and display books
 function initializeSearchDisplay() {
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const searchWord = params.get("search");
-        const heading = document.querySelector("h1");
+        const heading = document.querySelector("h1.displayTitle");
 
         // If a search term exists, update the page and fetch books
-        if (searchWord) {
-            heading.textContent = `Search result for "${searchWord}"`;
-            getSearchedBooks(searchWord);
+        if (heading) { // Ensure heading exists before updating textContent
+            if (searchWord) {
+                heading.textContent = `Search result for "${searchWord}"`;
+                getSearchedBooks(searchWord);
+            } else {
+                heading.textContent = `Random books`;
+                getRandomBooks(15);
+            }
         } else {
-            heading.textContent = `Random books`;
-            getRandomBooks(15);
+            console.error("Heading element with class 'displayTitle' not found!");
         }
     });
 }
