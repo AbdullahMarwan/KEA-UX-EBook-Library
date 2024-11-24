@@ -92,7 +92,7 @@ signupForm.addEventListener("submit", (event) => {
         })
         .then((data) => {
             console.log("User added:", data);
-            alert("You have been signed up!");
+            alert("You have been signed up! Please login");
             signupForm.reset();
         })
         .catch((error) => {
