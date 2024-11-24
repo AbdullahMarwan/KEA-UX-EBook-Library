@@ -162,7 +162,7 @@ function displayBookList(books) {
                     <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
                 </a>
             </div>
-            <h5><a" class="bookLink" data-id="${book_id}">${title}</a></h5>
+            <h4><a" class="bookLink" data-id="${book_id}">${title}</a></h4>
             <div class="authorYearCtn">
                 <p>
                     <a target="_blank" class="author-name">${author}</a> (${publishing_year})

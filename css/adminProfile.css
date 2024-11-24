@@ -1,14 +1,108 @@
 @import url(./_variables.css);
 
-
-
 .admin-main{
-    
-    > *{
-        margin-bottom: var(--smallMargin);
+    h1{
+        text-align: center;
     }
 
+    .add-new{
+        margin:1em 1em;
 
+        header{
+            margin:1em;
+        }
+    }
+
+    .admin-form{
+        display:flex;
+        flex-direction: column;
+        margin:1em;
+
+        div{
+            display:flex;
+            flex-direction: column;
+        }
+
+        input{
+            background-color: var(--colorBackground1);
+            border-radius: 0.3125em;
+            border:1px solid var(--colorText);
+            padding:1rem;
+            margin:0.5em 0;
+        }
+    
+        label{
+            font-family: var(--fontMobileH4);
+            font-size: 1.125em;
+            font-weight: 500;
+        }
+
+        button{
+            background-color: var(--colorAccent2);
+            color:var(--colorBackground1);
+            border-radius: 	0.3125em;
+            border:2px solid var(--colorAccent2);
+            padding:0.5rem 2rem;
+            margin:1em 0;
+        }
+    }
+
+    .admin-form-publisher{
+        margin:1em;
+        display:flex;
+        flex-direction: column;
+    }
+
+    div{
+        display:flex;
+        flex-direction: column;
+    }
+
+    input{
+        background-color: var(--colorBackground1);
+        border-radius: 0.3125em;
+        border:1px solid var(--colorText);
+        padding:1rem;
+        margin:0.5em 0;
+    }
+
+    label{
+        font-family: var(--fontMobileH4);
+        font-size: 1.125em;
+        font-weight: 500;
+    }
+
+    button{
+        background-color: var(--colorAccent2);
+        color:var(--colorBackground1);
+        border-radius: 	0.3125em;
+        border:2px solid var(--colorAccent2);
+        padding:0.5rem 2rem;
+        margin:1em 0;
+    }
+
+}
+
+
+@media screen and (min-width: 1024px) {
+    .admin-main{    
+        h1{
+            text-align: left;
+        }
+        .admin-form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap:1em;
+        }
+
+        .admin-form-publisher{
+            max-width:50%;
+        }
+    }
+}
+
+
+/* .admin-main{
     input{
         background-color: var(--colorBackground1);
         border: 1px solid black;
@@ -18,26 +112,34 @@
         border-radius: 0.5em;
     }
 
+    label{
+        font-family: var(--fontMobileH4);
+        font-size: 1.125em;
+        font-weight: 500;
+    }
+
 
     form{
         margin-top: var(--extraBigMargin);
     }
-}
 
-
-
-
-#submit-book-btn{
+    button{
         background-color: var(--colorAccent2);
         color:var(--colorBackground1);
         border-radius: 	0.3125em;
         border:2px solid var(--colorAccent2);
         padding:0.5rem 2rem;
         margin:1em 0;
-        width: 100%;
-        border-radius: 2em;
-
+        max-width: 100%;
+    }
+    
+    button:hover{
+        background-color: var(--colorBackground1);
+        color: var(--colorAccent2);
+    }
 }
+
+
 
 
 input {
@@ -49,21 +151,15 @@ input {
     border-radius: 0.5em;
 }
 
-/* Tablet styles */
+
 @media screen and (min-width: 768px) {
 
-    #admin-form {
+    .admin-form {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-        gap: 2rem; /* Space between columns */
-        max-width: 90%; /* Adjust the max width as needed */
-        margin: 0 auto; /* Center the form */
-    }
-
-
-    #admin-content{
-        max-width: 66%;
-        margin: auto;
+        grid-template-columns: 1fr 1fr; 
+        gap: 2rem; 
+        max-width: 90%; 
+        margin: 0 auto; 
     }
 
     #admin-title{
@@ -76,24 +172,7 @@ input {
     }
     
     .column-right {
-        margin-top: 2rem; /* Ensure some spacing for the right column */
-    }
-    
-
-    
-    #submit-book-btn {
-        background-color: var(--colorAccent2);
-        color: var(--colorBackground1);
-        border-radius: 2em;
-        border: 2px solid var(--colorAccent2);
-        padding: 0.5rem 2rem;
-        margin-top: 1rem;
-        width: 100%;
-        border-radius: 2em;
-        width: 25%;
-        grid-column: span 2; /* Makes the button span both columns */
-        justify-self: right; /* Centers the button horizontally */
-        
+        margin-top: 2rem; 
     }
 
 }
@@ -105,19 +184,26 @@ input {
 }
 
 
-/* Desktop styles*/
-@media screen and (min-width: 1200px) {
 
-        #admin-form {
+@media screen and (min-width: 1024px) {
+    .admin-main{
+                
+        button {
+            grid-column-start:2;
+            max-width: 50%;
+        }
+    }
+
+        .admin-form {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-            gap: 2rem; /* Space between columns */
-            max-width: 90%; /* Adjust the max width as needed */
-            margin: 0 auto; /* Center the form */
+            grid-template-columns: 1fr 1fr; 
+            gap: 2rem; 
+            max-width: 90%; 
+            margin: 0 auto; 
         }
 
 
-        #admin-content{
+        .admin-content{
             max-width: 50%;
             margin: auto;
         }
@@ -127,26 +213,15 @@ input {
             display: flex;
             flex-direction: column;
         }
+
+        label{
+            font-family: var(--fontDesktopH4);
+            font-size: 1.375em;
+            font-weight: 500;
+    }
         
         .column-right {
-            margin-top: 2rem; /* Ensure some spacing for the right column */
-        }
-        
-
-        
-        #submit-book-btn {
-            background-color: var(--colorAccent2);
-            color: var(--colorBackground1);
-            border-radius: 2em;
-            border: 2px solid var(--colorAccent2);
-            padding: 0.5rem 2rem;
-            margin-top: 1rem;
-            width: 100%;
-            border-radius: 2em;
-            width: 25%;
-            grid-column: span 2; /* Makes the button span both columns */
-            justify-self: right; /* Centers the button horizontally */
-            
+            margin-top: 2rem;
         }
 
-    }
+    } */
