@@ -37,34 +37,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ------------------------------------------------------------------ 
-//---------- LOGGED IN AND LOGGED OUT HEADER CHANGES
-// ------------------------------------------------------------------ 
-
-let loggedIn = false; // Initial login state
-
-function toggleLogin() {
-    const loginButton = document.getElementById('login-button');
-    const loggedInDiv = document.getElementById('logged-in');
-
-    if (loggedIn) {
-        // If logged in, show "Login" text and hide the logged-in div
-        loginButton.style.display = 'block';
-        loggedInDiv.style.display = 'none';
-    } else {
-        // If not logged in, hide "Login" text and show the logged-in div
-        loginButton.style.display = 'none';
-        loggedInDiv.style.display = 'flex'; // Ensure proper layout
-    }
-
-    // Toggle the login state
-    loggedIn = !loggedIn;
-}
-
-
-// ------------------------------------------------------------------ 
-//---------- MAKE THE HEADER CHANGE IF LOGGED IN / OUT
-// ------------------------------------------------------------------ 
-
-
 
