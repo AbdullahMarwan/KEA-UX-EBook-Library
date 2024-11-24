@@ -35,7 +35,7 @@ function updateUserStatus() {
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
                 <img src="../assets/arrow.svg" alt="arrow" class="image-right">
                 <ul class="dropdown-menu" aria-hidden="true">
-                    <li><a href="../views/adminProfile.html" tabindex="-1">Add New Book</a></li>
+                    <li><a href="../views/adminProfile.html" tabindex="-1">Administrative settings</a></li>
                     <li><a href="../views/displayBooks.html" tabindex="-1">Browse Books</a></li>
                     <li><a href="#" id="logout" tabindex="-1">Logout</a></li>
                 </ul>
