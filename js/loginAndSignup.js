@@ -39,7 +39,7 @@ loginForm.addEventListener("submit", (event) => {
 
 
 // -------------------------------------------------------
-//----------- POST USER TO DB AFTER SIGNUP
+//----------- POST USER TO DB AFTER SIGNUP and save the email in sessionStorage after succesdfull signup
 //-------------------------------------------------------
 const signupForm = document.getElementById("signupForm"); // Get signup form
 
@@ -92,8 +92,12 @@ signupForm.addEventListener("submit", (event) => {
         })
         .then((data) => {
             console.log("User added:", data);
-            alert("You have been signed up! Please login");
-            signupForm.reset();
+
+            // Save email to sessionStorage
+            sessionStorage.setItem("userEmail", email);
+
+            // Redirect to the index page
+            window.location.href = "../../index.html";
         })
         .catch((error) => {
             console.error("Error:", error);
