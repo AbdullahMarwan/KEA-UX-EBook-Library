@@ -95,6 +95,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+document.getElementById("dlt-profile").addEventListener("click", () => {
+    const userId = sessionStorage.getItem("userId");
+
+    // Perform a soft delete by updating a "deleted" or "is_active" field
+    fetch(`http://localhost:8080/users/${userId}`, { // Update the endpoint as needed
+        method: "DELETE", // PATCH is commonly used for partial updates
+        headers: {
+            "Content-Type": "application/json",
+        },
+        // body: JSON.stringify({ is_active: false }), // Send the soft-delete payload
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to soft delete user.");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("User soft-deleted successfully:", data); // Confirm in console
+            
+            // Optionally, display a message or update the UI
+            const yourName = document.getElementById("your-name-title");
+            if (yourName) {
+                yourName.textContent = `${data.first_name} (Deleted)`; // Indicate soft delete in the UI
+            }
+
+            // Clear input fields or mark them as read-only
+            const userFields = [
+                "email",
+                "first_name",
+                "last_name",
+                "address",
+                "phone_number",
+                "birth_date",
+            ];
+
+            userFields.forEach((id) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.value = ""; // Clear the input field
+                    input.disabled = true; // Optionally disable the field
+                }
+            });
 
 
-// email.textContent = data.email
+
+            
+            alert("User deleted successfully!");
+            sessionStorage.clear(); // Clear sessionStorage on logout
+            window.location.href = "../index.html"; // Redirect to homepage
+        })
+        .catch((error) => {
+            console.error("Error during soft delete:", error);
+            alert("Failed to soft-delete the user. Please try again.");
+        });
+});
+
+
+
+
