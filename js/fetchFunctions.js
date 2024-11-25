@@ -23,7 +23,7 @@ export async function getSpecificBook(bookId) {
 }
 
 // Fetch loan information for admins
-async function getLoanInfo(bookId) {
+export async function getLoanInfo(bookId) {
     const url = `${baseUrl}/admin/books/${bookId}`;
     try {
         const book = await fetchData(url);
