@@ -10,17 +10,11 @@
     --colorPlaceholderText: #636363;
     --colorInputFieldGrayedOut: #e1e1e1;
 
-    --fontDesktopH1: 'Playfair Display', serif; /* Bold */
-    --fontDesktopH2: 'Playfair Display', serif; /* Bold */
-    --fontDesktopH3: 'Playfair Display', serif; /* Normal */
-    --fontDesktopH4: 'Roboto', sans-serif; /* Semibold */
-    --fontDesktopP: 'Roboto', sans-serif; /* Normal */
-    
-    --fontMobileH1: 'Playfair Display', serif; /* Bold */
-    --fontMobileH2: 'Playfair Display', serif; /* Bold */
-    --fontMobileH3: 'Playfair Display', serif; /* Semibold */
-    --fontMobileH4: 'Roboto', sans-serif; /* Semibold */
-    --fontMobileP: 'Roboto', sans-serif; /* Regular */    
+    --fontH1: 'Playfair Display', serif; 
+    --fontH2: 'Playfair Display', serif; 
+    --fontH3: 'Playfair Display', serif; 
+    --fontH4: 'Roboto', sans-serif;
+    --fontP: 'Roboto', sans-serif;    
 
 
     --extraSmallMargin: .75em;

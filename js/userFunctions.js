@@ -104,6 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.getElementById("dlt-profile").addEventListener("click", () => {
+    const confirmation = confirm("Are you sure you want to delete your user?");
+    
+    if (!confirmation) {
+        // If the user cancels, simply return and do nothing
+        return;
+    }
+
     const userId = sessionStorage.getItem("userId");
 
     // Perform a soft delete by updating a "deleted" or "is_active" field
@@ -122,7 +129,7 @@ document.getElementById("dlt-profile").addEventListener("click", () => {
         })
         .then((data) => {
             console.log("User deleted successfully:", data); // Confirm in console
-            
+
             // Optionally, display a message or update the UI
             const yourName = document.getElementById("your-name-title");
             if (yourName) {
@@ -147,9 +154,6 @@ document.getElementById("dlt-profile").addEventListener("click", () => {
                 }
             });
 
-
-
-            
             alert("User deleted successfully!");
             sessionStorage.clear(); // Clear sessionStorage on logout
             window.location.href = "../index.html"; // Redirect to homepage
@@ -159,7 +163,6 @@ document.getElementById("dlt-profile").addEventListener("click", () => {
             alert("Failed to delete the user. Please try again.");
         });
 });
-
 
 
 
