@@ -7,7 +7,7 @@ const role = sessionStorage.getItem("role");
 /////////////////////////////////////////////////////////////////
 
 // Fetch and display a specific book by ID
-async function getSpecificBook(bookId) {
+export async function getSpecificBook(bookId) {
     const url = `${baseUrl}/books/${bookId}`;
     try {
         const book = await fetchData(url); // Fetch book data
@@ -109,19 +109,26 @@ function displaySpecificBook(book) {
     `;
 }
 
-(async function initializeSpecificBook() {
+// Returns book_id from query param
+async function getBookIdFromParam() {
     const bookId = getQueryParam("book_id"); // Extract `book_id` from the query string
     if (!bookId) {
         console.error("No book_id found in the URL.");
         return;
     }
- 
-    try {
-        await getSpecificBook(bookId); // Fetch and display the specific book
-    } catch (error) {
-        console.error("Failed to load the specific book:", error.message);
-    }
-})();
+    return bookId;
+}
+
+// Allows user to loan a book
+async function borrowBook() {
+    const bookId = await getBookIdFromParam();
+    console.log("Book ID: " + bookId);
+}
+
+// Checks if user has a loan on the specified book and displays confirmation that loan already exist
+async function checkIfUserHasLoan() {
+
+}
 
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
@@ -213,7 +220,6 @@ function displayBookList(books) {
             console.log("Clicked Book ID:", bookId);
             // Navigate to the new page with the book_id as a query parameter
             window.location.href = `displaySpecificBook.html?book_id=${bookId}`;
-            
         });
     });
     attachAuthorClickEvents();
