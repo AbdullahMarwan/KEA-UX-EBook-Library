@@ -12,7 +12,7 @@ export async function getSpecificBook(bookId) {
     try {
         const book = await fetchData(url); // Fetch book data
         displaySpecificBook(book); // Display basic book details
- 
+
         if (role === "admin") {
             // Fetch and display loan information if admin
             await getLoanInfo(bookId);
@@ -42,31 +42,33 @@ export async function getLoanInfo(bookId) {
 function displayLoanInfo(loans) {
     const bookItem = document.getElementById("specific-book");
     if (!bookItem) return;
- 
+    
     let loanInfo = "";
- 
+
     if (loans.length > 0) {
         loanInfo = `
-            <div class="loan-info-ctn">
+            <section class="loan-info-ctn">
                 <h3>Loan Info</h3>
-                <p>
-                    ${loans.map(loan =>
-                        `User ID: ${loan.user_id}, Loan Date: ${loan.loan_date}`
-                    ).join("<br>")}
-                </p>
-            </div>
+                <ul>
+                    ${loans.map(loan => 
+                        `<li><strong>User ID:</strong> ${loan.user_id}, <strong>Loan Date:</strong> ${loan.loan_date}</li>`
+                    ).join("")}
+                </ul>
+            </section>
         `;
     } else {
         loanInfo = `
-            <div class="loan-info-ctn">
+            <section class="loan-info-ctn">
                 <h3>Loan Info</h3>
                 <p>No loans available for this book.</p>
-            </div>
+            </section>
         `;
     }
+
     // Append the loan info to the book display
     bookItem.innerHTML += loanInfo;
 }
+
 
 
 //////////////////////////////////////////////////////////////////
@@ -82,11 +84,11 @@ function displaySpecificBook(book) {
  
     // Display basic book information
     bookItem.innerHTML = `
-        <div class="book-short-details">
+        <section class="book-short-details">
             <h1>${book.title || "Name of Book"}</h1>
             <p><strong>Author:</strong> ${book.author || "Can't find Author"}</p>
             <p><strong>Publishing Year:</strong> ${book.publishing_year || "Can't find publishing year"}</p>
-        </div>
+        </section>
  
         <div class="single-book-cover-ctn">
             <img src="${book.cover || '../assets/placeholderImg-9-16.png'}" alt="${book.title || "Book"} cover">
@@ -106,7 +108,7 @@ function displaySpecificBook(book) {
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
 
-            <button class="borrow-button hidden" id="borrow-btn">Borrow</button>
+            <button class="borrow-button hidden" id="borrow-btn" type="submit">Borrow</button>
         </div>
     `;
     
