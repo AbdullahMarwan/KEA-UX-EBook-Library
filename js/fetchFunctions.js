@@ -1,5 +1,7 @@
 import { baseUrl, fetchData } from "./apiFetchRequest.js";
 
+const role = sessionStorage.getItem("role");
+
 /////////////////////////////////////////////////////////////////
 /////////////////////Fetch Book By ID////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -8,72 +10,87 @@ import { baseUrl, fetchData } from "./apiFetchRequest.js";
 async function getSpecificBook(bookId) {
     const url = `${baseUrl}/books/${bookId}`;
     try {
-        const book = await fetchData(url);
-        displaySpecificBook(book);
+        const book = await fetchData(url); // Fetch book data
+        displaySpecificBook(book); // Display basic book details
+ 
+        if (role === "admin") {
+            // Fetch and display loan information if admin
+            await getLoanInfo(bookId);
+        }
     } catch (error) {
         console.error("Failed to fetch specific book:", error.message);
     }
+}
+
+// Fetch loan information for admins
+async function getLoanInfo(bookId) {
+    const url = `${baseUrl}/admin/books/${bookId}`;
+    try {
+        const book = await fetchData(url);
+        const loans = book.loans || []; // Get loans or an empty array if none
+        displayLoanInfo(loans); // Display the loan information
+    } catch (error) {
+        console.error("Failed to fetch loan info:", error.message);
+    }
+}
+ 
+//////////////////////////////////////////////////////////////////
+///////////////////Fetch admin books to show loan info////////////
+//////////////////////////////////////////////////////////////////
+
+// Display loan information in the DOM
+function displayLoanInfo(loans) {
+    const bookItem = document.getElementById("specific-book");
+    if (!bookItem) return;
+ 
+    let loanInfo = "";
+ 
+    if (loans.length > 0) {
+        loanInfo = `
+            <div class="loan-info-ctn">
+                <h3>Loan Info</h3>
+                <p>
+                    ${loans.map(loan =>
+                        `User ID: ${loan.user_id}, Loan Date: ${loan.loan_date}`
+                    ).join("<br>")}
+                </p>
+            </div>
+        `;
+    } else {
+        loanInfo = `
+            <div class="loan-info-ctn">
+                <h3>Loan Info</h3>
+                <p>No loans available for this book.</p>
+            </div>
+        `;
+    }
+    // Append the loan info to the book display
+    bookItem.innerHTML += loanInfo;
 }
 
 
 //////////////////////////////////////////////////////////////////
 ///////////////////Display Specific Book With Template Literal////
 //////////////////////////////////////////////////////////////////
-
-const role = sessionStorage.getItem("role");
-
-if (role === "admin") {
-    console.log("Admin functionality enabled.");
-} else if (role === "user") {
-    console.log("User functionality enabled.");
-} else {
-    console.log("No user logged in.");
-}
-
+ 
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
-
+ 
     // Clear existing content
     bookItem.innerHTML = "";
-
-    let loanInfo = "";
-
-    if (role === "admin") {
-        // Determine if loan information is available for the book
-        let loans = [];
-    
-        // Check if book.loans is defined and has data
-        if (book.loans && book.loans.length > 0) {
-            loans = book.loans; // Use the actual loans if available
-        } else {
-            // Use a placeholder if no loans are available
-            loans = [{ user_id: "Freddy", loan_date: "01.12-2023" }];
-        }
-    
-        // Create the loan info HTML
-        loanInfo = `
-            <div class="loan-info-ctn">
-                <h3>Loan Info</h3>
-                <p>
-                    ${loans.map(loan => 
-                        `User ID: ${loan.user_id}, Loan Date: ${loan.loan_date}` //
-                    ).join("<br>")}
-                </p>
-            </div>
-        `;
-    }
-
+ 
+    // Display basic book information
     bookItem.innerHTML = `
         <div class="book-short-details">
             <h1>${book.title || "Name of Book"}</h1>
             <p><strong>Author:</strong> ${book.author || "Can't find Author"}</p>
             <p><strong>Publishing Year:</strong> ${book.publishing_year || "Can't find publishing year"}</p>
         </div>
-
+ 
         <div class="single-book-cover-ctn">
-            <img src="${book.coverImage || '../assets/placeholderImg-9-16.png'}" alt="${book.title || "Book"} cover">
+            <img src="${book.cover || '../assets/placeholderImg-9-16.png'}" alt="${book.title || "Book"} cover">
         </div>
-
+ 
         <div class="book-information-ctn">
             <h2>Description</h2>
             <p>${book.description || "Description not available."}</p>
@@ -83,15 +100,44 @@ function displaySpecificBook(book) {
             <p>${book.author || "Can't find Author"}</p>
     
             <h3>Publisher</h3>
-            <p>${book.publisher || "Can't find Publisher"}</p>
+            <p>${book.publishing_company || "Can't find Publisher"}</p>
     
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
-
-            ${loanInfo} <!-- Include loan info only if role is admin -->
+ 
         </div>
     `;
 }
+
+(async function initializeSpecificBook() {
+    const bookId = getQueryParam("book_id"); // Extract `book_id` from the query string
+    if (!bookId) {
+        console.error("No book_id found in the URL.");
+        return;
+    }
+ 
+    try {
+        await getSpecificBook(bookId); // Fetch and display the specific book
+    } catch (error) {
+        console.error("Failed to load the specific book:", error.message);
+    }
+})();
+
+// Fetch and display the specific book
+(async function getBookId () {
+    const bookId = getQueryParam("book_id"); // Extract `book_id` from the query string
+    if (!bookId) {
+        console.error("No book_id found in the URL.");
+        return bookId;
+    }
+ 
+    try {
+        // Fetch the book using `bookId`
+        await getSpecificBook(bookId);
+    } catch (error) {
+        console.error("Failed to load the specific book:", error.message);
+    }
+})();
 
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
