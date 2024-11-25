@@ -29,6 +29,10 @@
         p {
             margin-top: var(--extraSmallMargin);
         }
+
+        .hidden {
+            display: none;
+        }
     }
 }
 
@@ -37,6 +41,7 @@
     margin-top: var(--bigMargin);
     width: clamp(30%, 50%, 300px);
 }
+
 
 
 

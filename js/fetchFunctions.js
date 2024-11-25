@@ -106,7 +106,7 @@ function displaySpecificBook(book) {
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
 
-            <button class="borrow-button" id="borrow-btn">Borrow</button>
+            <button class="borrow-button hidden" id="borrow-btn">Borrow</button>
         </div>
     `;
     
