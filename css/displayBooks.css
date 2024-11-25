@@ -19,7 +19,7 @@
     flex-direction: column;
     align-items: center;
 
-    h5{
+    h4{
         white-space: nowrap;        /* Prevent text from wrapping to the next line */
         overflow: hidden;           /* Hide the overflowing text */
         text-overflow: ellipsis;    /* Add "..." to indicate truncated text */
