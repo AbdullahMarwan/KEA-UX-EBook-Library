@@ -31,7 +31,7 @@ function updateUserStatus() {
     // if user is admin: show three options in dropdown menu: admin settings, browse books, logout
     if (role === "admin") {
         userStatus.innerHTML = `
-            <div class="logged-in" id="logged-in" tabindex="0" role="button" aria-expanded="false" aria-haspopup="true">
+            <section class="logged-in" id="logged-in" tabindex="0" role="button" aria-expanded="false" aria-haspopup="true">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
                 <img src="../assets/arrow.svg" alt="arrow" class="image-right">
                 <nav>
@@ -41,7 +41,7 @@ function updateUserStatus() {
                     <li><a href="#" id="logout" tabindex="-1">Logout</a></li>
                 </ul>
                 </nav>
-            </div>
+            </section>
         `;
         setupMenu();
          // if user is user: show three options in dropdown menu: admin settings, browse books, logout
