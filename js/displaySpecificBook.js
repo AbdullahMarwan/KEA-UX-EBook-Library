@@ -1,4 +1,9 @@
+import { baseUrl } from "./apiFetchRequest.js";
 import { getSpecificBook } from "./fetchFunctions.js";
+
+const bookId = getQueryParam("book_id");
+const userId = sessionStorage.getItem("userId")
+console.log(userId)
 
 // Utility function to extract query parameters
 function getQueryParam(param) {
@@ -19,7 +24,22 @@ function getQueryParam(param) {
         const borrowBtn = document.getElementById("borrow-btn");
 
         borrowBtn.addEventListener("click", () => {
-            console.log("hej");
+            console.log("bookid " + bookId);
+            // Send data to backend
+            fetch(`${baseUrl}/users/${userId}/books/${bookId}`, {
+                method: 'POST', // Use POST method
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to post data');
+                }
+                console.log('Book loaned');
+                alert('Book loaned!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to loan book. Please check the console for details.');
+            });
         });
 
 
@@ -27,3 +47,14 @@ function getQueryParam(param) {
         console.error("Failed to load the specific book:", error.message);
     }
 })();
+
+
+// Checks if user has a loan on the specified book and displays confirmation that loan already exist
+async function checkIfUserHasLoan() {
+
+}
+
+
+
+
+

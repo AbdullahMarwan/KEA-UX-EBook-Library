@@ -122,17 +122,6 @@ async function getBookIdFromParam() {
     return bookId;
 }
 
-// Allows user to loan a book
-async function borrowBook() {
-    const bookId = await getBookIdFromParam();
-    console.log("Book ID: " + bookId);
-}
-
-// Checks if user has a loan on the specified book and displays confirmation that loan already exist
-async function checkIfUserHasLoan() {
-
-}
-
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
 ///////////////////////////////////////////////////////////////////
