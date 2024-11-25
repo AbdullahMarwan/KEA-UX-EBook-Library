@@ -75,6 +75,7 @@ function displayLoanInfo(loans) {
  
 function displaySpecificBook(book) {
     const bookItem = document.getElementById("specific-book");
+
  
     // Clear existing content
     bookItem.innerHTML = "";
@@ -104,9 +105,11 @@ function displaySpecificBook(book) {
     
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
- 
+
+            <button class="borrow-button" id="borrow-btn">Borrow</button>
         </div>
     `;
+    
 }
 
 // Returns book_id from query param
