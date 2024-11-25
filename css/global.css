@@ -9,68 +9,68 @@
 ------------------------------------------------------------------------------------------------------------*/
 
 .herosectionH1{
-    font-family: var(--fontMobileH1); 
+    font-family: var(--fontH1); 
     font-size: 2.5em;
     font-weight: 700;
 }
 
 h1 {
-    font-family: var(--fontMobileH1);
+    font-family: var(--fontH1);
     font-size: 2.25em;
     font-weight: 700;
 }
 h2{
-    font-family: var(--fontMobileH2);
+    font-family: var(--fontH2);
     font-size: 1.88;
     font-weight: 600;
 }
 h3{
-    font-family: var(--fontMobileH3);
+    font-family: var(--fontH3);
     font-size: 1.5em;
     font-weight: 600;
 }
 h4{
-    font-family: var(--fontMobileH4);
+    font-family: var(--fontH4);
     font-size: 1.125em;
     font-weight: 500;
 }
 
 p{
-    font-family: var(--fontMobileP);
+    font-family: var(--fontP);
     font-size: 0.875em;
     font-weight: 400;
 }
 
 @media only screen and (min-width: 768px) {
     .herosectionH1{
-        font-family: var(--fontDesktopH1);
+        font-family: var(--fontH1);
         font-size: 4.5em;
         font-weight: 700;
     }
 
     h1{
-        font-family: var(--fontDesktopH1);
+        font-family: var(--fontH1);
         font-size: 3em;
         font-weight: 700;
     }
     h2{
-        font-family: var(--fontDesktopH2);
+        font-family: var(--fontH2);
         font-size: 2.25em;
         font-weight: 400;
     }
     h3{
-        font-family: var(--fontDesktopH3);
+        font-family: var(--fontH3);
         font-size: 1.75em;
         font-weight: 600;
     }
     h4{
-        font-family: var(--fontDesktopH4);
+        font-family: var(--fontH4);
         font-size: 1.375em;
         font-weight: 500;
     }
 
     p{
-        font-family: var(--fontDesktopP);
+        font-family: var(--fontP);
         font-size: 1em;
         font-weight: 400;
     }
@@ -78,7 +78,7 @@ p{
 
 
 /* ----------------------------------------------------------------------------------------------------------
---------------------------------------- MAIN MOBILE ---------------------------------------
+--------------------------------------- MAIN MOBILE ------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------*/
 body{
     background-color: var(--colorBackground2);
@@ -123,12 +123,12 @@ a:hover{
 ------------------------------------------------------------------------------------------------------------*/
 
 .header-container{
-    margin:1.2500em 1.2500em 3.125em 1.2500em;
+    margin: var(--bigMargin);
     display:grid;
-    grid-template-columns: 60% 25%;
+    grid-template-columns: 75% 25%;
     grid-template-rows: 0.5fr 1fr;
     align-items: center;
-    justify-items: center;
+    justify-items: end;
     column-gap:1em;
 
     .header-logo{
@@ -179,8 +179,8 @@ a:hover{
 
 /* Style individual menu items */
 .dropdown-menu li {
-    padding: 1em;
-    font-family: var(--fontMobileH4);
+    font-family: var(--fontH4);
+    padding:1em;
     font-size: 1.125em;
     font-weight: 500;
     color: var(--colorText);
@@ -188,13 +188,6 @@ a:hover{
     white-space: nowrap;
 }
 
-/* Hover state for menu items */
-.dropdown-menu li:hover {
-    background-color: var(--colorAccent2);
-} 
-.dropdown-menu a:hover{
-    color:var(--colorBackground1);
-}
 /* Focus state for menu items */
 .dropdown-menu a:focus {
     background-color: var(--colorAccent2);
@@ -234,13 +227,27 @@ a:hover{
 .dropdown-menu a:focus {
     outline: 2px solid var(--colorAccent1); /* Add focus outline for accessibility reasons - so the user knows where the tab is */
 }
+/*-------------------------------------- DROP DOWN / BURGERMENU tablet -------------------------------------------------*/
 
 @media only screen and (min-width: 768px) {
     .dropdown-menu li {
-        padding: 2em;
         font-size: 1.375em;
     }
 }
+
+/*-------------------------------------- DROP DOWN / BURGERMENU desktop-------------------------------------------------*/
+
+@media only screen and (min-width: 1024px) {
+/* Hover state for menu items */
+.dropdown-menu a {
+    padding:1em;
+} 
+.dropdown-menu a:hover{
+    color:var(--colorBackground1);
+    background-color: var(--colorAccent2);
+}
+}
+
 
 
 /*--------------------------------------- SEARCH FIELD ---------------------------------------------------------- */
@@ -253,13 +260,14 @@ a:hover{
     grid-column: 1 / span 2;
     height:3em;
     display: flex;
+    width:100%;
 
     input{
         background-color: transparent;
         border:none;
         height:100%;
         padding:1rem;
-        width:80%;
+        width:100%;
 
     }
     .search-icon {
@@ -276,7 +284,7 @@ a:hover{
 ------------------------------------------------------------------------------------------------------------*/
 @media only screen and (min-width: 768px) {
     .header-container{
-        grid-template-columns: 1fr 0.5fr 0.5fr;
+        grid-template-columns: 1fr 0.5fr 0.2fr;
         grid-template-rows: 1fr;
         align-items: center;
 
@@ -308,7 +316,7 @@ a:hover{
         li{
             list-style: none;
             margin-top:0.5em;
-            font-family: var(--fontDesktopP);
+            font-family: var(--fontP);
             font-size: 1em;
             font-weight: 400;
             text-decoration: underline;
@@ -354,7 +362,7 @@ a:hover{
         margin: 1.2500em 0;
 
         address{
-            font-family: var(--fontDesktopP);
+            font-family: var(--fontP);
             font-size: 1em;
             font-weight: 400;
             margin:1em 0;

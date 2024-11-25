@@ -32,7 +32,7 @@
         }
     
         label{
-            font-family: var(--fontMobileH4);
+            font-family: var(--fontH4);
             font-size: 1.125em;
             font-weight: 500;
         }
@@ -67,7 +67,7 @@
     }
 
     label{
-        font-family: var(--fontMobileH4);
+        font-family: var(--fontH4);
         font-size: 1.125em;
         font-weight: 500;
     }
@@ -101,127 +101,3 @@
     }
 }
 
-
-/* .admin-main{
-    input{
-        background-color: var(--colorBackground1);
-        border: 1px solid black;
-        width: 100%;
-        padding: var(--extraSmallPadding);
-        margin-bottom: var(--extraSmallPadding);
-        border-radius: 0.5em;
-    }
-
-    label{
-        font-family: var(--fontMobileH4);
-        font-size: 1.125em;
-        font-weight: 500;
-    }
-
-
-    form{
-        margin-top: var(--extraBigMargin);
-    }
-
-    button{
-        background-color: var(--colorAccent2);
-        color:var(--colorBackground1);
-        border-radius: 	0.3125em;
-        border:2px solid var(--colorAccent2);
-        padding:0.5rem 2rem;
-        margin:1em 0;
-        max-width: 100%;
-    }
-    
-    button:hover{
-        background-color: var(--colorBackground1);
-        color: var(--colorAccent2);
-    }
-}
-
-
-
-
-input {
-    background-color: var(--colorBackground1);
-    border: 1px solid black;
-    width: 100%;
-    padding: var(--extraSmallPadding);
-    margin-bottom: var(--extraSmallPadding);
-    border-radius: 0.5em;
-}
-
-
-@media screen and (min-width: 768px) {
-
-    .admin-form {
-        display: grid;
-        grid-template-columns: 1fr 1fr; 
-        gap: 2rem; 
-        max-width: 90%; 
-        margin: 0 auto; 
-    }
-
-    #admin-title{
-        margin-bottom: var(--bigMargin);
-    }
-    
-    .input-group {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .column-right {
-        margin-top: 2rem; 
-    }
-
-}
-
-
-
-#admin-title{
-    margin-bottom: var(--bigMargin);
-}
-
-
-
-@media screen and (min-width: 1024px) {
-    .admin-main{
-                
-        button {
-            grid-column-start:2;
-            max-width: 50%;
-        }
-    }
-
-        .admin-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 2rem; 
-            max-width: 90%; 
-            margin: 0 auto; 
-        }
-
-
-        .admin-content{
-            max-width: 50%;
-            margin: auto;
-        }
-
-        
-        .input-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label{
-            font-family: var(--fontDesktopH4);
-            font-size: 1.375em;
-            font-weight: 500;
-    }
-        
-        .column-right {
-            margin-top: 2rem;
-        }
-
-    } */

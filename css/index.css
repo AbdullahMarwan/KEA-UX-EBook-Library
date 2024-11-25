@@ -16,7 +16,7 @@
     margin-top:2em;
     cursor: pointer;
 a{
-    font-family:var(--fontMobileH4);
+    font-family:var(--fontH4);
     font-size: 0.875em;
     font-weight: 400;
     color:var(--colorBackground1);
@@ -35,6 +35,7 @@ a:hover{
     }
 }
 
+/*------------------------------- DESKTOP -----------------------------------*/
 
 @media only screen and (min-width: 1024px) {
     .homepage-main{
@@ -48,7 +49,7 @@ a:hover{
 
     a{
         padding:1rem 3rem;
-        font-family: var(--fontDesktopH4);
+        font-family: var(--fontH4);
         font-size: 1.375em;
         font-weight: 500;
     }
