@@ -78,7 +78,7 @@ p{
 
 
 /* ----------------------------------------------------------------------------------------------------------
---------------------------------------- MAIN MOBILE ---------------------------------------
+--------------------------------------- MAIN MOBILE ------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------*/
 body{
     background-color: var(--colorBackground2);
@@ -123,12 +123,12 @@ a:hover{
 ------------------------------------------------------------------------------------------------------------*/
 
 .header-container{
-    margin:1.2500em 1.2500em 3.125em 1.2500em;
+    margin: var(--bigMargin);
     display:grid;
-    grid-template-columns: 60% 25%;
+    grid-template-columns: 75% 25%;
     grid-template-rows: 0.5fr 1fr;
     align-items: center;
-    justify-items: center;
+    justify-items: end;
     column-gap:1em;
 
     .header-logo{
@@ -260,13 +260,14 @@ a:hover{
     grid-column: 1 / span 2;
     height:3em;
     display: flex;
+    width:100%;
 
     input{
         background-color: transparent;
         border:none;
         height:100%;
         padding:1rem;
-        width:80%;
+        width:100%;
 
     }
     .search-icon {
@@ -283,7 +284,7 @@ a:hover{
 ------------------------------------------------------------------------------------------------------------*/
 @media only screen and (min-width: 768px) {
     .header-container{
-        grid-template-columns: 1fr 0.5fr 0.5fr;
+        grid-template-columns: 1fr 0.5fr 0.2fr;
         grid-template-rows: 1fr;
         align-items: center;
 
