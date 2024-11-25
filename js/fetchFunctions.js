@@ -123,22 +123,6 @@ function displaySpecificBook(book) {
     }
 })();
 
-// Fetch and display the specific book
-(async function getBookId () {
-    const bookId = getQueryParam("book_id"); // Extract `book_id` from the query string
-    if (!bookId) {
-        console.error("No book_id found in the URL.");
-        return bookId;
-    }
- 
-    try {
-        // Fetch the book using `bookId`
-        await getSpecificBook(bookId);
-    } catch (error) {
-        console.error("Failed to load the specific book:", error.message);
-    }
-})();
-
 ///////////////////////////////////////////////////////////////////
 /////////////////////Fetch Random Books////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -153,7 +137,6 @@ async function getRandomBooks(amountOfBooks) {
         console.error("Failed to fetch random books:", error.message);
     }
 }
-
 
 ////////////////////////////////////////////////////////////////////
 ///////////////////Fetch All Books By Author///////////////////////
@@ -239,24 +222,9 @@ function displayBookList(books) {
 // Utility function to extract query parameters
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
+    console.log("urlParams " + urlParams);
     return urlParams.get(param);
 }
-
-// Fetch and display the specific book
-(async function () {
-    const bookId = getQueryParam("book_id"); // Extract `book_id` from the query string
-    if (!bookId) {
-        console.error("No book_id found in the URL.");
-        return;
-    }
-
-    try {
-        // Fetch the book using `bookId`
-        await getSpecificBook(bookId);
-    } catch (error) {
-        console.error("Failed to load the specific book:", error.message);
-    }
-})();
 
 function attachAuthorClickEvents() {
     const authorElements = document.querySelectorAll(".author-name");
@@ -331,5 +299,3 @@ function updateDisplayTitle(message) {
 }
 
 initializeSearchDisplay();
-
-
