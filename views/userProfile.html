@@ -13,52 +13,40 @@
     <link rel="stylesheet" href="../css/global.css">
 </head>
 
-<header class="header-container"></header>
 
 <body>
+    <header class="header-container">
 
-    
+    </header>
+
     <main class="user-main">
-        
         <div id="profile-titles">
         
             <div class="">
             <h1>Your Profile</h1>
-
                 <img class="profile-pic" src="../assets\placeholderImg-1-1.png" alt="Your profile picture">
             </div>
             
             <div id="your-name">
-                <h2 id="your-name-title">Your Name</h2>
+                <h2 id="your-name-title">Your Name</h2> <!-- id bruges i js-->
                 
-                <div class="black-line"></div>
+            <div class="black-line"></div>
 
 
                 <div>
                     <div class="member-since">
                         <h4>Member since: </h4>
-                        <h4>Your Date</h4>
+                        <h4 id="your_date">Your Date</h4>
                     </div>
                     </div>
-
             </div>
             </div>
-
             <a id="edit-info" href="#edit-info">Edit your info</a>
-
-
-
-
-
-
             <form id="user-form">
-
-
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email">
                 </div>
-
                 <div class="input-group">
                     <label for="first_name">First name</label>
                     <input type="text" id="first_name" name="first_name">
@@ -78,26 +66,22 @@
                     <label for="address">Adress</label>
                     <input type="text" id="address" name="address">
                 </div>
-
-
                 <div class="input-group column-right">
                     <label for="phone_number">Phone number</label>
                     <input type="text" id="phone_number" name="phone_number">
                 </div>
-
                 <button class="edit-profile-btn column-right" type="submit">Edit</button>
             </form>
-
             
             <a id="dlt-profile" href="#delete-profile">
                 <span class="trash-icon">🗑️</span>
                 <p>Remove your user profile</p>
             </a>
-
-
     </main>
 
 
-        <footer class="footer-container"></footer>
+    <footer class="footer-container">
+
+    </footer>
 
 </body>
