@@ -179,8 +179,8 @@ a:hover{
 
 /* Style individual menu items */
 .dropdown-menu li {
-    padding: 1em;
     font-family: var(--fontMobileH4);
+    padding:1em;
     font-size: 1.125em;
     font-weight: 500;
     color: var(--colorText);
@@ -188,13 +188,6 @@ a:hover{
     white-space: nowrap;
 }
 
-/* Hover state for menu items */
-.dropdown-menu li:hover {
-    background-color: var(--colorAccent2);
-} 
-.dropdown-menu a:hover{
-    color:var(--colorBackground1);
-}
 /* Focus state for menu items */
 .dropdown-menu a:focus {
     background-color: var(--colorAccent2);
@@ -234,13 +227,27 @@ a:hover{
 .dropdown-menu a:focus {
     outline: 2px solid var(--colorAccent1); /* Add focus outline for accessibility reasons - so the user knows where the tab is */
 }
+/*-------------------------------------- DROP DOWN / BURGERMENU tablet -------------------------------------------------*/
 
 @media only screen and (min-width: 768px) {
     .dropdown-menu li {
-        padding: 2em;
         font-size: 1.375em;
     }
 }
+
+/*-------------------------------------- DROP DOWN / BURGERMENU desktop-------------------------------------------------*/
+
+@media only screen and (min-width: 1024px) {
+/* Hover state for menu items */
+.dropdown-menu a {
+    padding:1em;
+} 
+.dropdown-menu a:hover{
+    color:var(--colorBackground1);
+    background-color: var(--colorAccent2);
+}
+}
+
 
 
 /*--------------------------------------- SEARCH FIELD ---------------------------------------------------------- */

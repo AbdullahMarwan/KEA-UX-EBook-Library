@@ -28,30 +28,35 @@ function updateUserStatus() {
     }
 
     const role = sessionStorage.getItem("role");
-
+    // if user is admin: show three options in dropdown menu: admin settings, browse books, logout
     if (role === "admin") {
         userStatus.innerHTML = `
             <div class="logged-in" id="logged-in" tabindex="0" role="button" aria-expanded="false" aria-haspopup="true">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
                 <img src="../assets/arrow.svg" alt="arrow" class="image-right">
+                <nav>
                 <ul class="dropdown-menu" aria-hidden="true">
                     <li><a href="../views/adminProfile.html" tabindex="-1">Administrative settings</a></li>
                     <li><a href="../views/displayBooks.html" tabindex="-1">Browse Books</a></li>
                     <li><a href="#" id="logout" tabindex="-1">Logout</a></li>
                 </ul>
+                </nav>
             </div>
         `;
         setupMenu();
+         // if user is user: show three options in dropdown menu: admin settings, browse books, logout
     } else if (role === "user") {
         userStatus.innerHTML = `
             <div class="logged-in" id="logged-in" tabindex="0" role="button" aria-expanded="false" aria-haspopup="true">
                 <img src="../assets/profile.svg" alt="profile" class="image-left">
                 <img src="../assets/arrow.svg" alt="arrow" class="image-right">
+                <nav>
                 <ul class="dropdown-menu" aria-hidden="true">
                     <li><a href="../views/userProfile.html" tabindex="-1">User Profile</a></li>
                     <li><a href="../views/displayBooks.html" tabindex="-1">Browse Books</a></li>
                     <li><a href="#" id="logout" tabindex="-1">Logout</a></li>
                 </ul>
+                </nav>
             </div>
         `;
         setupMenu();
@@ -102,7 +107,7 @@ function setupMenu() {
         updateTabIndices(false);
     }
 
-    // Update tabindex of dropdown items
+    // tabindex of dropdown items
     function updateTabIndices(enable) {
         const links = dropdownMenu.querySelectorAll("a");
         links.forEach((link) => {
