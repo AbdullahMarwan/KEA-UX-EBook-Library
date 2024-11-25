@@ -42,6 +42,23 @@
     width: clamp(30%, 50%, 300px);
 }
 
+
+#borrow-btn{
+    background-color: var(--colorAccent2);
+    color:var(--colorBackground1);
+    border-radius: 	0.3125em;
+    border:2px solid var(--colorAccent2);
+    padding:0.5rem 2rem;
+    margin:1em 0;
+}
+
+    
+#borrow-btn:hover{
+    background-color: var(--colorBackground1);
+    color: var(--colorAccent2);
+}
+
+
 /*----------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------ TABLET / desktop ---------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------*/
