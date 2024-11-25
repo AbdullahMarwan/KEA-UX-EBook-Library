@@ -66,16 +66,24 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((data) => {
             console.log("User data retrieved:", data); // Log the fetched data
             const your_name = document.getElementById("your-name-title");
+            // set you_name as data for first name 
             your_name.textContent = data.first_name
+            // concatenate your_date with spacing for layout purposes
+            your_date.textContent = '\u00A0' + data.membership_date; // '\u00A0' is a white space which is always respected
+
+
             // Set values for the corresponding input fields
             const user = [
                 { id: "email", value: data.email },
+                // Todo: unnecesarry first name duplication, pick one approach and stick to it. 
                 { id: "first_name", value: data.first_name },
                 { id: "last_name", value: data.last_name },
                 { id: "address", value: data.address },
                 { id: "phone_number", value: data.phone_number },
                 { id: "birth_date", value: data.birth_date },
+                { id: "your_date", value: data.membership_date }, 
             ];
+            
             
             console.log(data.address)
             user.forEach(({ id, value }) => {
@@ -108,17 +116,17 @@ document.getElementById("dlt-profile").addEventListener("click", () => {
     })
         .then((response) => {
             if (!response.ok) {
-                throw new Error("Failed to soft delete user.");
+                throw new Error("Failed to delete user.");
             }
             return response.json();
         })
         .then((data) => {
-            console.log("User soft-deleted successfully:", data); // Confirm in console
+            console.log("User deleted successfully:", data); // Confirm in console
             
             // Optionally, display a message or update the UI
             const yourName = document.getElementById("your-name-title");
             if (yourName) {
-                yourName.textContent = `${data.first_name} (Deleted)`; // Indicate soft delete in the UI
+                yourName.textContent = `${data.first_name} (Deleted)`; // Indicate delete in the UI
             }
 
             // Clear input fields or mark them as read-only
@@ -147,8 +155,8 @@ document.getElementById("dlt-profile").addEventListener("click", () => {
             window.location.href = "../index.html"; // Redirect to homepage
         })
         .catch((error) => {
-            console.error("Error during soft delete:", error);
-            alert("Failed to soft-delete the user. Please try again.");
+            console.error("Error during delete:", error);
+            alert("Failed to delete the user. Please try again.");
         });
 });
 
