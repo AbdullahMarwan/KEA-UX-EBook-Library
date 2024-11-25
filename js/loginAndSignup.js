@@ -9,33 +9,64 @@ const loginForm = document.getElementById("loginForm");
 // Handle login form submission
 loginForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent default form submission
-
     const email = document.getElementById("email").value; // Get email from login form
     const password = document.getElementById("password").value; // Get password from login form
-
-    let role = ""; // Use `let` instead of `const` to allow reassignment
-
-    const userEmail = "user.library@mail.com";
-    const userPassword = "password";
 
     const adminEmail = "admin.library@mail.com";
     const adminPassword = "WebUdvikling24!";
 
-    if (email === adminEmail && password === adminPassword) {
-        role = "admin"; // Set role as admin
-        sessionStorage.setItem("adminEmail", email); // Store the email in sessionStorage
-        sessionStorage.setItem("role", role); // Store the email in sessionStorage
-        window.location.href = '../../index.html'; // Redirect to admin page
-    } else if (email === userEmail && password === userPassword) {
-        role = "user"; // Set role as admin
-        sessionStorage.setItem("role", role); // Store the email in sessionStorage
-        sessionStorage.setItem("userEmail", email); // Store the email in sessionStorage
-        alert("Logged in successfully!"); // Optional success message
-        window.location.href = '../../index.html'; // Redirect to user page
-    } else {
-        alert("Please enter valid credentials."); // Show error if credentials are incorrect
+    try {
+        // First check if the email is for admin
+        if (email === adminEmail && password === adminPassword) {
+            sessionStorage.setItem("role", "admin"); // Set admin role
+            sessionStorage.setItem("adminEmail", email); // Store the admin email in sessionStorage
+            window.location.href = "../../index.html";
+            
+            return; // Exit after successful admin login
+        }
+    } catch (error) {
+        console.error("Login failed:", error); // Log any errors
     }
+
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+
+   // Send data to backend
+   fetch('http://localhost:8080//users/login', {
+    method: 'POST',
+    body: formData // Send FormData directly
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Failed to login');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Logged in:', data);
+    alert('Logged in successfully!');
+
+    const role = "user"; // Use let instead of const to allow reassignment
+    sessionStorage.setItem("role", role); // Store the email in sessionStorage
+    sessionStorage.setItem("userId", data.user_id);
+    console.log(role)
+    window.location.href = "../../index.html";
+    
+
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Failed to login. Please check the console for details.');
 });
+
+
+
+});
+
+
+
 
 
 // -------------------------------------------------------
