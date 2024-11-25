@@ -1,7 +1,9 @@
 // ------------------------------------------------------------------ 
 //---------- MAKE THE HEADER AND FOOTER INTO GLOBAL COMPONENTS 
 // ------------------------------------------------------------------ 
-// Paints the _header.html into the header-container header
+
+// --------------------------------------------
+//Paints the _header.html into the header-container header
 document.addEventListener('DOMContentLoaded', () => {
     const headerContainer = document.querySelector('.header-container');
 
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error loading header:', error));
 });
 
+// --------------------------------------------
 // Paints the _footer.html into the footer-container footer
 document.addEventListener('DOMContentLoaded', () => {
     const footerContainer = document.querySelector('.footer-container');
@@ -58,24 +61,3 @@ function toggleLogin() {
     // Toggle the login state
     loggedIn = !loggedIn;
 }
-
-
-// ------------------------------------------------------------------ 
-//---------- MAKE THE HEADER CHANGE IF LOGGED IN / OUT
-// ------------------------------------------------------------------ 
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Check if email is in sessionStorage
-//     const userEmail = sessionStorage.getItem("userEmail");
-//     const loginButton = document.getElementById("login-button");
-//     const loggedInDiv = document.getElementById("logged-in");
-
-//     if (userEmail) {
-//         // User is logged in, so show the logged-in div and hide login button
-//         loginButton.style.display = 'none';
-//         loggedInDiv.style.display = 'flex'; // Show logged-in state (this might be a flexbox, adjust if needed)
-//     } else {
-//         // User is not logged in, show login button and hide logged-in div
-//         loginButton.style.display = 'inline'; // Default login state
-//         loggedInDiv.style.display = 'none'; // Hide logged-in state
-//     }
-// });
