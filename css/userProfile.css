@@ -1,119 +1,73 @@
 @import url(./_variables.css);
 
+.profile-section-1{
+    margin:0.5em;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1em;
 
-
-.user-main{
-    
-
-    h1{
-        margin-bottom: 0.5em;
-    }
-    > *{
-        margin-bottom: var(--smallMargin);
+    #your-name-title{
+        padding-bottom:0.5em;
+        border-bottom:2px solid var(--colorAccent2);
     }
 
     .member-since{
-        display: flex;
-        
-    }
-
-    .black-line{
-        border: 1px solid black;
-    }
-
-    input{
-        background-color: var(--colorBackground1);
-        border: 1px solid black;
-        width: 100%;
-        padding: var(--extraSmallPadding);
-        margin-bottom: var(--extraSmallPadding);
-        border-radius: 0.5em;
-    }
-
-
-    form{
-        margin-top: var(--extraBigMargin);
-
-        
+        padding-top:0.5em;
     }
 }
 
-#dlt-profile{
-    display: flex;
-    justify-content: flex-start;
-    width: fit-content;
-
-}
-
-.trash-icon{
-    margin-right: 2em;
-}
-
-.profile-pic{
-    border-radius: 5em;
-    max-width: 15em;
-    margin-left: 25%;
-}
-
-
-.edit-profile-btn{
-        background-color: var(--colorAccent2);
-        color:var(--colorBackground1);
-        border-radius: 	0.3125em;
-        border:2px solid var(--colorAccent2);
-        padding:0.5rem 2rem;
+.profile-form-section{
+    margin:0.5em;
+    #user-form{
         margin:1em 0;
-        width: 100%;
-        border-radius: 2em;
 
-}
-
-/* Tablet styles */
-@media screen and (min-width: 768px) {
-
-    .profile-pic{
-        max-width: 20em;
-        height: auto;
-        margin-left: 33%;
-    }
-
-
-  }
-  /* Desktop styles*/
-  @media screen and (min-width: 1200px) {
-
-    
-    .profile-pic{
-        max-width: 20em;
-        height: auto;
-        margin-left: 10%;
-    }
-
-        #profile-titles{
-        display: grid;
-        grid-template-columns: 1fr 3fr; /* Two columns of equal width */
-        grid-template-rows: 1fr; /* Two rows with height based on content */
+        .input-group{
+            display:flex;
+            flex-direction: column;
+        }
+        input{
+            background-color: var(--colorBackground1);
+            border-radius: 0.3125em;
+            border:1px solid var(--colorText);
+            padding:1rem;
+            margin:0.5em 0;
         }
 
-
-        #your-name{
-            padding-left: var(--bigPadding);
+        label{
+            font-family: var(--fontMobileH4);
+            font-size: 1.125em;
+            font-weight: 500;
         }
-
-
-        #user-form{
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-            gap: 2rem; /* Space between columns */
-            max-width: 90%; /* Adjust the max width as needed */
-            margin: 0 auto; /* Center the form */
-            margin: var(--bigMargin);
-        }
-
 
         .edit-profile-btn{
-            width: 25%;
-            margin-left: auto;
-            grid-column: 2;
+            background-color: var(--colorAccent2);
+            color:var(--colorBackground1);
+            border-radius: 	0.3125em;
+            border:2px solid var(--colorAccent2);
+            padding:0.5rem 2rem;
+            margin:1em 0;
+            width:100%;
+        }
+        
+        button:hover{
+            background-color: var(--colorBackground1);
+            color: var(--colorAccent2);
         }
     }
+}
+
+/*---------------------------------------------------
+------------------- DESKTOP -------------------------
+----------------------------------------------------*/
+
+@media only screen and (min-width: 1024px) {
+    #user-form{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:1em;
+
+        .edit-profile-btn{
+            grid-column-start:2;
+        }
+    }
+}
