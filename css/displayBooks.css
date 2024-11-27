@@ -36,6 +36,7 @@
 .authorYearCtn {
     display: flex;
     margin-bottom: var(--smallMargin);
+    margin-top: var(--extraSmallMargin);
 }
 
 .borrow-button{
