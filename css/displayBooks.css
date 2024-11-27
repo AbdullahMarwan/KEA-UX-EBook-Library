@@ -19,7 +19,7 @@
     flex-direction: column;
     align-items: center;
 
-    h5{
+    h4{
         white-space: nowrap;        /* Prevent text from wrapping to the next line */
         overflow: hidden;           /* Hide the overflowing text */
         text-overflow: ellipsis;    /* Add "..." to indicate truncated text */
@@ -29,12 +29,14 @@
 
 .book-cover-ctn {
     margin-bottom: 1em;
-    max-width: 250px;
+    width: 15em;
+    height: 100%;
 }
 
 .authorYearCtn {
     display: flex;
     margin-bottom: var(--smallMargin);
+    margin-top: var(--extraSmallMargin);
 }
 
 .borrow-button{
@@ -53,7 +55,7 @@
 
 
 
-/* Tablet styles */
+/* ------------------- Tablet styles -----------------*/
 @media screen and (min-width: 768px) {
 
     .book-list {
@@ -63,5 +65,4 @@
     .book-article{
         align-items: flex-start;
     }
-
-  }
+}

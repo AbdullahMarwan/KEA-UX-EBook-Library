@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse all books | Booked out</title>
     <script type="module" src="../js/apiFetchRequest.js" defer></script>
-    <!-- <script type="module" src="../js/fetchFunctions.js" defer></script> -->
     <script src="../js/globalTemplate.js" defer></script>
     <script src="../js/userFunctions.js" defer></script>
     <script src="../js/header.js" defer></script>
@@ -16,37 +15,29 @@
 
 <body>
     <header class="header-container">
-
     </header>
 
     <main class="user-main">
-        <div id="profile-titles">
-        
-            <div class="">
-            <h1>Your Profile</h1>
-                <img class="profile-pic" src="../assets\placeholderImg-1-1.png" alt="Your profile picture">
-            </div>
-            
-            <div id="your-name">
+        <header>
+            <h1>Your profile</h1>
+        </header>
+
+        <section class="profile-section-1" id="profile-titles">
+            <img class="profile-pic" src="../assets\placeholderImg-1-1.png" alt="Your profile picture">
+            <div>
                 <h2 id="your-name-title">Your Name</h2> <!-- id bruges i js-->
-                
-            <div class="black-line"></div>
-
-
-                <div>
-                    <div class="member-since">
-                        <h4>Member since: </h4>
-                        <h4 id="your_date">Your Date</h4>
-                    </div>
-                    </div>
+                <h4 class="member-since">Member since: <span id="your_date">membership date</span></h4></div>
             </div>
-            </div>
-            <a id="edit-info" href="#edit-info">Edit your info</a>
-            <form id="user-form">
+        </section>
+
+        <section class="profile-form-section">
+
+            <form id="user-form"> <!-- id's i formen bruges i js-->
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email">
                 </div>
+
                 <div class="input-group">
                     <label for="first_name">First name</label>
                     <input type="text" id="first_name" name="first_name">
@@ -57,26 +48,26 @@
                     <input type="text" id="last_name" name="last_name">
                 </div>
             
-                <div class="input-group column-right">
+                <div class="input-group">
                     <label for="birth_date">Birth date</label>
-                    <input type="text" id="birth_date" name="birth_date">
+                    <input type="date" id="birth_date" name="birth_date">
                 </div>
             
-                <div class="input-group column-right">
+                <div class="input-group">
                     <label for="address">Adress</label>
-                    <input type="text" id="address" name="address">
+                    <input type="address" id="address" name="address">
                 </div>
-                <div class="input-group column-right">
+                <div class="input-group">
                     <label for="phone_number">Phone number</label>
-                    <input type="text" id="phone_number" name="phone_number">
+                    <input type="tel" id="phone_number" name="phone_number">
                 </div>
-                <button class="edit-profile-btn column-right" type="submit">Edit</button>
+                <button class="edit-profile-btn" type="submit">Edit</button>
             </form>
             
-            <a id="dlt-profile" href="#delete-profile">
-                <span class="trash-icon">🗑️</span>
-                <p>Remove your user profile</p>
+            <a id="dlt-profile" href="#">
+                <p><span class="trash-icon">🗑️</span> Remove your user profile</p>
             </a>
+        </section>
     </main>
 
 

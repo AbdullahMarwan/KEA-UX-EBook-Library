@@ -1,7 +1,7 @@
 // Base url used to by every fetch request
 export const baseUrl = "http://localhost:8080";
 
-// General reusable fetchData function (Generate by chatGPT)
+// General reusable fetchData function 
 export async function fetchData(url) {
     try {
         const response = await fetch(url);

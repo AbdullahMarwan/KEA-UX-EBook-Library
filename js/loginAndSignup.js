@@ -34,7 +34,7 @@ loginForm.addEventListener("submit", (event) => {
     formData.append('password', password);
 
    // Send data to backend
-   fetch('http://localhost:8080//users/login', {
+fetch('http://localhost:8080//users/login', {
     method: 'POST',
     body: formData // Send FormData directly
 })
@@ -60,13 +60,7 @@ loginForm.addEventListener("submit", (event) => {
     console.error('Error:', error);
     alert('Failed to login. Please check the console for details.');
 });
-
-
-
 });
-
-
-
 
 
 // -------------------------------------------------------

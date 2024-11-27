@@ -12,7 +12,7 @@ export async function getSpecificBook(bookId) {
     try {
         const book = await fetchData(url); // Fetch book data
         displaySpecificBook(book); // Display basic book details
- 
+
         if (role === "admin") {
             // Fetch and display loan information if admin
             await getLoanInfo(bookId);
@@ -23,7 +23,7 @@ export async function getSpecificBook(bookId) {
 }
 
 // Fetch loan information for admins
-async function getLoanInfo(bookId) {
+export async function getLoanInfo(bookId) {
     const url = `${baseUrl}/admin/books/${bookId}`;
     try {
         const book = await fetchData(url);
@@ -33,7 +33,7 @@ async function getLoanInfo(bookId) {
         console.error("Failed to fetch loan info:", error.message);
     }
 }
- 
+
 //////////////////////////////////////////////////////////////////
 ///////////////////Fetch admin books to show loan info////////////
 //////////////////////////////////////////////////////////////////
@@ -42,31 +42,33 @@ async function getLoanInfo(bookId) {
 function displayLoanInfo(loans) {
     const bookItem = document.getElementById("specific-book");
     if (!bookItem) return;
- 
+    
     let loanInfo = "";
- 
+
     if (loans.length > 0) {
         loanInfo = `
-            <div class="loan-info-ctn">
+            <section class="loan-info-ctn">
                 <h3>Loan Info</h3>
-                <p>
-                    ${loans.map(loan =>
-                        `User ID: ${loan.user_id}, Loan Date: ${loan.loan_date}`
-                    ).join("<br>")}
-                </p>
-            </div>
+                <ul>
+                    ${loans.map(loan => 
+                        `<li><strong>User ID:</strong> ${loan.user_id}, <strong>Loan Date:</strong> ${loan.loan_date}</li>`
+                    ).join("")}
+                </ul>
+            </section>
         `;
     } else {
         loanInfo = `
-            <div class="loan-info-ctn">
+            <section class="loan-info-ctn">
                 <h3>Loan Info</h3>
                 <p>No loans available for this book.</p>
-            </div>
+            </section>
         `;
     }
+
     // Append the loan info to the book display
     bookItem.innerHTML += loanInfo;
 }
+
 
 
 //////////////////////////////////////////////////////////////////
@@ -82,19 +84,17 @@ function displaySpecificBook(book) {
  
     // Display basic book information
     bookItem.innerHTML = `
-        <div class="book-short-details">
+        <section class="book-short-details">
             <h1>${book.title || "Name of Book"}</h1>
             <p><strong>Author:</strong> ${book.author || "Can't find Author"}</p>
             <p><strong>Publishing Year:</strong> ${book.publishing_year || "Can't find publishing year"}</p>
-        </div>
+        </section>
  
         <div class="single-book-cover-ctn">
             <img src="${book.cover || '../assets/placeholderImg-9-16.png'}" alt="${book.title || "Book"} cover">
         </div>
  
         <div class="book-information-ctn">
-            <h2>Description</h2>
-            <p>${book.description || "Description not available."}</p>
     
             <h2>Book Info</h2>
             <h3>Author</h3>
@@ -106,7 +106,7 @@ function displaySpecificBook(book) {
             <h3>Publishing Year</h3>
             <p>${book.publishing_year || "Can't find publishing year"}</p>
 
-            <button class="borrow-button" id="borrow-btn">Borrow</button>
+            <button class="borrow-button hidden" id="borrow-btn" type="submit">Borrow</button>
         </div>
     `;
     
@@ -120,17 +120,6 @@ async function getBookIdFromParam() {
         return;
     }
     return bookId;
-}
-
-// Allows user to loan a book
-async function borrowBook() {
-    const bookId = await getBookIdFromParam();
-    console.log("Book ID: " + bookId);
-}
-
-// Checks if user has a loan on the specified book and displays confirmation that loan already exist
-async function checkIfUserHasLoan() {
-
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -191,14 +180,14 @@ function displayBookList(books) {
     const fragment = document.createDocumentFragment();
 
     // Assuming books have a unique `book_id`
-    books.forEach(({ title, author, publishing_year, coverImage, book_id }) => {
+    books.forEach(({ title, author, publishing_year, cover, book_id }) => {
         const article = document.createElement("article");
         article.className = "book-article";
 
         article.innerHTML = `
             <div class="book-cover-ctn">
                 <a class="bookLink" data-id="${book_id}">
-                    <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
+                    <img src="${cover || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
                 </a>
             </div>
             <h4><a" class="bookLink" data-id="${book_id}">${title}</a></h4>

@@ -29,6 +29,10 @@
         p {
             margin-top: var(--extraSmallMargin);
         }
+
+        .hidden {
+            display: none;
+        }
     }
 }
 
@@ -37,6 +41,40 @@
     margin-top: var(--bigMargin);
     width: clamp(30%, 50%, 300px);
 }
+
+
+#borrow-btn{
+    background-color: var(--colorAccent2);
+    color:var(--colorBackground1);
+    border-radius: 	0.3125em;
+    border:2px solid var(--colorAccent2);
+    padding:0.5rem 2rem;
+    margin:1em 0;
+}
+
+    
+#borrow-btn:hover{
+    background-color: var(--colorBackground1);
+    color: var(--colorAccent2);
+}
+
+.loan-info-ctn{
+    h3{
+        margin:1rem;
+    }
+    li{
+        font-family: var(--fontP);
+        font-size: 0.875em;
+        font-weight: 400;
+        list-style: none;
+        margin:1rem;
+    }
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------ TABLET / desktop ---------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
