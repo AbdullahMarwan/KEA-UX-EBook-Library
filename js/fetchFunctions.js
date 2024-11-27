@@ -95,8 +95,6 @@ function displaySpecificBook(book) {
         </div>
  
         <div class="book-information-ctn">
-            <h2>Description</h2>
-            <p>${book.description || "Description not available."}</p>
     
             <h2>Book Info</h2>
             <h3>Author</h3>
