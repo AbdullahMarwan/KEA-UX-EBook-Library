@@ -33,7 +33,7 @@ export async function getLoanInfo(bookId) {
         console.error("Failed to fetch loan info:", error.message);
     }
 }
- 
+
 //////////////////////////////////////////////////////////////////
 ///////////////////Fetch admin books to show loan info////////////
 //////////////////////////////////////////////////////////////////
@@ -182,14 +182,14 @@ function displayBookList(books) {
     const fragment = document.createDocumentFragment();
 
     // Assuming books have a unique `book_id`
-    books.forEach(({ title, author, publishing_year, coverImage, book_id }) => {
+    books.forEach(({ title, author, publishing_year, cover, book_id }) => {
         const article = document.createElement("article");
         article.className = "book-article";
 
         article.innerHTML = `
             <div class="book-cover-ctn">
                 <a class="bookLink" data-id="${book_id}">
-                    <img src="${coverImage || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
+                    <img src="${cover || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
                 </a>
             </div>
             <h4><a" class="bookLink" data-id="${book_id}">${title}</a></h4>

@@ -2,7 +2,7 @@ import { baseUrl, fetchData } from "./apiFetchRequest.js";
 import { getSpecificBook } from "./fetchFunctions.js";
 
 const userId = sessionStorage.getItem("userId");
-const role = sessionStorage.getItem("role");
+const role = sessionStorage.getItem("role") || ""; // Default to an empty string if null
 
 // Utility function to extract query parameters
 function getQueryParam(param) {
@@ -23,19 +23,24 @@ const bookId = getQueryParam("book_id");
         const borrowBtn = document.getElementById("borrow-btn");
 
         if (role !== "admin") {
-            const canBorrow = await checkIfUserCanBorrow(); // Check if user can borrow the book
-
-            if (!canBorrow) {
-                alert("You already have this book loaned.");
-                return; // Exit early if the user already has a loan
-            }
-
-            // Show borrow button and add event listener
+            // Show borrow button
             borrowBtn.classList.remove("hidden");
+
+            // Add event listener for borrowing the book
             borrowBtn.addEventListener("click", async () => {
-                console.log("Attempting to borrow book with ID:", bookId);
+                if (!role) {
+                    alert("Please log in to borrow the book.");
+                    return; // Stop further execution
+                }
 
                 try {
+                    const alreadyBorrowed = await getBookId(bookId);
+                    if (alreadyBorrowed) {
+                        console.log("The book is already borrowed.");
+                        alert("Book already borrowed.");
+                        return;
+                    }
+
                     const response = await fetch(`${baseUrl}/users/${userId}/books/${bookId}`, {
                         method: "POST",
                     });
@@ -49,7 +54,7 @@ const bookId = getQueryParam("book_id");
                     alert("Book loaned successfully!");
                 } catch (error) {
                     console.error("Error loaning book:", error.message);
-                    alert("Book already borrowed");
+                    alert(error.message || "An error occurred while loaning the book.");
                 }
             });
         }
@@ -58,19 +63,17 @@ const bookId = getQueryParam("book_id");
     }
 })();
 
-// Check if the user already has a loan for the specific book
-async function checkIfUserCanBorrow() {
+// Fetch loan information for admins
+async function getBookId(bookId) {
     const url = `${baseUrl}/admin/books/${bookId}`;
     try {
-        const book = await fetchData(url); // Fetch book details including loans
-        console.log("Book loans:", book.loans);
+        const book = await fetchData(url); // Fetch book details
+        const userId = Number(sessionStorage.getItem("userId")); // Ensure userId is a number
 
-        // Check if user ID matches any existing loan
-        const loans = book.loans || [];
-        const hasLoan = loans.some((loan) => loan.user_id === userId);
-
+        // Check if the book is already borrowed by this user
+        return book.loans.some(loan => loan.user_id === userId);
     } catch (error) {
-        console.error("Failed to check loans:", error.message);
-        return false; // Assume user cannot borrow in case of error
+        console.error("Failed to fetch loan info:", error.message);
+        return false;
     }
 }
