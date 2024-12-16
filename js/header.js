@@ -63,7 +63,7 @@ function updateUserStatus() {
     } else {
         userStatus.innerHTML = `
             <h4>
-                <a href="../views/login.html" id="login-button">Login</a>
+                <a href="../views/login.html" id="login-button" tabindex="0">Login</a>
             </h4>
         `;
     }
