@@ -200,6 +200,10 @@ a:hover{
     animation: fadeIn 0.3s ease; 
 }
 
+.book-article .bookLink:focus {
+    outline: 2px solid blue; /* Customize focus outline */
+}
+
 /* Fade-in animation */
 @keyframes fadeIn {
     from {

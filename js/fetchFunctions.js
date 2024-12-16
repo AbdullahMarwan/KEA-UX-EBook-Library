@@ -179,10 +179,14 @@ function displayBookList(books) {
     // Use a document fragment for better performance
     const fragment = document.createDocumentFragment();
 
+    let i= 1;
     // Assuming books have a unique `book_id`
-    books.forEach(({ title, author, publishing_year, cover, book_id }) => {
+    books.forEach(({ title, author, publishing_year, cover, book_id }) => 
+    {
+
         const article = document.createElement("article");
         article.className = "book-article";
+        // article.setAttribute("tabindex", i);
 
         article.innerHTML = `
             <div class="book-cover-ctn">
@@ -190,7 +194,7 @@ function displayBookList(books) {
                     <img src="${cover || '../assets/placeholderImg-9-16.png'}" alt="${title} cover">
                 </a>
             </div>
-            <h4><a" class="bookLink" data-id="${book_id}">${title}</a></h4>
+            <h4><a class="bookLink" tabindex="${i}" data-id="${book_id}">${title}</a></h4>
             <div class="authorYearCtn">
                 <p>
                     <a target="_blank" class="author-name">${author}</a> (${publishing_year})
@@ -199,6 +203,7 @@ function displayBookList(books) {
             <div class="book-divider"> </div>
         `;
         fragment.appendChild(article);
+        i++;
     });
 
     // Append the fragment to the book list
