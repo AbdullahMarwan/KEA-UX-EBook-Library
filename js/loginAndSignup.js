@@ -49,8 +49,10 @@ fetch('http://localhost:8080//users/login', {
     alert('Logged in successfully!');
 
     const role = "user"; // Use let instead of const to allow reassignment
-    sessionStorage.setItem("role", role); // Store the email in sessionStorage
+    sessionStorage.setItem("role", role); // Store the role in sessionStorage
     sessionStorage.setItem("userId", data.user_id);
+    sessionStorage.setItem("email", email); // Store the email in sessionStorage
+
     console.log(role)
     window.location.href = "../../index.html";
     
@@ -58,7 +60,7 @@ fetch('http://localhost:8080//users/login', {
 })
 .catch(error => {
     console.error('Error:', error);
-    alert('Failed to login. Please check the console for details.');
+    alert('Failed to login. Please try again.');
 });
 });
 
