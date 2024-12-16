@@ -117,6 +117,7 @@ signupForm.addEventListener("submit", (event) => {
         })
         .then((data) => {
             console.log("User added:", data);
+            alert('Signed up successfully!');
 
             // Save email to sessionStorage
             sessionStorage.setItem("userEmail", email);
