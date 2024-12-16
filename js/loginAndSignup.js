@@ -46,7 +46,6 @@ fetch('http://localhost:8080//users/login', {
 })
 .then(data => {
     console.log('Logged in:', data);
-    alert('Logged in successfully!');
 
     const role = "user"; // Use let instead of const to allow reassignment
     sessionStorage.setItem("role", role); // Store the role in sessionStorage
