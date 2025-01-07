@@ -1,6 +1,6 @@
 import re
 from datetime import date, timedelta
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response
 from library_api.database import get_db
 from library_api.utils import error_message
 from library_api.common import basic_book_info
@@ -11,7 +11,10 @@ bp_user = Blueprint('user', __name__)
 @bp_user.route('/books/<int:book_id>', methods=['GET'])
 def get_book(book_id: int):
     book_info = basic_book_info(book_id)
-    if 'error' in book_info:
+
+    # If the return value is a Response object, 
+    # it comes from error_message()
+    if isinstance(book_info, Response):
         return book_info, 404
     else:
         return jsonify(book_info), 200
